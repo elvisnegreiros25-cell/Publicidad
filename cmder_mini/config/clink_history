@@ -1,0 +1,61 @@
+|CTAG_1776796429_368751265_31428_0
+cd..
+|d proyectogib
+|d web 
+|d proyectogib
+|it init 
+git status
+git init 
+git add.
+|it add .
+git commit -m "Primer comentario"
+git remote add origin https://github.com/elvisnegreiros25-cell/web_grupo.git
+|it branch -M main
+|it push -u origin main 
+git status 
+git push -u origin main 
+cd cd web_grupo2
+|it clone git@github.com:elvisnegreiros25-cell/web_grupo2.git
+cd 
+|d ..
+cd web 
+cd proyectogib\
+|d ..
+cd proyectogib
+cd web_grupo2
+git clone git@github.com:elvisnegreiros25-cell/web_grupo2.git
+git clone https://github.com/elvisnegreiros25-cell/web_grupo2.git
+|it add .
+git commit -m "Subida masiva de archivos"
+|it push origin main
+git config --global user.name "Cristopher "
+git config --global user.email "elvisnegreiros25@gmail.com"
+git push origin main
+|d ..
+mkdir Web_publicitaria
+cd ..
+|d
+cd Web_publicitaria
+cd Publicitaria\Web_publicitaria
+cd
+mkdir \css_apariencia\js_pagina\img_web
+cd css_apariencia
+|it init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+|it remote add origin git@github.com:elvisnegreiros25-cell/Publicidad.git
+git push -u origin main
+|it add .
+git init
+|it add .
+git commit -m "Estructura inicial en rama master"
+|it branch -M master
+git remote add origin git@github.com:elvisnegreiros25-cell/Publicidad.git
+|it remote add origin https://github.com/elvisnegreiros25-cell/Publicidad.git
+git remote remove origin
+git remote add origin https://github.com/elvisnegreiros25-cell/Publicidad.git
+git add .
+git commit -m "Estructura inicial en master"
+git branch -M master
+git push -u origin master

@@ -1,0 +1,6 @@
+cd ..
+cd Web_publicitaria\
+|it init
+|it remote add origin https://github.com/elvisnegreiros25-cell/Publicidad.git
+git init
+git remote add origin https://github.com/elvisnegreiros25-cell/Publicidad.git
