@@ -1,7 +1,7 @@
 /*---------------------------------------------------------------------
      ESTILOS PRINCIPALES - Estructura y diseño base
      Define estilos globales, tipografía, colores y componentes reutilizables
-     CORRECCIÓN: Choose section en fila con texto centrado
+     MEJORAS 1-5: Scrollbar, scroll-padding, animaciones, tipografía fluida, validación
 ---------------------------------------------------------------------*/
 
 /*---------------------------------------------------------------------
@@ -116,8 +116,15 @@
   box-sizing: border-box;
 }
 
+/* MEJORA 2: Scroll padding para header fijo */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Para secciones con ID que se enlazan desde el menú */
+#about, #service, #vehicles, #testimonial, #choose, #contact {
+  scroll-margin-top: 80px;
 }
 
 body {
@@ -174,12 +181,13 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
-h1 { font-size: 24px; }
-h2 { font-size: 18px; }
-h3 { font-size: 18px; }
-h4 { font-size: 16px; }
-h5 { font-size: 14px; }
-h6 { font-size: 13px; }
+/* MEJORA 4: Tipografía fluida con clamp() */
+h1 { font-size: clamp(1.5rem, 4vw, 1.5rem); }
+h2 { font-size: clamp(1.125rem, 3vw, 1.125rem); }
+h3 { font-size: clamp(1.125rem, 3vw, 1.125rem); }
+h4 { font-size: clamp(1rem, 2.5vw, 1rem); }
+h5 { font-size: clamp(0.875rem, 2vw, 0.875rem); }
+h6 { font-size: clamp(0.8125rem, 2vw, 0.8125rem); }
 
 p {
   margin: 0;
@@ -261,7 +269,8 @@ button:focus {
 }
 
 .lead {
-  font-size: 18px;
+  /* MEJORA 4: Tipografía fluida */
+  font-size: clamp(1rem, 2vw, 1.125rem);
   line-height: 30px;
   color: var(--text-secondary);
   margin: 0;
@@ -286,6 +295,7 @@ blockquote {
   color: var(--text-secondary);
 }
 
+/* MEJORA 5: Validación de formularios */
 .form-control {
   border: 1px solid var(--color-gray-border);
   border-radius: var(--border-radius-md);
@@ -301,9 +311,35 @@ blockquote {
   outline: none;
 }
 
+.form-control:valid:not(:placeholder-shown) {
+  border-color: var(--color-accent-green) !important;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.15) !important;
+}
+
+.form-control:invalid:not(:placeholder-shown) {
+  border-color: var(--color-accent-red) !important;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15) !important;
+}
+
 .form-control::placeholder {
   color: var(--text-muted);
   opacity: 1;
+}
+
+/* Mensajes de ayuda para validación */
+.form-help {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 5px;
+  display: block;
+}
+
+.form-help.error {
+  color: var(--color-accent-red);
+}
+
+.form-help.success {
+  color: var(--color-accent-green);
 }
 
 .navbar-form input {
@@ -532,10 +568,11 @@ ul.conat_info li a:focus {
   box-shadow: var(--shadow-lg);
 }
 
+/* MEJORA 4: Tipografía fluida para título principal */
 .text-bg h1 {
   color: var(--color-primary);
-  font-size: 60px;
-  line-height: 70px;
+  font-size: clamp(2.5rem, 8vw, 3.75rem);
+  line-height: 1.15;
   padding-bottom: 45px;
   font-weight: bold;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
@@ -747,6 +784,7 @@ ul.conat_info li a:focus {
   align-items: flex-start;
 }
 
+/* MEJORA 3: Animaciones escalonadas para service_box */
 .service_box {
   text-align: center;
   width: 16.3%;
@@ -756,6 +794,32 @@ ul.conat_info li a:focus {
   contain: layout style paint;
   will-change: transform;
   overflow: visible !important;
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+.service_box:nth-child(1) { animation-delay: 0.1s; }
+.service_box:nth-child(2) { animation-delay: 0.2s; }
+.service_box:nth-child(3) { animation-delay: 0.3s; }
+.service_box:nth-child(4) { animation-delay: 0.4s; }
+.service_box:nth-child(5) { animation-delay: 0.5s; }
+.service_box:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Desactivar animación si el usuario prefiere movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .service_box {
+    animation: none !important;
+  }
 }
 
 .service_box:hover {
@@ -848,6 +912,7 @@ ul.conat_info li a:focus {
   font-weight: 400;
 }
 
+/* MEJORA 3: Animaciones escalonadas para vehicles_truck */
 .vehicles_truck {
   background-color: var(--color-light);
   transition: var(--transition-normal);
@@ -858,7 +923,12 @@ ul.conat_info li a:focus {
   box-shadow: var(--shadow-sm);
   contain: layout style paint;
   will-change: transform;
+  animation: fadeInUp 0.5s ease-out both;
 }
+
+.vehicles_truck:nth-child(1) { animation-delay: 0.1s; }
+.vehicles_truck:nth-child(2) { animation-delay: 0.2s; }
+.vehicles_truck:nth-child(3) { animation-delay: 0.3s; }
 
 .vehicles_truck:hover {
   background-color: var(--color-white);
@@ -1143,7 +1213,7 @@ ul.conat_info li a:focus {
   box-sizing: border-box;
 }
 
-/* CORRECCIÓN: Choose box con texto centrado */
+/* MEJORA 3: Animaciones escalonadas para choose_box */
 .choose_box {
   display: flex;
   flex-direction: column;
@@ -1158,7 +1228,11 @@ ul.conat_info li a:focus {
   will-change: transform;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
   height: 100%;
+  animation: fadeInUp 0.5s ease-out both;
 }
+
+.choose_box:nth-child(1) { animation-delay: 0.1s; }
+.choose_box:nth-child(2) { animation-delay: 0.2s; }
 
 .choose_box:hover {
   background-color: var(--color-light);
@@ -1222,6 +1296,7 @@ ul.conat_info li a:focus {
   contain: layout style paint;
 }
 
+/* MEJORA 5: Validación en formulario de contacto */
 .main_form .contactus,
 .main_form .contactusmess {
   border: var(--border-color) solid var(--border-width);
@@ -1234,6 +1309,18 @@ ul.conat_info li a:focus {
   font-weight: normal;
   padding: 0 15px;
   transition: var(--transition-fast);
+}
+
+.main_form .contactus:valid:not(:placeholder-shown),
+.main_form .contactusmess:valid:not(:placeholder-shown) {
+  border-color: var(--color-accent-green) !important;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.15) !important;
+}
+
+.main_form .contactus:invalid:not(:placeholder-shown),
+.main_form .contactusmess:invalid:not(:placeholder-shown) {
+  border-color: var(--color-accent-red) !important;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15) !important;
 }
 
 .main_form .contactus {
@@ -1391,6 +1478,7 @@ ul.location_icon li a:focus {
   margin: 0;
 }
 
+/* MEJORA 5: Validación en newsletter */
 .bottom_form .enter {
   border: 1px solid var(--color-gray-border);
   padding: 0 19px;
@@ -1402,6 +1490,16 @@ ul.location_icon li a:focus {
   font-weight: 500;
   border-radius: var(--border-radius-md) 0 0 var(--border-radius-md);
   transition: var(--transition-fast);
+}
+
+.bottom_form .enter:valid:not(:placeholder-shown) {
+  border-color: var(--color-accent-green) !important;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.15) !important;
+}
+
+.bottom_form .enter:invalid:not(:placeholder-shown) {
+  border-color: var(--color-accent-red) !important;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15) !important;
 }
 
 .bottom_form .enter:focus {
@@ -1527,10 +1625,11 @@ ul.location_icon li a:focus {
   TÍTULOS DE SECCIÓN
 ---------------------------------------------------------------------*/
 
+/* MEJORA 4: Tipografía fluida para títulos de sección */
 .titlepage h2 {
-  font-size: 50px;
+  font-size: clamp(2rem, 5vw, 3.125rem);
   color: var(--color-primary);
-  line-height: 45px;
+  line-height: 1.2;
   font-weight: bold;
   padding: 0;
   position: relative;
@@ -1599,7 +1698,7 @@ ul.location_icon li a:focus {
   }
   
   .text-bg h1 {
-    font-size: 45px;
+    font-size: clamp(2rem, 7vw, 2.8125rem);
     line-height: 55px;
   }
   
@@ -1626,7 +1725,6 @@ ul.location_icon li a:focus {
     margin-right: 0;
   }
   
-  /* Choose en tablets - mantener en fila */
   .choose .col-md-6,
   .choose .col-lg-6 {
     flex: 0 0 50%;
@@ -1654,7 +1752,7 @@ ul.location_icon li a:focus {
   }
   
   .text-bg h1 {
-    font-size: 36px;
+    font-size: clamp(1.75rem, 6vw, 2.25rem);
     line-height: 45px;
   }
   
@@ -1667,7 +1765,7 @@ ul.location_icon li a:focus {
   }
   
   .titlepage h2 {
-    font-size: 36px;
+    font-size: clamp(1.5rem, 5vw, 2.25rem);
     line-height: 40px;
   }
   
@@ -1714,7 +1812,6 @@ ul.location_icon li a:focus {
     border-radius: var(--border-radius-md);
   }
   
-  /* Choose en móvil - una columna */
   .choose .col-md-6,
   .choose .col-lg-6 {
     flex: 0 0 100%;
@@ -1728,7 +1825,7 @@ ul.location_icon li a:focus {
 
 @media (max-width: 575px) {
   .text-bg h1 {
-    font-size: 32px;
+    font-size: clamp(1.5rem, 7vw, 2rem);
     line-height: 40px;
   }
   
@@ -1747,7 +1844,7 @@ ul.location_icon li a:focus {
   }
   
   .titlepage h2 {
-    font-size: 32px;
+    font-size: clamp(1.25rem, 6vw, 2rem);
   }
   
   .read_more {
@@ -1778,7 +1875,6 @@ ul.location_icon li a:focus {
     padding: 10px 12px;
   }
   
-  /* Choose en móvil pequeño */
   .choose_box {
     padding: 25px 15px;
   }
@@ -1876,4 +1972,35 @@ ul.location_icon li a:focus {
     max-width: 100% !important;
     height: auto !important;
   }
+}
+
+/*---------------------------------------------------------------------
+  MEJORA 1: SCROLLBAR PERSONALIZADO
+---------------------------------------------------------------------*/
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-light);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  border-radius: 10px;
+  border: 2px solid var(--color-light);
+  transition: var(--transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  transform: scale(1.05);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-light);
 }
