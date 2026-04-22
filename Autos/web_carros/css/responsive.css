@@ -1,21 +1,17 @@
 /*---------------------------------------------------------------------
  ARCHIVO: responsive.css
- DESCRIPCIÓN: Ajustes responsivos para adaptar el diseño a diferentes tamaños de pantalla.
- NOTAS: Todas las reglas originales se conservan intactas. Solo se reorganizó y documentó para facilitar el mantenimiento.
+ DESCRIPCIÓN: Ajustes responsivos con correcciones aplicadas
 ---------------------------------------------------------------------*/
 
 /*-------------------------------------------------------------------
  PANTALLAS GRANDES (1200px a 1342px)
- Ajuste fino para monitores anchos y laptops de gran formato.
 ---------------------------------------------------------------------*/
 @media (min-width: 1200px) and (max-width: 1342px) {
-    /* Reposiciona las flechas del carrusel principal */
     #myCarousel a.carousel-control-next,
     #myCarousel a.carousel-control-prev {
         right: -3%;
     }
     
-    /* Elimina margen lateral del mapa para evitar scroll horizontal */
     .map {
         margin-right: 0px;
     }
@@ -23,10 +19,8 @@
 
 /*-------------------------------------------------------------------
  PANTALLAS MEDIAS-GRANDES (992px a 1199px)
- Optimización para laptops estándar y escritorios pequeños.
 ---------------------------------------------------------------------*/
 @media (min-width: 992px) and (max-width: 1199px) {
-    /* Ajusta espaciado del banner y reduce tipografía */
     .banner_slide {
         padding: 0 80px 0 0px;
     }
@@ -54,7 +48,6 @@
         font-size: 48px;
     }
     
-    /* Ajusta posición de flechas de carruseles */
     #myCarousel a.carousel-control-next,
     #myCarousel a.carousel-control-prev {
         right: -3%;
@@ -63,7 +56,6 @@
         right: 43%;
     }
     
-    /* Ajustes de formulario y lista de ubicación */
     .map {
         margin-right: 0px;
     }
@@ -73,14 +65,18 @@
     ul.location_icon li {
         font-size: 18px;
     }
+    
+    /* Círculos de servicios ajustados */
+    .service_box i {
+        width: 150px !important;
+        height: 150px !important;
+    }
 }
 
 /*-------------------------------------------------------------------
  TABLETS (768px a 991px)
- Adaptación para tablets en orientación vertical y horizontal.
 ---------------------------------------------------------------------*/
 @media (min-width: 768px) and (max-width: 991px) {
-    /* Reestructura el banner principal para tablets */
     .text-bg h1 {
         font-size: 43px;
         padding-bottom: 20px;
@@ -88,7 +84,7 @@
     }
     .banner_main {
         padding: 152px 0px 0px 0px;
-        background-color: #cacaca !important;
+        background-color: #f8f9fa !important;
         background: inherit;
         min-height: 919px;
     }
@@ -105,19 +101,17 @@
         font-size: 37px;
     }
     
-    /* Ajusta la grilla de servicios */
     .service_box {
-        width: 13.3%;
+        width: 33.33%;
     }
     .service_box i {
-        width: 120px;
-        height: 120px;
+        width: 140px !important;
+        height: 140px !important;
     }
     .service_box h4 {
-        font-size: 12px;
+        font-size: 14px;
     }
     
-    /* Reposiciona flechas del carrusel de vehículos */
     #veh a.carousel-control-prev {
         left: 43%;
     }
@@ -128,10 +122,9 @@
         font-size: 20px;
     }
     
-    /* Ajusta lista de iconos y formulario inferior */
     ul.location_icon li {
-        font-size: 12px;
-        line-height: 20px;
+        font-size: 14px;
+        line-height: 22px;
     }
     .map {
         margin-right: 0px;
@@ -143,17 +136,20 @@
     .banner_slide {
         padding: 0 80px 0 0px;
     }
+    
+    /* Choose box en tablet */
+    .choose_box {
+        padding: 25px;
+    }
 }
 
 /*-------------------------------------------------------------------
  MÓVILES GRANDES (576px a 767px)
- Optimización para smartphones grandes y tablets pequeñas.
 ---------------------------------------------------------------------*/
 @media (min-width: 576px) and (max-width: 767px) {
-    /* Ajusta dimensiones y espaciado del banner */
     .banner_main {
         padding: 152px 0px 90px 0px;
-        background-color: #cacaca !important;
+        background-color: #f8f9fa !important;
         background: inherit;
     }
     .banner_slide {
@@ -182,16 +178,14 @@
         top: 50%;
     }
     
-    /* Reorganiza servicios en dos columnas */
     .service_box {
-        width: 25.0%;
+        width: 50%;
     }
     .service_box i {
-        width: 156px;
-        height: 156px;
+        width: 130px !important;
+        height: 130px !important;
     }
     
-    /* Ajusta sección de vehículos */
     .vehicles_truck {
         margin-bottom: 30px;
     }
@@ -210,7 +204,6 @@
         right: 40%;
     }
     
-    /* Ajusta formulario de contacto y secciones laterales */
     .main_form {
         max-width: inherit;
     }
@@ -228,14 +221,28 @@
     .titlepage h2 {
         font-size: 31px;
     }
+    
+    /* Choose box responsive */
+    .choose_box {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px;
+    }
+    
+    .choose_box i {
+        margin: 0 auto 15px auto;
+    }
+    
+    .choose_box h3,
+    .choose_box p {
+        text-align: center;
+    }
 }
 
 /*-------------------------------------------------------------------
  MÓVILES PEQUEÑOS (Menos de 575px)
- Diseño prioritario para smartphones en orientación vertical.
 ---------------------------------------------------------------------*/
 @media (max-width: 575px) {
-    /* Ajusta cabecera y logo */
     .header {
         padding: 30px 0px 15px 0px;
     }
@@ -245,10 +252,9 @@
         margin-top: 0px !important;
     }
     
-    /* Reestructura banner para pantallas pequeñas */
     .banner_main {
         padding: 152px 0px 90px 0px;
-        background-color: #cacaca !important;
+        background-color: #f8f9fa !important;
         background: inherit;
     }
     .banner_slide {
@@ -279,13 +285,11 @@
         line-height: 30px;
     }
     
-    /* Ajusta sección de testimonios */
     .testimonial_box h3 {
-        font-size: 15px;
-        line-height: 30px;
+        font-size: 18px;
+        line-height: 28px;
     }
     
-    /* Servicios en columna única */
     .service_box {
         width: 100%;
     }
@@ -294,9 +298,10 @@
     }
     .service_box i {
         margin: 0 auto;
+        width: 150px !important;
+        height: 150px !important;
     }
     
-    /* Vehículos y controles de carrusel */
     .vehicles_truck {
         margin-bottom: 30px;
     }
@@ -315,10 +320,9 @@
         right: 40%;
     }
     .choose_box h3 {
-        font-size: 16px;
+        font-size: 20px;
     }
     
-    /* Formulario y elementos laterales */
     .main_form {
         max-width: inherit;
     }
@@ -337,7 +341,7 @@
         margin-top: -40px;
     }
     ul.location_icon li {
-        font-size: 18px;
+        font-size: 16px;
     }
     .bottom_form .enter {
         width: 100%;
@@ -345,5 +349,89 @@
     }
     .d_none {
         display: none;
+    }
+    
+    /* CORRECCIONES FINALES PARA MÓVIL PEQUEÑO */
+    
+    /* Formulario con texto legible */
+    .transfot span,
+    .transfot h3 {
+        font-size: 16px !important;
+        color: #222222 !important;
+    }
+    
+    .transfot_form {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+    
+    /* Choose box centrado */
+    .choose_box {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .choose_box i {
+        margin: 0 auto 15px auto;
+    }
+    
+    .choose_box h3,
+    .choose_box p {
+        text-align: center;
+    }
+    
+    /* Botones a ancho completo */
+    .get_now,
+    .send_btn,
+    .read_more {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Ajuste de carruseles */
+    #myCarousel .carousel-control-prev,
+    #myCarousel .carousel-control-next {
+        position: relative !important;
+        right: auto !important;
+        left: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        margin: 10px auto;
+        display: inline-flex !important;
+    }
+}
+
+/*-------------------------------------------------------------------
+ PANTALLAS ULTRA PEQUEÑAS (< 375px)
+---------------------------------------------------------------------*/
+@media (max-width: 374px) {
+    .text-bg h1 {
+        font-size: 28px;
+        line-height: 38px;
+    }
+    
+    .titlepage h2 {
+        font-size: 24px;
+        line-height: 32px;
+    }
+    
+    .service_box i {
+        width: 120px !important;
+        height: 120px !important;
+    }
+    
+    .transfot_form {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+    
+    ul.conat_info {
+        gap: 5px;
+    }
+    
+    ul.conat_info li a {
+        font-size: 18px;
+        padding: 3px;
     }
 }
