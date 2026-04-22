@@ -24,7 +24,7 @@
     <div class="loader" style="text-align: center; display: flex; flex-direction: column; align-items: center; animation: fadeIn 1.5s ease-in-out;">
         
         <img src="images/bmw_logo.png" alt="BMW Logo" style="width: 220px; filter: drop-shadow(0px 0px 30px rgba(255,255,255,0.2)); margin-bottom: 25px;" />
-        
+         
         <h2 style="color: #fff; font-family: 'Arial Black', sans-serif; font-style: italic; font-weight: 900; font-size: 3.5rem; letter-spacing: 10px; margin: 0; text-transform: uppercase; background: linear-gradient(180deg, #ffffff 30%, #777 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0px 5px 15px rgba(0,0,0,0.9));">
             BMW MOTORSPORT
         </h2>
@@ -306,156 +306,242 @@
     </style>
 
     <section class="banner_main">
-        <div class="bg-overlay"></div>
-        <div class="bg-watermark">M8</div>
-
-        <div style="z-index: 10; text-align: center; width: 100%;">
-            <h2 style="color: #fff; font-size: clamp(20px, 3vw, 35px); letter-spacing: 15px; margin: 0; font-weight: 800; text-transform: uppercase;">BMW MOTORSPORT</h2>
-            <div style="height: 4px; width: 140px; margin: 15px auto; display: flex;">
-                <div style="flex: 1; background: #00a2ed;"></div>
-                <div style="flex: 1; background: #102542;"></div>
-                <div style="flex: 1; background: #e21b22;"></div>
-            </div>
+    <div class="bg-overlay"></div>
+    <div class="bg-watermark">M POWER</div>
+    
+    <div class="header-top-text">
+        <h2 class="main-brand-title">BMW MOTORSPORT</h2>
+        <div class="m-stripe-container">
+            <div class="stripe s-blue"></div>
+            <div class="stripe s-navy"></div>
+            <div class="stripe s-red"></div>
         </div>
+    </div>
 
-        <div class="car-container">
-            <img src="images/m8.png" alt="BMW M8" class="car-float">
-        </div>
-
-        <div class="content-grid">
-            <div class="info-side">
-                <span style="color: #666; font-weight: 800; letter-spacing: 2px; font-size: 10px; text-transform: uppercase;">Edición Limitada</span>
-                <h1 class="m-title">M8</h1>
-                <h3 style="color: #111; font-size: 22px; font-weight: 900; margin: 5px 0 15px 0; text-transform: uppercase;">Competition</h3>
-                <p style="color: #444; font-size: 13px; line-height: 1.5; margin-bottom: 20px;">
-                    El pináculo del rendimiento M. Ingeniería alemana diseñada para la perfección absoluta en cada curva.
-                </p>
-                <div style="display: flex; border-top: 1px solid #ddd; padding-top: 20px; gap: 20px;">
-                    <div>
-                        <b style="font-size: 18px; color: #111;">625 CV</b><br>
-                        <small style="color:#888; font-weight: 700; font-size: 9px;">POTENCIA</small>
-                    </div>
-                    <div>
-                        <b style="font-size: 18px; color: #111;">3.2s</b><br>
-                        <small style="color:#888; font-weight: 700; font-size: 9px;">0-100 KM/H</small>
-                    </div>
+    <div class="cfmoto-layout">
+        
+        <div class="info-side-premium">
+            <div class="label-box">EDICIÓN LIMITADA</div>
+            <h1 class="big-m">M8</h1>
+            <h3 class="sub-model">COMPETITION</h3>
+            <p class="desc-text">
+                Ingeniería de circuito adaptada a la carretera. El BMW M8 Competition combina el ADN de carreras con el lujo más exclusivo.
+            </p>
+            
+            <div class="stats-row">
+                <div class="stat-card">
+                    <span class="stat-val">625</span>
+                    <span class="stat-unit">CV POTENCIA</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-val">3.2s</span>
+                    <span class="stat-unit">0-100 KM/H</span>
                 </div>
             </div>
+        </div>
 
-            <div class="form-side">
-                <h4 style="color: #00a2ed; font-size: 10px; letter-spacing: 3px; text-align: center; margin-bottom: 25px; font-weight: 800; text-transform: uppercase;">Reserva tu Prueba</h4>
-                <input type="text" placeholder="Nombre completo" class="m-input">
-                <input type="text" placeholder="WhatsApp / Email" class="m-input">
-                <select class="m-input" style="appearance: none; cursor: pointer; color: #ccc;">
-                    <option>M8 Coupe</option>
-                    <option>M8 Gran Coupe</option>
+        <div class="car-visual-wrapper">
+            <img src="images/m8.png" alt="BMW M8" class="car-main-img">
+            <div class="glow-effect"></div>
+        </div>
+
+        <div class="form-side-glass">
+            <div class="form-header">RESERVA TU PRUEBA</div>
+            <div class="input-group">
+                <input type="text" placeholder="NOMBRE COMPLETO" class="cfm-input">
+                <input type="text" placeholder="WHATSAPP / EMAIL" class="cfm-input">
+                <select class="cfm-input">
+                    <option>M8 COUPE</option>
+                    <option>M8 GRAN COUPE</option>
                 </select>
-                <button class="m-btn">Enviar Solicitud</button>
+                <button class="cfm-btn-submit">ENVIAR SOLICITUD <i class="arrow"></i></button>
             </div>
         </div>
-    </section>
-    <style>
-    /* --- CONFIGURACIÓN DE NAVEGACIÓN (HEADER) --- */
-    header, .nav-container, #navbar {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-        transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
-    }
+    </div>
+</section>
 
-    .nav-hidden {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
+<style>
+/* --- ESTILO BASE INSPIRADO EN CF MOTO --- */
+.banner_main {
+    background: #e5e5e5; /* Gris claro industrial */
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    font-family: 'Arial Black', sans-serif;
+}
 
-    /* --- ESTILOS GLOBALES DE LA SECCIÓN --- */
-    #bmw-m-about-section {
-        background: #d6d6d6;
-        padding: 100px 0; /* Ajustado para dar más foco visual */
-        position: relative;
-        overflow: hidden;
-        font-family: 'Arial', sans-serif;
-    }
+/* Marca de agua gigante de fondo */
+.bg-watermark {
+    position: absolute;
+    font-size: 35vw;
+    font-weight: 900;
+    color: rgba(0,0,0,0.04);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    white-space: nowrap;
+}
 
-    /* Líneas de escaneo industriales */
-    #bmw-m-about-section .tech-lines {
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
-        background-size: 100% 4px;
-        z-index: 1;
-        pointer-events: none;
-    }
+/* Layout Asimétrico */
+.cfmoto-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1.5fr 0.8fr;
+    width: 90%;
+    margin: 0 auto;
+    z-index: 5;
+    align-items: center;
+}
 
-    #bmw-m-about-section .container {
-        position: relative;
-        z-index: 10;
-        max-width: 1400px; /* Contenedor más ancho para alojar imagen grande */
-        margin: 0 auto;
-        padding: 0 40px;
-    }
+/* Texto Izquierdo */
+.info-side-premium {
+    z-index: 10;
+}
 
-    /* --- ESTILOS DE TEXTO --- */
-    #bmw-m-about-section .tech-subtitle {
-        color: #0066b1;
-        text-transform: uppercase;
-        letter-spacing: 6px;
-        font-weight: 900;
-        font-size: 14px;
-        display: block;
-        margin-bottom: 20px;
-    }
+.label-box {
+    background: #111;
+    color: #fff;
+    display: inline-block;
+    padding: 5px 15px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
 
-    #bmw-m-about-section .main-title {
-        color: #1a1a1a;
-        font-family: 'Arial Black', sans-serif;
-        font-size: clamp(35px, 4.5vw, 55px);
-        text-transform: uppercase;
-        font-style: italic;
-        line-height: 0.85;
-        margin: 0 0 30px 0;
-        letter-spacing: -2px;
-    }
+.big-m {
+    font-size: 120px;
+    line-height: 0.8;
+    margin: 0;
+    color: #111;
+    font-style: italic;
+}
 
-    #bmw-m-about-section .main-title span.stroke-text {
-        color: transparent;
-        -webkit-text-stroke: 1.5px #1a1a1a;
-    }
+.sub-model {
+    font-size: 30px;
+    color: #e21b22; /* Rojo M */
+    margin-bottom: 20px;
+}
 
-    #bmw-m-about-section .info-box {
-        background: rgba(255, 255, 255, 0.4);
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        padding: 35px;
-        border-right: 8px solid #e22718;
-        box-shadow: 20px 20px 50px rgba(0,0,0,0.08);
-        margin-bottom: 30px;
-        position: relative;
-    }
+.desc-text {
+    font-family: 'Arial', sans-serif;
+    color: #444;
+    font-size: 14px;
+    max-width: 300px;
+    line-height: 1.6;
+}
 
-    #bmw-m-about-section .pilar-card h4 {
-        color: #000;
-        font-weight: 900;
-        font-size: 16px;
-        margin: 0 0 8px 0;
-        text-transform: uppercase;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
+/* Stats estilo ficha técnica */
+.stats-row {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+}
 
-    #bmw-m-about-section .pilar-card h4::before {
-        content: '';
-        width: 8px; height: 8px;
-        background: #0066b1;
-        border-radius: 50%;
-    }
+.stat-card {
+    border-left: 3px solid #00a2ed;
+    padding-left: 15px;
+}
 
-    /* --- EFECTOS DE LA IMAGEN --- */
-    .about_right:hover .shine-effect {
-        left: 150% !important;
-    }
+.stat-val {
+    display: block;
+    font-size: 28px;
+    color: #111;
+}
+
+.stat-unit {
+    font-size: 10px;
+    color: #888;
+}
+
+/* Imagen del Auto Central */
+.car-visual-wrapper {
+    position: relative;
+    z-index: 6;
+}
+
+.car-main-img {
+    width: 140%; /* El auto sobresale para dar impacto */
+    margin-left: -20%;
+    filter: drop-shadow(0 30px 50px rgba(0,0,0,0.3));
+    transition: transform 0.5s ease;
+}
+
+.car-main-img:hover {
+    transform: scale(1.05) rotate(-2deg);
+}
+
+/* Formulario Estilo Glassmorphism */
+.form-side-glass {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 4px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.form-header {
+    font-size: 14px;
+    color: #00a2ed;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.cfm-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    background: white;
+    font-size: 12px;
+    outline: none;
+}
+
+.cfm-btn-submit {
+    width: 100%;
+    background: #111;
+    color: white;
+    padding: 15px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cfm-btn-submit:hover {
+    background: #e21b22;
+}
+
+/* Rayas M decorativas */
+.m-stripe-container {
+    height: 6px;
+    width: 180px;
+    display: flex;
+    margin: 10px auto;
+}
+
+.stripe { flex: 1; }
+.s-blue { background: #00a2ed; }
+.s-navy { background: #102542; }
+.s-red { background: #e21b22; }
+
+.header-top-text {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+}
+
+.main-brand-title {
+    color: rgba(0,0,0,0.1);
+    letter-spacing: 20px;
+    font-size: 40px;
+}
 </style>
 
 <div style="width: 100%; height: 120px; background: #d6d6d6; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 25%); margin-top: -1px; border-top: 4px solid #e22718; position: relative; z-index: 5;"></div>
@@ -1621,3 +1707,9 @@
       </script>
    </body>
 </html>
+
+
+
+
+
+
