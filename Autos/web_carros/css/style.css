@@ -1,12 +1,15 @@
 /*---------------------------------------------------------------------
      ESTILOS PRINCIPALES - Estructura y diseño base
-     Define estilos globales, tipografía, colores y componentes reutilizables */
+     Define estilos globales, tipografía, colores y componentes reutilizables
+     Commit 1: Variables adicionales y optimizaciones de rendimiento
+---------------------------------------------------------------------*/
+
 /*---------------------------------------------------------------------
   VARIABLES CSS - PALETA DE COLORES Y VALORES GLOBALES
   Centraliza colores y valores para fácil mantenimiento
 ---------------------------------------------------------------------*/
 :root {
-  /* Colores primarios  */
+  /* Colores primarios */
   --color-primary: #0f98f8;
   --color-primary-dark: #0d7dd1;
   --color-primary-light: #3da9fc;
@@ -22,7 +25,7 @@
   --color-accent-red: #dc3545;
   --color-accent-green: #28a745;
   
-  /* Colores neutros  */
+  /* Colores neutros */
   --color-white: #ffffff;
   --color-light: #f8f9fa;
   --color-gray: #777777;            
@@ -30,17 +33,21 @@
   --color-gray-border: #dee2e6;
   --color-black: #333333;           
   
-  /* Colores de texto  */
+  /* Colores de texto */
   --text-primary: #444444;          
   --text-secondary: #666666;         
   --text-light: #ffffff;
   --text-muted: #999999;            
   
-  /* Sombras */
+  /* Sombras - valores originales */
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
   --shadow-hover: 0 0 16px rgba(22, 22, 23, 0.15);
+  
+  /* Sombras - NUEVAS VARIABLES para efectos mejorados */
+  --shadow-focus: 0 0 0 3px rgba(15, 152, 248, 0.25);
+  --shadow-elevated: 0 12px 40px rgba(15, 152, 248, 0.15);
   
   /* Bordes */
   --border-radius-sm: 5px;
@@ -55,6 +62,9 @@
   --transition-fast: 0.3s ease-in-out;
   --transition-normal: 0.5s ease-in-out;
   --transition-slow: 0.7s ease-in-out;
+  
+  /* NUEVO: Easing personalizado para animaciones más naturales */
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
   
   /* Espaciado */
   --spacing-xs: 10px;
@@ -72,6 +82,11 @@
   --font-size-xl: 18px;
   --line-height-base: 1.8;
   --line-height-lg: 1.5;
+  
+  /* NUEVAS VARIABLES para consistencia global */
+  --container-max-width: 1200px;
+  --container-padding: 15px;
+  --focus-ring-color: rgba(15, 152, 248, 0.4);
 }
 
 /*---------------------------------------------------------------------
@@ -114,6 +129,7 @@ html {
 }
 
 /* Estilos base del cuerpo del documento */
+/* NUEVO: transición suave para cambios de estado */
 body {
   color: var(--text-secondary);
   font-size: var(--font-size-sm);
@@ -121,6 +137,7 @@ body {
   line-height: var(--line-height-base);
   font-weight: normal;
   background-color: var(--color-white);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Enlaces - estilos base y hover */
@@ -204,6 +221,7 @@ img {
   outline: 0;
 }
 
+/* Focus visible mejorado para accesibilidad */
 :focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
@@ -243,6 +261,7 @@ button:focus {
 ---------------------------------------------------------------------*/
 
 /* Botón personalizado - estilo base */
+/* NUEVO: will-change para optimizar animaciones */
 .btn-custom {
   margin-top: 20px;
   background-color: transparent !important;
@@ -252,6 +271,7 @@ button:focus {
   color: var(--text-primary);
   border-radius: var(--border-radius-md);
   transition: var(--transition-fast);
+  will-change: transform;
 }
 
 .btn-custom:hover,
@@ -290,16 +310,17 @@ blockquote {
 }
 
 /* Formularios - inputs */
+/* NUEVO: border-radius unificado para consistencia */
 .form-control {
   border: 1px solid var(--color-gray-border);
-  border-radius: var(--border-radius-sm);
+  border-radius: var(--border-radius-md);
   padding: 10px 15px;
   transition: var(--transition-fast);
 }
 
 .form-control:focus {
   border-color: var(--color-primary) !important;
-  box-shadow: 0 0 0 3px rgba(15, 152, 248, 0.25);
+  box-shadow: var(--shadow-focus);
   outline: none;
 }
 
@@ -366,6 +387,7 @@ blockquote {
   transition: var(--transition-fast);
 }
 
+/* Header con efecto al hacer scroll */
 .header.scrolled {
   background: rgba(255, 255, 255, 0.95);
   box-shadow: var(--shadow-md);
@@ -476,6 +498,7 @@ ul.conat_info li a:focus {
 }
 
 /* Botón para abrir sidebar */
+/* NUEVO: will-change para optimizar animación */
 .openbtn {
   font-size: 20px;
   cursor: pointer;
@@ -486,6 +509,7 @@ ul.conat_info li a:focus {
   color: var(--color-white);
   margin-left: 16px;
   transition: var(--transition-fast);
+  will-change: transform;
 }
 
 .openbtn:hover,
@@ -615,6 +639,7 @@ ul.conat_info li a:focus {
 }
 
 /* Botón "Get Now" */
+/* NUEVO: will-change para optimizar animación */
 .get_now {
   max-width: 150px;
   width: 100%;
@@ -629,6 +654,7 @@ ul.conat_info li a:focus {
   transition: var(--transition-fast);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  will-change: transform;
 }
 
 .get_now:hover,
@@ -662,6 +688,7 @@ ul.conat_info li a:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+  will-change: transform;
 }
 
 #banner1 .carousel-control-prev:hover,
@@ -699,12 +726,14 @@ ul.conat_info li a:focus {
   padding: var(--spacing-xl) 0;
 }
 
+/* NUEVO: contain para optimizar rendering del navegador */
 .about .about_img figure {
   margin: 0;
   border-radius: var(--border-radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   transition: var(--transition-normal);
+  contain: layout style paint;
 }
 
 .about .about_img figure:hover {
@@ -761,12 +790,15 @@ ul.conat_info li a:focus {
   gap: 20px;
 }
 
+/* NUEVO: contain y will-change para optimización */
 .service_box {
   text-align: center;
   width: 16.3%;
   margin-top: 30px !important;
   transition: var(--transition-fast);
   padding: 20px;
+  contain: layout style paint;
+  will-change: transform;
 }
 
 .service_box:hover {
@@ -857,6 +889,7 @@ ul.conat_info li a:focus {
 }
 
 /* Tarjeta de vehículo */
+/* NUEVO: contain y will-change para optimización */
 .vehicles_truck {
   background-color: var(--color-light);
   transition: var(--transition-normal);
@@ -865,6 +898,8 @@ ul.conat_info li a:focus {
   padding: 35px 0;
   text-align: center;
   box-shadow: var(--shadow-sm);
+  contain: layout style paint;
+  will-change: transform;
 }
 
 .vehicles_truck:hover {
@@ -914,6 +949,7 @@ ul.conat_info li a:focus {
   display: none;
 }
 
+/* NUEVO: will-change para optimizar animación de controles */
 #veh .carousel-control-prev,
 #veh .carousel-control-next {
   width: 50px;
@@ -930,6 +966,7 @@ ul.conat_info li a:focus {
   align-items: center;
   justify-content: center;
   box-shadow: var(--shadow-sm);
+  will-change: transform;
 }
 
 #veh .carousel-control-prev:hover,
@@ -1006,6 +1043,7 @@ ul.conat_info li a:focus {
 }
 
 /* Caja de testimonio individual */
+/* NUEVO: contain para optimizar rendering */
 .testimonial_box {
   background: rgba(255, 255, 255, 0.15);
   border-radius: var(--border-radius-lg);
@@ -1013,6 +1051,7 @@ ul.conat_info li a:focus {
   margin: 20px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  contain: layout style paint;
 }
 
 .testimonial_box h3 {
@@ -1064,6 +1103,7 @@ ul.conat_info li a:focus {
   display: none;
 }
 
+/* NUEVO: will-change para optimizar animación de controles */
 #myCarousel .carousel-control-prev,
 #myCarousel .carousel-control-next {
   width: 50px;
@@ -1079,6 +1119,7 @@ ul.conat_info li a:focus {
   align-items: center;
   justify-content: center;
   box-shadow: var(--shadow-md);
+  will-change: transform;
 }
 
 #myCarousel .carousel-control-prev:hover,
@@ -1137,6 +1178,7 @@ ul.conat_info li a:focus {
 }
 
 /* Ítem individual de "por qué elegirnos" */
+/* NUEVO: will-change para optimizar animación */
 .choose_box {
   display: flex;
   align-items: flex-start;
@@ -1144,6 +1186,7 @@ ul.conat_info li a:focus {
   padding: 20px;
   border-radius: var(--border-radius-md);
   transition: var(--transition-fast);
+  will-change: transform;
 }
 
 .choose_box:hover {
@@ -1193,6 +1236,7 @@ ul.conat_info li a:focus {
 }
 
 /* Formulario de contacto principal */
+/* NUEVO: contain para optimizar rendering */
 .main_form {
   background: var(--color-white);
   border-radius: var(--border-radius-lg);
@@ -1202,6 +1246,7 @@ ul.conat_info li a:focus {
   padding: 30px;
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--color-gray-border);
+  contain: layout style paint;
 }
 
 .main_form .contactus,
@@ -1231,11 +1276,12 @@ ul.conat_info li a:focus {
 .main_form .contactus:focus,
 .main_form .contactusmess:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(15, 152, 248, 0.2);
+  box-shadow: var(--shadow-focus);
   outline: none;
 }
 
 /* Botón de envío */
+/* NUEVO: will-change para optimizar animación */
 .send_btn {
   background: var(--color-primary);
   font-weight: 500;
@@ -1253,6 +1299,7 @@ ul.conat_info li a:focus {
   cursor: pointer;
   letter-spacing: 1px;
   box-shadow: var(--shadow-md);
+  will-change: transform;
 }
 
 .send_btn:hover,
@@ -1274,11 +1321,13 @@ ul.conat_info li a:focus {
   padding-right: 50px;
 }
 
+/* NUEVO: contain para optimizar rendering */
 .co_tru figure {
   margin: 0;
   border-radius: var(--border-radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
+  contain: layout style paint;
 }
 
 .co_tru figure img {
@@ -1393,9 +1442,10 @@ ul.location_icon li a:focus {
 .bottom_form .enter:focus {
   border-color: var(--color-primary);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(15, 152, 248, 0.2);
+  box-shadow: var(--shadow-focus);
 }
 
+/* NUEVO: will-change para optimizar animación */
 .sub_btn {
   font-size: 16px;
   transition: var(--transition-fast);
@@ -1412,6 +1462,7 @@ ul.location_icon li a:focus {
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  will-change: transform;
 }
 
 .sub_btn:hover,
@@ -1468,6 +1519,7 @@ ul.location_icon li a:focus {
   BOTÓN READ MORE - Componente reutilizable
 ---------------------------------------------------------------------*/
 
+/* NUEVO: will-change para optimizar animación */
 .read_more {
   font-size: 20px;
   background-color: transparent;
@@ -1483,6 +1535,7 @@ ul.location_icon li a:focus {
   transition: var(--transition-fast);
   border: none;
   cursor: pointer;
+  will-change: transform;
 }
 
 .read_more::before {
@@ -1785,43 +1838,8 @@ ul.location_icon li a:focus {
   }
 }
 
-/* Modo oscuro - soporte básico */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-white: #1a1a1a;
-    --color-light: #2d2d2d;
-    --text-primary: #f0f0f0;
-    --text-secondary: #b0b0b0;
-    --text-muted: #808080;
-    --color-gray-border: #404040;
-  }
-  
-  body {
-    background-color: var(--color-white);
-    color: var(--text-secondary);
-  }
-  
-  .header.scrolled {
-    background: rgba(26, 26, 26, 0.95);
-  }
-  
-  .text-bg {
-    background: rgba(45, 45, 45, 0.9);
-  }
-  
-  .main_form {
-    background: var(--color-light);
-    border-color: var(--color-gray-border);
-  }
-  
-  .main_form .contactus,
-  .main_form .contactusmess,
-  .bottom_form .enter {
-    background: var(--color-white);
-    color: var(--text-primary);
-    border-color: var(--color-gray-border);
-  }
-}
+/* Modo claro por defecto - sin cambios de colores oscuros */
+/* Nota: Se mantiene el esquema de colores claros para garantizar visibilidad */
 
 /*---------------------------------------------------------------------
   PRINT STYLES - Estilos para impresión
