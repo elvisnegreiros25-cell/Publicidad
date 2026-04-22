@@ -1,0 +1,437 @@
+/*---------------------------------------------------------------------
+ ARCHIVO: responsive.css
+ DESCRIPCIÓN: Ajustes responsivos con correcciones aplicadas
+---------------------------------------------------------------------*/
+
+/*-------------------------------------------------------------------
+ PANTALLAS GRANDES (1200px a 1342px)
+---------------------------------------------------------------------*/
+@media (min-width: 1200px) and (max-width: 1342px) {
+    #myCarousel a.carousel-control-next,
+    #myCarousel a.carousel-control-prev {
+        right: -3%;
+    }
+    
+    .map {
+        margin-right: 0px;
+    }
+}
+
+/*-------------------------------------------------------------------
+ PANTALLAS MEDIAS-GRANDES (992px a 1199px)
+---------------------------------------------------------------------*/
+@media (min-width: 992px) and (max-width: 1199px) {
+    .banner_slide {
+        padding: 0 80px 0 0px;
+    }
+    .transfot span {
+        font-size: 15px;
+    }
+    .transfot h3 {
+        font-size: 16px;
+    }
+    .banner_main {
+        background-size: auto 64%;
+        padding: 220px 0px 0px 0px;
+    }
+    .text-bg h1 {
+        font-size: 43px;
+        line-height: 52px;
+    }
+    .about {
+        margin-top: -340px;
+    }
+    .yelldark_colo {
+        margin: 0 30px;
+    }
+    .titlepage h2 {
+        font-size: 48px;
+    }
+    
+    #myCarousel a.carousel-control-next,
+    #myCarousel a.carousel-control-prev {
+        right: -3%;
+    }
+    #veh a.carousel-control-next {
+        right: 43%;
+    }
+    
+    .map {
+        margin-right: 0px;
+    }
+    .bottom_form .enter {
+        width: 63%;
+    }
+    ul.location_icon li {
+        font-size: 18px;
+    }
+    
+    /* Círculos de servicios ajustados */
+    .service_box i {
+        width: 150px !important;
+        height: 150px !important;
+    }
+}
+
+/*-------------------------------------------------------------------
+ TABLETS (768px a 991px)
+---------------------------------------------------------------------*/
+@media (min-width: 768px) and (max-width: 991px) {
+    .text-bg h1 {
+        font-size: 43px;
+        padding-bottom: 20px;
+        line-height: 44px;
+    }
+    .banner_main {
+        padding: 152px 0px 0px 0px;
+        background-color: #f8f9fa !important;
+        background: inherit;
+        min-height: 919px;
+    }
+    .about {
+        margin-top: 90px;
+    }
+    .transfot h3 {
+        font-size: 19px;
+    }
+    #banner1 a.carousel-control-prev {
+        top: 41%;
+    }
+    .titlepage h2 {
+        font-size: 37px;
+    }
+    
+    .service_box {
+        width: 33.33%;
+    }
+    .service_box i {
+        width: 140px !important;
+        height: 140px !important;
+    }
+    .service_box h4 {
+        font-size: 14px;
+    }
+    
+    #veh a.carousel-control-prev {
+        left: 43%;
+    }
+    #veh a.carousel-control-next {
+        right: 43%;
+    }
+    .choose_box h3 {
+        font-size: 20px;
+    }
+    
+    ul.location_icon li {
+        font-size: 14px;
+        line-height: 22px;
+    }
+    .map {
+        margin-right: 0px;
+    }
+    .bottom_form .enter {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .banner_slide {
+        padding: 0 80px 0 0px;
+    }
+    
+    /* Choose box en tablet */
+    .choose_box {
+        padding: 25px;
+    }
+}
+
+/*-------------------------------------------------------------------
+ MÓVILES GRANDES (576px a 767px)
+---------------------------------------------------------------------*/
+@media (min-width: 576px) and (max-width: 767px) {
+    .banner_main {
+        padding: 152px 0px 90px 0px;
+        background-color: #f8f9fa !important;
+        background: inherit;
+    }
+    .banner_slide {
+        padding: 0 80px 0 0px;
+    }
+    .text-bg {
+        max-width: inherit;
+    }
+    .transfot {
+        padding-top: 30px;
+    }
+    .about {
+        margin-top: 90px;
+    }
+    #myCarousel a.carousel-control-prev {
+        top: 34%;
+    }
+    .text-bg h1 {
+        font-size: 48px;
+        line-height: 51px;
+    }
+    #banner1 a.carousel-control-prev {
+        top: 44%;
+    }
+    #banner1 a.carousel-control-next {
+        top: 50%;
+    }
+    
+    .service_box {
+        width: 50%;
+    }
+    .service_box i {
+        width: 130px !important;
+        height: 130px !important;
+    }
+    
+    .vehicles_truck {
+        margin-bottom: 30px;
+    }
+    .blac_co {
+        margin-top: 0px;
+        margin-bottom: 30px;
+    }
+    #veh .carousel-control-prev,
+    #veh .carousel-control-next {
+        top: 105%;
+    }
+    #veh a.carousel-control-prev {
+        left: 40%;
+    }
+    #veh .carousel-control-next {
+        right: 40%;
+    }
+    
+    .main_form {
+        max-width: inherit;
+    }
+    .co_tru {
+        padding-right: 0px;
+        margin-top: 30px;
+    }
+    .map {
+        margin-right: 0px;
+        margin-top: 30px;
+    }
+    .choose_box {
+        margin-bottom: 30px;
+    }
+    .titlepage h2 {
+        font-size: 31px;
+    }
+    
+    /* Choose box responsive */
+    .choose_box {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px;
+    }
+    
+    .choose_box i {
+        margin: 0 auto 15px auto;
+    }
+    
+    .choose_box h3,
+    .choose_box p {
+        text-align: center;
+    }
+}
+
+/*-------------------------------------------------------------------
+ MÓVILES PEQUEÑOS (Menos de 575px)
+---------------------------------------------------------------------*/
+@media (max-width: 575px) {
+    .header {
+        padding: 30px 0px 15px 0px;
+    }
+    .logo {
+        border: inherit;
+        float: left;
+        margin-top: 0px !important;
+    }
+    
+    .banner_main {
+        padding: 152px 0px 90px 0px;
+        background-color: #f8f9fa !important;
+        background: inherit;
+    }
+    .banner_slide {
+        padding: 0 50px 0 0px;
+    }
+    .text-bg {
+        max-width: inherit;
+        margin-top: 0px;
+    }
+    .transfot {
+        padding-top: 30px;
+    }
+    .about {
+        margin-top: 90px;
+    }
+    .text-bg h1 {
+        font-size: 36px;
+        line-height: 51px;
+    }
+    #banner1 a.carousel-control-prev {
+        top: 44%;
+    }
+    #banner1 a.carousel-control-next {
+        top: 50%;
+    }
+    .titlepage h2 {
+        font-size: 27px;
+        line-height: 30px;
+    }
+    
+    .testimonial_box h3 {
+        font-size: 18px;
+        line-height: 28px;
+    }
+    
+    .service_box {
+        width: 100%;
+    }
+    .service_main {
+        justify-content: center;
+    }
+    .service_box i {
+        margin: 0 auto;
+        width: 150px !important;
+        height: 150px !important;
+    }
+    
+    .vehicles_truck {
+        margin-bottom: 30px;
+    }
+    .blac_co {
+        margin-top: 0px;
+        margin-bottom: 30px;
+    }
+    #veh .carousel-control-prev,
+    #veh .carousel-control-next {
+        top: 105%;
+    }
+    #veh a.carousel-control-prev {
+        left: 40%;
+    }
+    #veh a.carousel-control-next {
+        right: 40%;
+    }
+    .choose_box h3 {
+        font-size: 20px;
+    }
+    
+    .main_form {
+        max-width: inherit;
+    }
+    .co_tru {
+        padding-right: 0px;
+        margin-top: 30px;
+    }
+    .map {
+        margin-right: 0px;
+        margin-top: 30px;
+    }
+    .choose_box {
+        margin-bottom: 30px;
+    }
+    .right_bottun {
+        margin-top: -40px;
+    }
+    ul.location_icon li {
+        font-size: 16px;
+    }
+    .bottom_form .enter {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .d_none {
+        display: none;
+    }
+    
+    /* CORRECCIONES FINALES PARA MÓVIL PEQUEÑO */
+    
+    /* Formulario con texto legible */
+    .transfot span,
+    .transfot h3 {
+        font-size: 16px !important;
+        color: #222222 !important;
+    }
+    
+    .transfot_form {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+    
+    /* Choose box centrado */
+    .choose_box {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .choose_box i {
+        margin: 0 auto 15px auto;
+    }
+    
+    .choose_box h3,
+    .choose_box p {
+        text-align: center;
+    }
+    
+    /* Botones a ancho completo */
+    .get_now,
+    .send_btn,
+    .read_more {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Ajuste de carruseles */
+    #myCarousel .carousel-control-prev,
+    #myCarousel .carousel-control-next {
+        position: relative !important;
+        right: auto !important;
+        left: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        margin: 10px auto;
+        display: inline-flex !important;
+    }
+}
+
+/*-------------------------------------------------------------------
+ PANTALLAS ULTRA PEQUEÑAS (< 375px)
+---------------------------------------------------------------------*/
+@media (max-width: 374px) {
+    .text-bg h1 {
+        font-size: 28px;
+        line-height: 38px;
+    }
+    
+    .titlepage h2 {
+        font-size: 24px;
+        line-height: 32px;
+    }
+    
+    .service_box i {
+        width: 120px !important;
+        height: 120px !important;
+    }
+    
+    .transfot_form {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+    
+    ul.conat_info {
+        gap: 5px;
+    }
+    
+    ul.conat_info li a {
+        font-size: 18px;
+        padding: 3px;
+    }
+}
