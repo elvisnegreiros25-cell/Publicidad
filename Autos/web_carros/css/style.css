@@ -1,7 +1,7 @@
 /*---------------------------------------------------------------------
      ESTILOS PRINCIPALES - Estructura y diseño base
      Define estilos globales, tipografía, colores y componentes reutilizables
-     Commit 1: Variables adicionales y optimizaciones de rendimiento
+     Commit 1: Contraste de texto mejorado y optimizaciones de rendimiento
 ---------------------------------------------------------------------*/
 
 /*---------------------------------------------------------------------
@@ -17,7 +17,7 @@
   /* Colores secundarios */
   --color-secondary: #7a7a7a;       
   --color-secondary-light: #9a9a9a; 
-  --color-secondary-dark: #555555;   
+  --color-secondary-dark: #2a2a2a; /* AJUSTADO: más oscuro para mejor contraste en títulos */
   
   /* Colores de acento */
   --color-accent-yellow: #fed806;
@@ -25,19 +25,19 @@
   --color-accent-red: #dc3545;
   --color-accent-green: #28a745;
   
-  /* Colores neutros */
+  /* Colores neutros - fondos claros mantenidos */
   --color-white: #ffffff;
   --color-light: #f8f9fa;
   --color-gray: #777777;            
   --color-gray-light: #bbbbbb;      
   --color-gray-border: #dee2e6;
-  --color-black: #333333;           
+  --color-black: #222222; /* AJUSTADO: ligeramente más oscuro para mejor contraste */
   
-  /* Colores de texto */
-  --text-primary: #444444;          
-  --text-secondary: #666666;         
+  /* Colores de texto - AJUSTADOS para mejor legibilidad sobre fondos claros */
+  --text-primary: #222222; /* Antes: #444444 - Más visible sobre blanco */
+  --text-secondary: #333333; /* Antes: #666666 - Mejor contraste */
   --text-light: #ffffff;
-  --text-muted: #999999;            
+  --text-muted: #666666; /* Antes: #999999 - Más legible */
   
   /* Sombras - valores originales */
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -200,6 +200,7 @@ p {
   font-weight: 500;
   font-size: var(--font-size-base);
   line-height: 24px;
+  color: var(--text-secondary); /* Asegurar color legible */
 }
 
 /* Listas */
@@ -307,6 +308,7 @@ blockquote {
   background-color: var(--color-light);
   border-left: 4px solid var(--color-primary);
   border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+  color: var(--text-secondary);
 }
 
 /* Formularios - inputs */
@@ -316,6 +318,8 @@ blockquote {
   border-radius: var(--border-radius-md);
   padding: 10px 15px;
   transition: var(--transition-fast);
+  color: var(--text-primary);
+  background-color: var(--color-white);
 }
 
 .form-control:focus {
@@ -335,6 +339,7 @@ blockquote {
   background-color: var(--color-light);
   border-radius: var(--border-radius-md);
   padding: 8px 15px;
+  color: var(--text-primary);
 }
 
 /*---------------------------------------------------------------------
@@ -389,7 +394,7 @@ blockquote {
 
 /* Header con efecto al hacer scroll */
 .header.scrolled {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.98);
   box-shadow: var(--shadow-md);
   padding: 15px 30px;
   position: fixed;
@@ -420,7 +425,7 @@ ul.conat_info li {
 }
 
 ul.conat_info li a {
-  color: var(--color-white);
+  color: var(--text-light);
   display: inline-block;
   font-size: 24px;
   transition: var(--transition-fast);
@@ -468,7 +473,7 @@ ul.conat_info li a:focus {
   padding: 12px 8px 12px 32px;
   text-decoration: none;
   font-size: 16px;
-  color: var(--color-white);
+  color: var(--text-light);
   display: block;
   transition: var(--transition-fast);
   border-left: 3px solid transparent;
@@ -476,7 +481,7 @@ ul.conat_info li a:focus {
 
 .sidepanel a:hover,
 .sidepanel a:focus {
-  color: var(--color-primary);
+  color: var(--color-primary-light);
   background-color: rgba(255, 255, 255, 0.1);
   border-left-color: var(--color-primary);
   padding-left: 36px;
@@ -487,13 +492,13 @@ ul.conat_info li a:focus {
   top: 15px;
   right: 25px;
   font-size: 36px;
-  color: var(--color-white);
+  color: var(--text-light);
   cursor: pointer;
   transition: var(--transition-fast);
 }
 
 .sidepanel .closebtn:hover {
-  color: var(--color-primary);
+  color: var(--color-primary-light);
   transform: rotate(90deg);
 }
 
@@ -504,9 +509,9 @@ ul.conat_info li a:focus {
   cursor: pointer;
   background-color: transparent;
   padding: 8px 12px;
-  border: 2px solid var(--color-white);
+  border: 2px solid var(--text-light);
   border-radius: var(--border-radius-sm);
-  color: var(--color-white);
+  color: var(--text-light);
   margin-left: 16px;
   transition: var(--transition-fast);
   will-change: transform;
@@ -516,7 +521,7 @@ ul.conat_info li a:focus {
 .openbtn:focus {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
-  color: var(--color-white);
+  color: var(--text-light);
 }
 
 /*---------------------------------------------------------------------
@@ -559,7 +564,7 @@ ul.conat_info li a:focus {
   max-width: 430px;
   width: 100%;
   padding: 30px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-lg);
 }
@@ -570,7 +575,7 @@ ul.conat_info li a:focus {
   line-height: 70px;
   padding-bottom: 45px;
   font-weight: bold;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .text-bg span {
@@ -601,14 +606,14 @@ ul.conat_info li a:focus {
 }
 
 .transfot span {
-  color: var(--color-white);
+  color: var(--text-light);
   font-size: 17px;
   display: block;
   margin-bottom: 8px;
 }
 
 .transfot h3 {
-  color: var(--color-white);
+  color: var(--text-light);
   font-size: 23px;
   line-height: 30px;
   font-weight: 500;
@@ -620,22 +625,22 @@ ul.conat_info li a:focus {
   padding: 12px 15px;
   height: 45px;
   margin-bottom: 15px;
-  border: var(--color-white) solid 2px;
+  border: var(--text-light) solid 2px;
   font-size: 16px;
   border-radius: var(--border-radius-md);
   background: rgba(255, 255, 255, 0.2);
-  color: var(--color-white);
+  color: var(--text-light);
   transition: var(--transition-fast);
 }
 
 .transfot_form::placeholder {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .transfot_form:focus {
   background: rgba(255, 255, 255, 0.3);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
 }
 
 /* Botón "Get Now" */
@@ -645,7 +650,7 @@ ul.conat_info li a:focus {
   width: 100%;
   padding: 12px 0;
   background: var(--color-secondary);
-  color: var(--color-white);
+  color: var(--text-light);
   font-size: 17px;
   font-weight: 500;
   border: none;
@@ -681,9 +686,9 @@ ul.conat_info li a:focus {
   background: transparent;
   opacity: 1;
   font-size: 30px;
-  color: var(--color-white);
+  color: var(--text-light);
   border-radius: var(--border-radius-circle);
-  border: var(--color-white) solid 2px;
+  border: var(--text-light) solid 2px;
   transition: var(--transition-fast);
   display: flex;
   align-items: center;
@@ -696,7 +701,7 @@ ul.conat_info li a:focus {
 #banner1 .carousel-control-prev:focus,
 #banner1 .carousel-control-next:focus {
   background: var(--color-black);
-  color: var(--color-white);
+  color: var(--text-light);
   transform: scale(1.1);
 }
 
@@ -752,7 +757,7 @@ ul.conat_info li a:focus {
 
 .about .titlepage p {
   padding: 30px 0;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   font-size: 17px;
   line-height: 32px;
   font-weight: 400;
@@ -775,7 +780,7 @@ ul.conat_info li a:focus {
 }
 
 .service .titlepage p {
-  color: var(--color-secondary-dark);
+  color: var(--text-secondary);
   font-size: 17px;
   line-height: 30px;
   padding-top: 20px;
@@ -830,7 +835,7 @@ ul.conat_info li a:focus {
 }
 
 .service_box h4 {
-  color: var(--color-secondary-light);
+  color: var(--text-secondary);
   font-size: 17px;
   margin-top: 25px;
   padding: 0;
@@ -879,7 +884,7 @@ ul.conat_info li a:focus {
 }
 
 .vehicles .titlepage p {
-  color: var(--color-secondary-dark);
+  color: var(--text-secondary);
   padding-top: 15px;
   text-align: center;
   margin: 0 auto;
@@ -925,7 +930,7 @@ ul.conat_info li a:focus {
 }
 
 .blac_co {
-  color: var(--color-black);
+  color: var(--text-primary);
   font-size: 25px;
   line-height: 20px;
   font-weight: bold;
@@ -957,7 +962,7 @@ ul.conat_info li a:focus {
   background: var(--color-light);
   opacity: 1;
   font-size: 30px;
-  color: var(--color-black);
+  color: var(--text-primary);
   border-radius: var(--border-radius-sm);
   top: 111%;
   z-index: 9999;
@@ -974,7 +979,7 @@ ul.conat_info li a:focus {
 #veh .carousel-control-prev:focus,
 #veh .carousel-control-next:focus {
   background: var(--color-primary);
-  color: var(--color-white);
+  color: var(--text-light);
   transform: scale(1.1);
 }
 
@@ -1029,17 +1034,17 @@ ul.conat_info li a:focus {
 }
 
 .testimonial .titlepage h2 {
-  color: var(--color-white);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  color: var(--text-light);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
 }
 
 .testimonial .titlepage p {
-  color: var(--color-white);
+  color: var(--text-light);
   font-size: 17px;
   line-height: 24px;
   font-weight: 500;
   padding-top: 20px;
-  opacity: 0.95;
+  opacity: 0.98;
 }
 
 /* Caja de testimonio individual */
@@ -1050,12 +1055,12 @@ ul.conat_info li a:focus {
   padding: 30px;
   margin: 20px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   contain: layout style paint;
 }
 
 .testimonial_box h3 {
-  color: var(--color-white);
+  color: var(--text-light);
   font-size: 25px;
   line-height: 36px;
   font-weight: 600;
@@ -1066,20 +1071,21 @@ ul.conat_info li a:focus {
 }
 
 .testimonial_box p {
-  color: var(--color-white);
+  color: var(--text-light);
   font-size: 17px;
   line-height: 32px;
   padding-top: 30px;
   display: inline-block;
   text-align: left;
   font-weight: 400;
-  opacity: 0.95;
+  opacity: 0.98;
 }
 
 .kisu {
   font-size: 17px;
   font-style: italic;
-  opacity: 0.9;
+  opacity: 0.95;
+  color: var(--text-light);
 }
 
 /* Carousel de testimonios */
@@ -1095,7 +1101,7 @@ ul.conat_info li a:focus {
 
 .testimonial_box figure img {
   border-radius: var(--border-radius-circle);
-  border: 3px solid var(--color-white);
+  border: 3px solid var(--text-light);
   box-shadow: var(--shadow-md);
 }
 
@@ -1108,10 +1114,10 @@ ul.conat_info li a:focus {
 #myCarousel .carousel-control-next {
   width: 50px;
   height: 50px;
-  background: var(--color-white);
+  background: var(--text-light);
   opacity: 1;
   font-size: 30px;
-  color: var(--color-black);
+  color: var(--text-primary);
   border-radius: var(--border-radius-sm);
   z-index: 9999;
   transition: var(--transition-fast);
@@ -1127,7 +1133,7 @@ ul.conat_info li a:focus {
 #myCarousel .carousel-control-prev:focus,
 #myCarousel .carousel-control-next:focus {
   color: var(--color-primary);
-  background: var(--color-white);
+  background: var(--text-light);
   transform: scale(1.1);
 }
 
@@ -1147,20 +1153,20 @@ ul.conat_info li a:focus {
 
 /* Botón read_more en testimonios */
 .testimonial .read_more::before {
-  border-right: var(--color-white) solid 80px;
+  border-right: var(--text-light) solid 80px;
 }
 
 .testimonial .read_more {
   position: relative;
-  color: var(--color-white) !important;
+  color: var(--text-light) !important;
   margin-top: 50px;
   padding-left: 15px;
   font-weight: 600;
 }
 
 .testimonial .read_more:hover {
-  color: var(--color-white) !important;
-  opacity: 0.9;
+  color: var(--text-light) !important;
+  opacity: 0.95;
 }
 
 /*---------------------------------------------------------------------
@@ -1205,7 +1211,7 @@ ul.conat_info li a:focus {
 
 .choose_box h3 {
   padding-top: 10px;
-  color: var(--color-secondary);
+  color: var(--text-secondary);
   font-weight: bold;
   font-size: 24px;
   line-height: 30px;
@@ -1255,7 +1261,7 @@ ul.conat_info li a:focus {
   border-radius: var(--border-radius-md);
   margin-bottom: 25px;
   width: 100%;
-  background: transparent;
+  background: var(--color-white);
   color: var(--text-primary);
   font-size: 16px;
   font-weight: normal;
@@ -1287,7 +1293,7 @@ ul.conat_info li a:focus {
   font-weight: 500;
   font-size: 18px;
   width: 198px;
-  color: var(--color-white);
+  color: var(--text-light);
   height: 57px;
   margin-top: 20px !important;
   transition: var(--transition-normal);
@@ -1362,7 +1368,7 @@ ul.location_icon {
 ul.location_icon li {
   font-size: 16px;
   line-height: 30px;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   text-align: left;
   padding-bottom: 20px;
   display: flex;
@@ -1387,7 +1393,7 @@ ul.location_icon li a {
 
 ul.location_icon li a:hover,
 ul.location_icon li a:focus {
-  color: var(--color-white);
+  color: var(--text-light);
   background: var(--color-primary);
   transform: translateY(-3px);
 }
@@ -1450,7 +1456,7 @@ ul.location_icon li a:focus {
   font-size: 16px;
   transition: var(--transition-fast);
   background-color: var(--color-primary);
-  color: var(--color-white);
+  color: var(--text-light);
   padding: 0;
   max-width: 105px;
   width: 100%;
@@ -1468,7 +1474,7 @@ ul.location_icon li a:focus {
 .sub_btn:hover,
 .sub_btn:focus {
   background-color: var(--color-secondary);
-  color: var(--color-white);
+  color: var(--text-light);
 }
 
 /* Copyright */
@@ -1490,18 +1496,18 @@ ul.location_icon li a:focus {
 }
 
 .copyright p {
-  color: var(--color-white);
+  color: var(--text-light);
   font-size: 16px;
   line-height: 22px;
   text-align: center;
   padding-top: 0;
   font-weight: normal;
   margin: 0;
-  opacity: 0.95;
+  opacity: 0.98;
 }
 
 .copyright a {
-  color: var(--color-white);
+  color: var(--text-light);
   font-weight: 600;
   text-decoration: none;
   transition: var(--transition-fast);
@@ -1510,9 +1516,9 @@ ul.location_icon li a:focus {
 
 .copyright a:hover,
 .copyright a:focus {
-  color: var(--color-white);
+  color: var(--text-light);
   opacity: 1;
-  border-bottom-color: var(--color-white);
+  border-bottom-color: var(--text-light);
 }
 
 /*---------------------------------------------------------------------
@@ -1605,8 +1611,8 @@ ul.location_icon li a:focus {
 .text-center { text-align: center !important; }
 .text-left { text-align: left !important; }
 .text-right { text-align: right !important; }
-.text-primary { color: var(--color-primary) !important; }
-.text-white { color: var(--color-white) !important; }
+.text-primary { color: var(--text-primary) !important; }
+.text-white { color: var(--text-light) !important; }
 
 /* Clases de utilidad para fondos */
 .bg-white { background-color: var(--color-white) !important; }
@@ -1810,8 +1816,8 @@ ul.location_icon li a:focus {
 @media (prefers-contrast: high) {
   :root {
     --color-primary: #0066cc;
-    --text-primary: #000000;
-    --text-secondary: #333333;
+    --text-primary: #111111;
+    --text-secondary: #222222;
   }
   
   a:focus-visible,
@@ -1838,8 +1844,8 @@ ul.location_icon li a:focus {
   }
 }
 
-/* Modo claro por defecto - sin cambios de colores oscuros */
-/* Nota: Se mantiene el esquema de colores claros para garantizar visibilidad */
+/* Modo claro por defecto - colores optimizados para visibilidad */
+/* Nota: Se mantiene esquema de colores claros con texto oscuro para legibilidad */
 
 /*---------------------------------------------------------------------
   PRINT STYLES - Estilos para impresión
@@ -1862,13 +1868,13 @@ ul.location_icon li a:focus {
   }
   
   body {
-    color: #000;
+    color: #111;
     background: #fff;
     font-size: 12pt;
   }
   
   a {
-    color: #000;
+    color: #111;
     text-decoration: underline;
   }
   
