@@ -47,77 +47,83 @@
 </div>
 
 <style>
-    /* Animación de entrada más dramática */
-    @keyframes fadeIn {
-        from { opacity: 0; transform: scale(1.1); filter: blur(10px); }
-        to { opacity: 1; transform: scale(1); filter: blur(0); }
+    html { scroll-behavior: smooth; }
+
+    /* Margen para que el header no tape el contenido */
+    [id] { scroll-margin-top: 100px; }
+
+    .sidepanel {
+        height: 100%; width: 0; position: fixed; z-index: 2000;
+        top: 0; left: 0; background-color: #000; overflow-x: hidden;
+        transition: 0.5s; padding-top: 60px; border-right: 1px solid #1c1c1c;
     }
 
-    .loader-dots {
-        animation: pulse 1.5s infinite ease-in-out;
+    .sidepanel a {
+        padding: 15px 30px; text-decoration: none; font-size: 14px;
+        color: #fff; display: block; transition: 0.3s;
+        text-transform: uppercase; font-weight: bold;
     }
 
-    @keyframes pulse {
-        0%, 100% { opacity: 0.2; transform: translateY(0); }
-        50% { opacity: 0.8; transform: translateY(-2px); }
-    }
+    .sidepanel a:hover { color: #e22718; padding-left: 40px; }
+
+    .sidepanel .closebtn { position: absolute; top: 0; right: 25px; font-size: 36px; }
 </style>
 
-      <div id="mySidepanel" class="sidepanel">
-         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-         
-         <div class="sidepanel-header" style="text-align: center; padding: 20px;">
-            <img src="images/bmw_logo.png" alt="BMW Logo" width="500">
-         </div>
+<div id="mySidepanel" class="sidepanel">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <div style="text-align: center; padding-bottom: 20px;">
+        <img src="images/bmw_logo.png" width="50">
+    </div>
+    <a href="#choose" onclick="closeNav()">Elegirnos</a>
+    <a href="#deportivos" onclick="closeNav()">M Motorsport</a>
+    <a href="#electric" onclick="closeNav()">Eléctricos</a>
+    <a href="#contact" onclick="closeNav()">Contacto</a>
+</div>
 
-         <a href="index.html" class="active">Inicio</a>
-         
-         <hr style="border-color: #333; margin: 10px 20px;">
-         <a href="#deportivos"><span style="color: #0066b1;">///</span> M Motorsport</a>
-         <a href="#sedanes">Sedanes y Turismos</a>
-         <a href="#suv">Modelos X (SUV)</a>
-         <a href="#electric">BMW i (Eléctricos)</a>
-         <hr style="border-color: #333; margin: 10px 20px;">
-
-         <a href="#configurador">Configurador</a>
-         <a href="#testdrive">Agendar Test Drive</a>
-         <a href="#sucursales">Sucursales</a>
-         <a href="#contacto">Contacto Directo</a>
-      </div>
-      <header style="background: #000; border-bottom: 1px solid #1c1c1c; position: sticky; top: 0; z-index: 1000;">
-         <div class="container-fluid">
-            <div class="row align-items-center" style="height: 70px;">
-               
-               <div class="col-md-2 col-sm-3 col-4">
-                  <div class="logo" style="padding-left: 20px;">
-                     <a href="index.html">
-                        <img src="images/bmw_logo.png" alt="BMW" style="width: 45px;" />
-                     </a>
-                  </div>
-               </div>
-
-               <div class="col-md-7 d-none d-md-block">
-                  <nav style="display: flex; gap: 30px; align-items: center;">
-                     <a href="index.html" style="color: #fff; font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Modelos y Configurador</a>
-                     <a href="#electric" style="color: #fff; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Eléctricos <i class="fa fa-angle-down"></i></a>
-                     <a href="#deportivos" style="color: #fff; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">M Motorsport</a>
-                     <a href="#compra" style="color: #fff; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Compra <i class="fa fa-angle-down"></i></a>
-                     <a href="#mas" style="color: #fff; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Más BMW <i class="fa fa-angle-down"></i></a>
-                  </nav>
-               </div>
-
-               <div class="col-md-3 col-sm-9 col-8">
-                  <div style="display: flex; justify-content: flex-end; align-items: center; gap: 25px; padding-right: 30px;">
-                     <a href="#" style="color: #fff; font-size: 18px;"><i class="fa fa-user-o" aria-hidden="true"></i></a>
-                     <a href="#" style="color: #fff; font-size: 18px;"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-                     <a href="#" style="color: #fff; font-size: 18px;"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                     <a href="#" style="color: #fff; font-size: 18px;"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
-                  </div>
-               </div>
-
+<header style="background: #000; border-bottom: 1px solid #1c1c1c; position: sticky; top: 0; z-index: 1000; height: 70px;">
+    <div class="container-fluid">
+        <div class="row align-items-center" style="height: 70px;">
+            <div class="col-md-2 col-4">
+                <img src="images/bmw_logo.png" style="width: 45px; margin-left: 20px;">
             </div>
-         </div>
-      </header>
+            <div class="col-md-7 d-none d-md-block">
+                <nav style="display: flex; gap: 30px;">
+                    <a href="#choose" style="color: #fff; font-size: 12px; text-transform: uppercase; font-weight: bold;">Elegirnos</a>
+                    <a href="#deportivos" style="color: #fff; font-size: 12px; text-transform: uppercase; font-weight: bold;">M Motorsport</a>
+                    <a href="#electric" style="color: #fff; font-size: 12px; text-transform: uppercase; font-weight: bold;">Eléctricos</a>
+                    <a href="#contact" style="color: #fff; font-size: 12px; text-transform: uppercase; font-weight: bold;">Contacto</a>
+                </nav>
+            </div>
+            <div class="col-md-3 col-8 text-right">
+                <button onclick="openNav()" style="background:none; border:none; color:#fff; font-size:25px; cursor:pointer; padding-right:20px;">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    function openNav() { document.getElementById("mySidepanel").style.width = "300px"; }
+    function closeNav() { document.getElementById("mySidepanel").style.width = "0"; }
+
+    // SCRIPT DE SEGURIDAD: Si el ancla falla, esto fuerza el scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            } else {
+                console.warn("Error: No existe una sección con el ID: " + targetId);
+            }
+        });
+    });
+</script>
     <div id="bmw-m-portal-wrapper">
     <style>
         #bmw-m-portal-wrapper {
@@ -1202,83 +1208,366 @@
         </div>
     </div>
 </div>
-      <div id="contact" class="contact">
-         <div class="container">
+      <style>
+    /* --- SECCIÓN CONTACTO: COMMAND CENTER --- */
+    #contact {
+        background: #0a0a0a;
+        padding: 100px 0;
+        position: relative;
+    }
+
+    #contact .titlepage h2 {
+        color: #fff;
+        font-family: 'Arial Black', sans-serif;
+        text-transform: uppercase;
+        font-style: italic;
+        letter-spacing: 2px;
+    }
+
+    /* Contenedor del Formulario Estilo Panel Técnico */
+    .con_bg {
+        background: transparent;
+        margin-top: 50px;
+    }
+
+    .main_form {
+        background: #ffffff; /* Panel blanco limpio */
+        padding: 50px 40px;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 90% 100%, 0 100%);
+        box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    }
+
+    .contactus {
+        border: none;
+        border-bottom: 2px solid #d6d6d6;
+        background: transparent;
+        width: 100%;
+        height: 50px;
+        margin-bottom: 25px;
+        color: #1a1a1a;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+    .contactus:focus {
+        border-bottom: 2px solid #003d78;
+        outline: none;
+    }
+
+    .contactusmess {
+        border: none;
+        border-bottom: 2px solid #d6d6d6;
+        background: transparent;
+        width: 100%;
+        height: 80px;
+        margin-bottom: 35px;
+        color: #1a1a1a;
+        font-weight: 600;
+    }
+
+    /* Botón Send con los colores de M Motorsport */
+    .send_btn {
+        background: #1a1a1a;
+        color: #fff;
+        font-family: 'Arial Black', sans-serif;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-style: italic;
+        letter-spacing: 3px;
+        padding: 15px 40px;
+        border: none;
+        width: 100%;
+        transition: 0.4s;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .send_btn::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 5px;
+        background: linear-gradient(90deg, #0066b1 33%, #00305b 33%, #00305b 66%, #e22718 66%);
+    }
+
+    .send_btn:hover {
+        background: #003d78;
+        color: #fff;
+        box-shadow: 0 10px 20px rgba(0,61,120,0.3);
+    }
+
+    /* Contenedor de Imagen con efecto de Escaneo */
+    .co_tru {
+        position: relative;
+        text-align: right;
+    }
+
+    .co_tru figure {
+        position: relative;
+        display: inline-block;
+    }
+
+    .co_tru figure::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 2px;
+        background: #e22718;
+        box-shadow: 0 0 15px #e22718;
+        animation: scan 3s infinite linear;
+    }
+
+    @keyframes scan {
+        0% { top: 0%; }
+        100% { top: 100%; }
+    }
+
+    .co_tru img {
+        max-width: 100%;
+        height: auto;
+        filter: drop-shadow(0 0 20px rgba(0,61,120,0.4));
+    }
+</style>
+
+<div id="contact" class="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage" style="text-align: left;">
+                    <span style="color: #0066b1; font-weight: 900; letter-spacing: 5px;">CONTACTANOS</span>
+                    <h2>SOLICITA <span style="color: #e22718;">ANÁLISIS TÉCNICO</span></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="con_bg">
+        <div class="container-fluid">
             <div class="row">
-               <div class="col-md-12">
-                  <div class="titlepage">
-                     <h2>Solicita una Cotizacion</h2>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="con_bg">
-            <div class="container-fluid">
-               <div class="row">
-                  <div class="col-md-5">
-                     <form id="request" class="main_form">
+                <div class="col-md-4 offset-md-1">
+                    <form id="request" class="main_form">
                         <div class="row">
-                           <div class="col-md-12 ">
-                              <input class="contactus" placeholder="Nombre Completo" type="text" name="Name"> 
-                           </div>
-                           <div class="col-md-12">
-                              <input class="contactus" placeholder="Correo Electrónico" type="text" name="Email"> 
-                           </div>
-                           <div class="col-md-12">
-                              <input class="contactus" placeholder="Teléfono" type="text" name="Phone Number"> 
-                           </div>
-                           <div class="col-md-12">
-                              <input class="contactusmess" placeholder="Mensaje" type="text" name="Message">
-                           </div>
-                           <div class="col-md-12">
-                              <button class="send_btn">Enviar</button>
-                           </div>
+                            <div class="col-md-12">
+                                <input class="contactus" placeholder="Responsable" type="text" name="Name"> 
+                            </div>
+                            <div class="col-md-12">
+                                <input class="contactus" placeholder="(Email)" type="text" name="Email"> 
+                            </div>
+                            <div class="col-md-12">
+                                <input class="contactus" placeholder="(Teléfono)" type="text" name="Phone Number"> 
+                            </div>
+                            <div class="col-md-12">
+                                <textarea class="contactusmess" placeholder="Especificaciones del proyecto o consulta de repuestos..."></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <button class="send_btn">Iniciar Conexión</button>
+                            </div>
                         </div>
-                     </form>
-                  </div>
-                  <div class="col-md-7">
-                     <div class="co_tru">
-                        <figure><img src="images/truc4.png" alt="#"/></figure>
-                     </div>
-                  </div>
-               </div>
+                    </form>
+                </div>
+
+                <div class="col-md-7">
+                    <div class="co_tru">
+                        <figure>
+                            <img src="images/mal.jpg" alt="BMW M Performance Visualizer"/>
+                        </figure>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-      <footer>
-         <div class="footer bottom_cross1">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-4">
-                     <ul class="location_icon">
-                        <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i></a> Dirección: Calle Principal #123 <br> Ciudad, País </li>
-                        <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i></a>Teléfono: +(123) 456 7890</li>
-                        <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>Email: info@logistica.com</li>
-                     </ul>
-                     <form class="bottom_form">
-                        <h3>Boletín Informativo</h3>
-                        <input class="enter" placeholder="Tu correo electrónico" type="text" name="Enter your email">
-                        <button class="sub_btn">Suscribirse</button>
-                     </form>
-                  </div>
-                  <div class="col-md-8">
-                     <div class="map">
-                        <figure><img src="images/map.png" alt="#"/></figure>
-                     </div>
-                  </div>
-               </div>
+        </div>
+    </div>
+</div>
+     <style>
+    /* --- FOOTER REPARADO: M-PERFORMANCE --- */
+    footer {
+        background: #050505;
+        padding-top: 80px;
+        position: relative;
+        overflow: hidden; /* Evita desbordamientos */
+        color: #fff;
+    }
+
+    /* Línea superior tricolor BMW M */
+    .footer-top-line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        display: flex;
+        z-index: 10;
+    }
+    .line-blue { background: #0066b1; flex: 1; }
+    .line-dark-blue { background: #00305b; flex: 1; }
+    .line-red { background: #e22718; flex: 1; }
+
+    /* Iconos y Texto */
+    .location_icon {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .location_icon li {
+        margin-bottom: 25px;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .location_icon li a i {
+        width: 45px;
+        height: 45px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid #003d78;
+        color: #e22718;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 15px;
+        font-size: 18px;
+        /* Corte diagonal corregido */
+        clip-path: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+    }
+
+    .location_icon li span {
+        color: #aaaaaa;
+        font-size: 15px;
+        line-height: 1.4;
+    }
+
+    /* Newsletter Technical Panel */
+    .bottom_form {
+        margin-top: 40px;
+        background: rgba(255, 255, 255, 0.02);
+        padding: 25px;
+        border-left: 4px solid #0066b1;
+    }
+
+    .bottom_form h3 {
+        color: #fff;
+        font-family: 'Arial Black', sans-serif;
+        text-transform: uppercase;
+        font-size: 16px;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+    }
+
+    .enter {
+        background: #1a1a1a;
+        border: 1px solid #333;
+        color: #fff;
+        width: 100%;
+        height: 45px;
+        padding: 0 15px;
+        margin-bottom: 10px;
+        font-family: 'Courier New', monospace;
+    }
+
+    .sub_btn {
+        background: #e22718;
+        color: #fff;
+        width: 100%;
+        height: 45px;
+        text-transform: uppercase;
+        font-weight: 900;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+        clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+    }
+
+    .sub_btn:hover {
+        background: #0066b1;
+        transform: translateY(-2px);
+    }
+
+    /* Mapa con corrección de escala */
+    .map_container {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        filter: invert(90%) hue-rotate(180deg) brightness(0.7);
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    .map_container img {
+        width: 100%;
+        display: block;
+        height: auto;
+    }
+
+    /* Copyright Terminal */
+    .copyright {
+        background: #000;
+        padding: 25px 0;
+        margin-top: 60px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .copyright p {
+        color: #666;
+        font-family: 'Courier New', monospace;
+        font-size: 12px;
+        margin: 0;
+        letter-spacing: 1px;
+    }
+
+    .copyright a {
+        color: #0066b1;
+        text-decoration: none;
+    }
+</style>
+
+<footer>
+    <div class="footer-top-line">
+        <div class="line-blue"></div>
+        <div class="line-dark-blue"></div>
+        <div class="line-red"></div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <ul class="location_icon">
+                    <li>
+                        <a href="#"><i class="fa fa-map-marker"></i></a> 
+                        <span><strong>HQ PERFORMANCE:</strong><br> Trujillo, La Libertad, Perú</span>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-phone"></i></a>
+                        <span><strong>OPERACIONES:</strong><br> +51 987 654 321</span>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-envelope"></i></a>
+                        <span><strong>TELEMETRÍA:</strong><br> engineering@ecotrace.com</span>
+                    </li>
+                </ul>
+
+                <div class="bottom_form">
+                    <h3>Reporte de Datos M</h3>
+                    <input class="enter" placeholder="E-mail del sistema..." type="text">
+                    <button class="sub_btn">DALE</button>
+                </div>
             </div>
-            <div class="copyright">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-12">
-                        <p>© 2026 Todos los derechos reservados para el equipo<a href="https://html.design/"></a></p>
-                     </div>
-                  </div>
-               </div>
+
+            <div class="col-md-8">
+                <div class="map_container">
+                    <img src="images/map.png" alt="Operational Map">
+                </div>
             </div>
-         </div>
-      </footer>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        [SYSTEM STATUS: <span style="color: #28a745;">ONLINE</span>] — 
+                        © 2026 DEVELOPED BY 
+                        <a href="#">EQUIPO DE TRABAJO XD</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
       <script src="js/jquery.min.js"></script>
       <script src="js/popper.min.js"></script>
       <script src="js/bootstrap.bundle.min.js"></script>
