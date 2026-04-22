@@ -1,7 +1,7 @@
 /*---------------------------------------------------------------------
      ESTILOS PRINCIPALES - Estructura y diseño base
      Define estilos globales, tipografía, colores y componentes reutilizables
-     MEJORAS 6-10: Micro-interacciones, selección, brillo hover, print, badges
+     VERSIÓN FINAL: 10 mejoras + Colores de fondo profesionales
 ---------------------------------------------------------------------*/
 
 /*---------------------------------------------------------------------
@@ -734,11 +734,11 @@ ul.conat_info li a:focus {
 }
 
 /*---------------------------------------------------------------------
-  SECCIÓN ABOUT
+  SECCIÓN ABOUT - FONDO AZUL CLARO PROFESIONAL
 ---------------------------------------------------------------------*/
 
 .about {
-  background-color: var(--color-white);
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 50%, #f8f9fa 100%);
   margin-top: -160px;
   position: relative;
   z-index: 10;
@@ -778,11 +778,11 @@ ul.conat_info li a:focus {
 }
 
 /*---------------------------------------------------------------------
-  SECCIÓN SERVICE
+  SECCIÓN SERVICE - FONDO GRIS-AZULADO
 ---------------------------------------------------------------------*/
 
 .service {
-  background-color: var(--color-light);
+  background: linear-gradient(135deg, #f5f5f5 0%, #e3f2fd 100%);
   margin-top: 80px;
   padding: 90px 0;
 }
@@ -914,11 +914,11 @@ ul.conat_info li a:focus {
 }
 
 /*---------------------------------------------------------------------
-  SECCIÓN VEHICLES
+  SECCIÓN VEHICLES - FONDO BLANCO ROT0
 ---------------------------------------------------------------------*/
 
 .vehicles {
-  background-color: var(--color-white);
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
   padding: 70px 0 155px 0;
 }
 
@@ -1049,7 +1049,7 @@ ul.conat_info li a:focus {
 .vehicles .read_more { margin: 0 auto; padding-top: 150px; }
 
 /*---------------------------------------------------------------------
-  SECCIÓN TESTIMONIAL
+  SECCIÓN TESTIMONIAL - MANTIENE GRADIENTE AZUL (TEXTO BLANCO)
 ---------------------------------------------------------------------*/
 
 .testimonial {
@@ -1132,10 +1132,14 @@ ul.conat_info li a:focus {
 .testimonial .read_more:hover { color: var(--text-light) !important; opacity: 0.95; }
 
 /*---------------------------------------------------------------------
-  SECCIÓN CHOOSE
+  SECCIÓN CHOOSE - FONDO CELESTE MUY SUAVE
 ---------------------------------------------------------------------*/
 
-.choose { background-color: var(--color-white); padding-top: 90px; }
+.choose {
+  background: linear-gradient(135deg, #e8f4f8 0%, #f0f8ff 100%);
+  padding-top: 90px;
+}
+
 .choose .titlepage { text-align: center; padding-bottom: 60px; }
 
 .choose .row { display: flex; flex-wrap: wrap; margin: 0 -15px; }
@@ -1191,10 +1195,14 @@ ul.conat_info li a:focus {
 .choose_box p { display: block; color: var(--text-secondary); font-size: 16px; line-height: 1.8; padding: 0; margin: 0; width: 100%; text-align: center; }
 
 /*---------------------------------------------------------------------
-  SECCIÓN CONTACT
+  SECCIÓN CONTACT - FONDO GRIS PERLA
 ---------------------------------------------------------------------*/
 
-.contact { background: var(--color-white); padding-top: 90px; }
+.contact {
+  background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+  padding-top: 90px;
+}
+
 .contact .titlepage { text-align: left; padding-bottom: 60px; }
 
 .main_form {
