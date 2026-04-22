@@ -1,73 +1,74 @@
-/*! normalize.css v6.0.0 | MIT License | github.com/necolas/normalize.css */
+/*! normalize.css v8.0.1 + Mejoras | MIT License | github.com/necolas/normalize.css */
 
-/* Document
+/* ==========================================================================
+   Base: Configuración global mejorada
    ========================================================================== */
 
 /**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in
- *    IE on Windows Phone and in iOS.
+ * 1. Box-sizing global para layout predecible
+ * 2. Suavizado de fuentes para mejor legibilidad
  */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* 1 */
+}
 
 html {
   line-height: 1.15; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
+  text-rendering: optimizeLegibility; /* Mejora: renderizado de texto */
+  -webkit-font-smoothing: antialiased; /* Mejora: suavizado en WebKit */
+  -moz-osx-font-smoothing: grayscale; /* Mejora: suavizado en Firefox macOS */
 }
 
-/* Sections
+/* ==========================================================================
+   Sections
    ========================================================================== */
 
 /**
- * Add the correct display in IE 9-.
+ * Display block para elementos semánticos HTML5
  */
-
 article,
 aside,
+details,
+figcaption,
+figure,
 footer,
 header,
+hgroup,
+main,
+menu,
 nav,
-section {
+section,
+summary {
   display: block;
 }
 
 /**
- * Correct the font size and margin on `h1` elements within `section` and
- * `article` contexts in Chrome, Firefox, and Safari.
+ * Corrección de h1 en contextos de sección
  */
-
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
 
-/* Grouping content
+/* ==========================================================================
+   Grouping content
    ========================================================================== */
 
 /**
- * Add the correct display in IE 9-.
- * 1. Add the correct display in IE.
+ * Margen consistente para figure
  */
-
-figcaption,
-figure,
-main { /* 1 */
-  display: block;
-}
-
-/**
- * Add the correct margin in IE 8.
- */
-
 figure {
   margin: 1em 40px;
 }
 
 /**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
+ * 1. Box-sizing correcto en Firefox
+ * 2. Overflow visible en navegadores antiguos
  */
-
 hr {
   box-sizing: content-box; /* 1 */
   height: 0; /* 1 */
@@ -75,62 +76,58 @@ hr {
 }
 
 /**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
+ * 1. Herencia correcta de fuente
+ * 2. Tamaño de fuente consistente
  */
-
 pre {
   font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
 
-/* Text-level semantics
+/* ==========================================================================
+   Text-level semantics - Mejoras de accesibilidad
    ========================================================================== */
 
 /**
- * 1. Remove the gray background on active links in IE 10.
- * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ * 1. Sin fondo gris en enlaces activos (IE10)
+ * 2. Eliminar gaps en subrayado (iOS/Safari)
+ * 3. Transición suave para hover
  */
-
 a {
   background-color: transparent; /* 1 */
   -webkit-text-decoration-skip: objects; /* 2 */
+  transition: color 0.2s ease, background-color 0.2s ease; /* Mejora: accesibilidad */
 }
 
 /**
- * 1. Remove the bottom border in Chrome 57- and Firefox 39-.
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ * Indicador visual claro para enlaces con foco (accesibilidad teclado)
  */
+a:focus-visible {
+  outline: 2px solid #005fcc;
+  outline-offset: 2px;
+}
 
+/**
+ * Abreviaturas: estilo consistente
+ */
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
   text-decoration: underline dotted; /* 2 */
+  cursor: help; /* Mejora: indicador de interacción */
 }
 
 /**
- * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ * Peso de fuente correcto para énfasis
  */
-
 b,
 strong {
-  font-weight: inherit;
+  font-weight: bolder; /* Consolidado: elimina duplicados */
 }
 
 /**
- * Add the correct font weight in Chrome, Edge, and Safari.
+ * Elementos de código: tipografía monoespaciada
  */
-
-b,
-strong {
-  font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-
 code,
 kbd,
 samp {
@@ -139,35 +136,25 @@ samp {
 }
 
 /**
- * Add the correct font style in Android 4.3-.
+ * Énfasis visual para mark
  */
-
-dfn {
-  font-style: italic;
-}
-
-/**
- * Add the correct background and color in IE 9-.
- */
-
 mark {
   background-color: #ff0;
   color: #000;
+  padding: 0.1em 0.2em; /* Mejora: espacio interno */
+  border-radius: 0.2em; /* Mejora: bordes suavizados */
 }
 
 /**
- * Add the correct font size in all browsers.
+ * Texto pequeño consistente
  */
-
 small {
   font-size: 80%;
 }
 
 /**
- * Prevent `sub` and `sup` elements from affecting the line height in
- * all browsers.
+ * Sub/sup: sin afectar line-height
  */
-
 sub,
 sup {
   font-size: 75%;
@@ -184,95 +171,94 @@ sup {
   top: -0.5em;
 }
 
-/* Embedded content
+/* ==========================================================================
+   Embedded content - Imágenes responsivas
    ========================================================================== */
 
 /**
- * Add the correct display in IE 9-.
+ * Media elements: display correcto
  */
-
 audio,
+canvas,
 video {
   display: inline-block;
 }
 
 /**
- * Add the correct display in iOS 4-7.
+ * Audio sin controles: ocultar completamente
  */
-
 audio:not([controls]) {
   display: none;
   height: 0;
 }
 
 /**
- * Remove the border on images inside links in IE 10-.
+ * 🖼️ Imágenes: responsivas por defecto (MEJORA IMPORTANTE)
+ * 1. Sin bordes en enlaces (IE10)
+ * 2. Escalado fluido
+ * 3. Prevención de distorsión
  */
-
 img {
-  border-style: none;
+  border-style: none; /* 1 */
+  max-width: 100%; /* 2 */
+  height: auto; /* 3 */
+  display: block; /* Mejora: elimina espacio fantasma */
 }
 
 /**
- * Hide the overflow in IE.
+ * SVG: overflow controlado
  */
-
 svg:not(:root) {
   overflow: hidden;
 }
 
-/* Forms
+/* ==========================================================================
+   Forms - Mejoras de usabilidad
    ========================================================================== */
 
 /**
- * Remove the margin in Firefox and Safari.
+ * Reset de márgenes en controles de formulario
  */
-
 button,
 input,
 optgroup,
 select,
 textarea {
   margin: 0;
+  font-family: inherit; /* Mejora: consistencia tipográfica */
+  font-size: inherit;
+  line-height: inherit;
 }
 
 /**
- * Show the overflow in IE.
- * 1. Show the overflow in Edge.
+ * Overflow visible en IE/Edge
  */
-
 button,
-input { /* 1 */
+input {
   overflow: visible;
 }
 
 /**
- * Remove the inheritance of text transform in Edge, Firefox, and IE.
- * 1. Remove the inheritance of text transform in Firefox.
+ * Sin transformación de texto heredada
  */
-
 button,
-select { /* 1 */
+select {
   text-transform: none;
 }
 
 /**
- * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
- *    controls in Android 4.
- * 2. Correct the inability to style clickable types in iOS and Safari.
+ * Apariencia nativa para botones (iOS/Safari)
  */
-
 button,
-html [type="button"], /* 1 */
+[type="button"],
 [type="reset"],
 [type="submit"] {
-  -webkit-appearance: button; /* 2 */
+  -webkit-appearance: button;
 }
 
 /**
- * Remove the inner border and padding in Firefox.
+ * Eliminar estilos internos en Firefox
  */
-
 button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
@@ -282,146 +268,172 @@ button::-moz-focus-inner,
 }
 
 /**
- * Restore the focus styles unset by the previous rule.
+ * 🎯 Foco visible para navegación por teclado (ACCESIBILIDAD)
  */
-
 button:-moz-focusring,
 [type="button"]:-moz-focusring,
 [type="reset"]:-moz-focusring,
 [type="submit"]:-moz-focusring {
-  outline: 1px dotted ButtonText;
+  outline: 2px solid #005fcc;
+  outline-offset: 2px;
 }
 
 /**
- * 1. Correct the text wrapping in Edge and IE.
- * 2. Correct the color inheritance from `fieldset` elements in IE.
- * 3. Remove the padding so developers are not caught out when they zero out
- *    `fieldset` elements in all browsers.
+ * Legend: estilos consistentes
  */
-
 legend {
-  box-sizing: border-box; /* 1 */
-  color: inherit; /* 2 */
-  display: table; /* 1 */
-  max-width: 100%; /* 1 */
-  padding: 0; /* 3 */
-  white-space: normal; /* 1 */
+  box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal;
 }
 
 /**
- * 1. Add the correct display in IE 9-.
- * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ * Progress: alineación vertical correcta
  */
-
 progress {
-  display: inline-block; /* 1 */
-  vertical-align: baseline; /* 2 */
+  display: inline-block;
+  vertical-align: baseline;
 }
 
 /**
- * Remove the default vertical scrollbar in IE.
+ * Textarea: scroll vertical cuando es necesario
  */
-
 textarea {
   overflow: auto;
+  resize: vertical; /* Mejora: permite redimensionar solo verticalmente */
 }
 
 /**
- * 1. Add the correct box sizing in IE 10-.
- * 2. Remove the padding in IE 10-.
+ * Checkbox/Radio: box-sizing correcto
  */
-
 [type="checkbox"],
 [type="radio"] {
-  box-sizing: border-box; /* 1 */
-  padding: 0; /* 2 */
+  box-sizing: border-box;
+  padding: 0;
 }
 
 /**
- * Correct the cursor style of increment and decrement buttons in Chrome.
+ * Number inputs: sin spin buttons en Chrome
  */
-
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
 /**
- * 1. Correct the odd appearance in Chrome and Safari.
- * 2. Correct the outline style in Safari.
+ * Search inputs: apariencia nativa
  */
-
 [type="search"] {
-  -webkit-appearance: textfield; /* 1 */
-  outline-offset: -2px; /* 2 */
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
 }
 
 /**
- * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+ * Eliminar botones de búsqueda en WebKit
  */
-
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
 /**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Change font properties to `inherit` in Safari.
+ * File upload button: estilos heredados
  */
-
 ::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
+  -webkit-appearance: button;
+  font: inherit;
 }
 
-/* Interactive
+/* ==========================================================================
+   Interactive & Scripting
    ========================================================================== */
 
-/*
- * Add the correct display in IE 9-.
- * 1. Add the correct display in Edge, IE, and Firefox.
- */
-
-details, /* 1 */
+details,
 menu {
   display: block;
 }
 
-/*
- * Add the correct display in all browsers.
- */
-
 summary {
   display: list-item;
+  cursor: pointer; /* Mejora: indicador de interacción */
 }
-
-/* Scripting
-   ========================================================================== */
-
-/**
- * Add the correct display in IE 9-.
- */
 
 canvas {
   display: inline-block;
 }
 
-/**
- * Add the correct display in IE.
- */
-
 template {
   display: none;
 }
 
-/* Hidden
+/* ==========================================================================
+   Hidden & Utilities
    ========================================================================== */
 
-/**
- * Add the correct display in IE 10-.
- */
-
 [hidden] {
-  display: none;
+  display: none !important; /* !important para mayor especificidad */
 }
+
+/* ==========================================================================
+   🎨 UTILIDADES ADICIONALES (Opcionales - descomentar si se necesitan)
+   ========================================================================== */
+
+/*
+ * Imágenes fluidas para contenedores responsivos
+ */
+/*
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+*/
+
+/*
+ * Contenedor para videos responsivos (16:9 por defecto)
+ */
+/*
+.embed-responsive {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+.embed-responsive::before {
+  display: block;
+  content: "";
+  padding-top: 56.25%; /* 16:9 aspect ratio *\/
+}
+
+.embed-responsive iframe,
+.embed-responsive video {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+*/
+
+/*
+ * Accesibilidad: solo visible para screen readers
+ */
+/*
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+*/
