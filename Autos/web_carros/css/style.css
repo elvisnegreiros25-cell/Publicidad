@@ -1,12 +1,11 @@
 /*---------------------------------------------------------------------
      ESTILOS PRINCIPALES - Estructura y diseño base
      Define estilos globales, tipografía, colores y componentes reutilizables
-     Versión final: Contraste optimizado, círculos perfectos, alineación corregida
+     CORRECCIÓN: Choose section en fila con texto centrado
 ---------------------------------------------------------------------*/
 
 /*---------------------------------------------------------------------
   VARIABLES CSS - PALETA DE COLORES Y VALORES GLOBALES
-  Centraliza colores y valores para fácil mantenimiento
 ---------------------------------------------------------------------*/
 :root {
   /* Colores primarios */
@@ -25,7 +24,7 @@
   --color-accent-red: #dc3545;
   --color-accent-green: #28a745;
   
-  /* Colores neutros - fondos claros mantenidos */
+  /* Colores neutros */
   --color-white: #ffffff;
   --color-light: #f8f9fa;
   --color-gray: #777777;            
@@ -33,7 +32,7 @@
   --color-gray-border: #dee2e6;
   --color-black: #222222;
   
-  /* Colores de texto - Optimizados para legibilidad sobre fondos claros */
+  /* Colores de texto */
   --text-primary: #222222;
   --text-secondary: #333333;
   --text-light: #ffffff;
@@ -78,7 +77,7 @@
   --line-height-base: 1.8;
   --line-height-lg: 1.5;
   
-  /* Variables adicionales para consistencia */
+  /* Variables adicionales */
   --container-max-width: 1200px;
   --container-padding: 15px;
   --focus-ring-color: rgba(15, 152, 248, 0.4);
@@ -491,7 +490,7 @@ ul.conat_info li a:focus {
 }
 
 /*---------------------------------------------------------------------
-  BANNER SECTION - CORRECCIONES APLICADAS
+  BANNER SECTION
 ---------------------------------------------------------------------*/
 
 .banner_main {
@@ -563,7 +562,6 @@ ul.conat_info li a:focus {
   margin: 0;
 }
 
-/* FORMULARIO - CORRECCIÓN DE CONTRASTE */
 .transfot {
   text-align: left;
 }
@@ -599,7 +597,6 @@ ul.conat_info li a:focus {
   box-shadow: 0 0 0 4px rgba(15, 152, 248, 0.3) !important;
 }
 
-/* BOTÓN GET NOW - MEJOR CONTRASTE */
 .get_now {
   max-width: 150px;
   width: 100%;
@@ -719,7 +716,7 @@ ul.conat_info li a:focus {
 }
 
 /*---------------------------------------------------------------------
-  SECCIÓN SERVICE - CORRECCIÓN DE CÍRCULOS
+  SECCIÓN SERVICE
 ---------------------------------------------------------------------*/
 
 .service {
@@ -765,7 +762,6 @@ ul.conat_info li a:focus {
   transform: translateY(-5px);
 }
 
-/* CÍRCULOS PERFECTOS - CORRECCIÓN */
 .service_box i {
   width: 181px !important;
   height: 181px !important;
@@ -1119,7 +1115,7 @@ ul.conat_info li a:focus {
 }
 
 /*---------------------------------------------------------------------
-  SECCIÓN CHOOSE - CORRECCIÓN DE ALINEACIÓN
+  SECCIÓN CHOOSE - CORRECCIÓN PRINCIPAL
 ---------------------------------------------------------------------*/
 
 .choose {
@@ -1132,23 +1128,42 @@ ul.conat_info li a:focus {
   padding-bottom: 60px;
 }
 
-/* ALINEACIÓN PERFECTA - CORRECCIÓN */
+/* CORRECCIÓN: Grid system para mostrar en fila */
+.choose .row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+.choose .col-md-6,
+.choose .col-lg-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+/* CORRECCIÓN: Choose box con texto centrado */
 .choose_box {
   display: flex;
-  align-items: flex-start;
-  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 15px;
   margin-bottom: 40px;
-  padding: 30px;
+  padding: 40px 30px;
   background: var(--color-white);
   border-radius: var(--border-radius-md);
   transition: var(--transition-fast);
   will-change: transform;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  height: 100%;
 }
 
 .choose_box:hover {
   background-color: var(--color-light);
-  transform: translateX(5px);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
 .choose_box i {
@@ -1157,7 +1172,7 @@ ul.conat_info li a:focus {
   color: var(--color-primary);
   min-width: 60px;
   text-align: center;
-  flex-shrink: 0;
+  margin-bottom: 15px;
 }
 
 .choose_box h3 {
@@ -1167,7 +1182,7 @@ ul.conat_info li a:focus {
   font-size: 24px;
   line-height: 1.3;
   margin: 0 0 15px 0;
-  flex: 1;
+  text-align: center;
 }
 
 .choose_box p {
@@ -1178,21 +1193,7 @@ ul.conat_info li a:focus {
   padding: 0;
   margin: 0;
   width: 100%;
-  text-align: left;
-}
-
-/* Contenedor de grid para choose */
-.choose .row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-}
-
-.choose .col-md-6,
-.choose .col-lg-6 {
-  flex: 0 0 calc(50% - 30px);
-  max-width: calc(50% - 30px);
+  text-align: center;
 }
 
 /*---------------------------------------------------------------------
@@ -1581,7 +1582,7 @@ ul.location_icon li a:focus {
 .rounded-circle { border-radius: var(--border-radius-circle) !important; }
 
 /*---------------------------------------------------------------------
-  MEDIA QUERIES - RESPONSIVE CON CORRECCIONES
+  MEDIA QUERIES - RESPONSIVE
 ---------------------------------------------------------------------*/
 
 @media (max-width: 991px) {
@@ -1623,6 +1624,13 @@ ul.location_icon li a:focus {
   
   .map {
     margin-right: 0;
+  }
+  
+  /* Choose en tablets - mantener en fila */
+  .choose .col-md-6,
+  .choose .col-lg-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
   }
 }
 
@@ -1706,20 +1714,15 @@ ul.location_icon li a:focus {
     border-radius: var(--border-radius-md);
   }
   
-  /* CORRECCIÓN: Choose box en móvil */
+  /* Choose en móvil - una columna */
+  .choose .col-md-6,
+  .choose .col-lg-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
   .choose_box {
-    flex-direction: column;
-    text-align: center;
-    padding: 25px;
-  }
-  
-  .choose_box i {
-    margin: 0 auto 15px auto;
-  }
-  
-  .choose_box h3,
-  .choose_box p {
-    text-align: center;
+    padding: 30px 20px;
   }
 }
 
@@ -1770,10 +1773,22 @@ ul.location_icon li a:focus {
     justify-content: center;
   }
   
-  /* CORRECCIÓN: Formulario en móvil pequeño */
   .transfot_form {
     font-size: 14px;
     padding: 10px 12px;
+  }
+  
+  /* Choose en móvil pequeño */
+  .choose_box {
+    padding: 25px 15px;
+  }
+  
+  .choose_box h3 {
+    font-size: 20px;
+  }
+  
+  .choose_box p {
+    font-size: 15px;
   }
 }
 
