@@ -1,7 +1,7 @@
 /*---------------------------------------------------------------------
      ESTILOS PRINCIPALES - Estructura y diseño base
      Define estilos globales, tipografía, colores y componentes reutilizables
-     MEJORAS 1-5: Scrollbar, scroll-padding, animaciones, tipografía fluida, validación
+     MEJORAS 6-10: Micro-interacciones, selección, brillo hover, print, badges
 ---------------------------------------------------------------------*/
 
 /*---------------------------------------------------------------------
@@ -116,13 +116,11 @@
   box-sizing: border-box;
 }
 
-/* MEJORA 2: Scroll padding para header fijo */
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
 }
 
-/* Para secciones con ID que se enlazan desde el menú */
 #about, #service, #vehicles, #testimonial, #choose, #contact {
   scroll-margin-top: 80px;
 }
@@ -181,7 +179,6 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
-/* MEJORA 4: Tipografía fluida con clamp() */
 h1 { font-size: clamp(1.5rem, 4vw, 1.5rem); }
 h2 { font-size: clamp(1.125rem, 3vw, 1.125rem); }
 h3 { font-size: clamp(1.125rem, 3vw, 1.125rem); }
@@ -269,7 +266,6 @@ button:focus {
 }
 
 .lead {
-  /* MEJORA 4: Tipografía fluida */
   font-size: clamp(1rem, 2vw, 1.125rem);
   line-height: 30px;
   color: var(--text-secondary);
@@ -286,6 +282,38 @@ button:focus {
   color: var(--text-primary);
 }
 
+/* MEJORA 10: Badges para elementos destacados */
+.badge-new,
+.badge-featured {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 20px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.badge-new {
+  background: linear-gradient(135deg, var(--color-accent-green) 0%, #20c997 100%);
+  color: var(--text-light);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.badge-featured {
+  background: linear-gradient(135deg, var(--color-accent-orange) 0%, #fd7e14 100%);
+  color: var(--text-light);
+  box-shadow: 0 4px 12px rgba(254, 117, 6, 0.3);
+  animation: pulse-badge 2s infinite;
+}
+
+@keyframes pulse-badge {
+  0%, 100% { box-shadow: 0 4px 12px rgba(254, 117, 6, 0.3); }
+  50% { box-shadow: 0 6px 20px rgba(254, 117, 6, 0.5); }
+}
+
 blockquote {
   margin: 20px 0;
   padding: 30px;
@@ -295,7 +323,6 @@ blockquote {
   color: var(--text-secondary);
 }
 
-/* MEJORA 5: Validación de formularios */
 .form-control {
   border: 1px solid var(--color-gray-border);
   border-radius: var(--border-radius-md);
@@ -326,7 +353,6 @@ blockquote {
   opacity: 1;
 }
 
-/* Mensajes de ayuda para validación */
 .form-help {
   font-size: 13px;
   color: var(--text-muted);
@@ -568,7 +594,6 @@ ul.conat_info li a:focus {
   box-shadow: var(--shadow-lg);
 }
 
-/* MEJORA 4: Tipografía fluida para título principal */
 .text-bg h1 {
   color: var(--color-primary);
   font-size: clamp(2.5rem, 8vw, 3.75rem);
@@ -784,7 +809,6 @@ ul.conat_info li a:focus {
   align-items: flex-start;
 }
 
-/* MEJORA 3: Animaciones escalonadas para service_box */
 .service_box {
   text-align: center;
   width: 16.3%;
@@ -795,6 +819,8 @@ ul.conat_info li a:focus {
   will-change: transform;
   overflow: visible !important;
   animation: fadeInUp 0.5s ease-out both;
+  position: relative;
+  z-index: 2;
 }
 
 .service_box:nth-child(1) { animation-delay: 0.1s; }
@@ -805,21 +831,31 @@ ul.conat_info li a:focus {
 .service_box:nth-child(6) { animation-delay: 0.6s; }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Desactivar animación si el usuario prefiere movimiento reducido */
 @media (prefers-reduced-motion: reduce) {
-  .service_box {
-    animation: none !important;
-  }
+  .service_box { animation: none !important; }
+}
+
+/* MEJORA 8: Efecto de brillo en hover */
+.service_box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.6s ease;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 1;
+}
+
+.service_box:hover::before {
+  left: 100%;
 }
 
 .service_box:hover {
@@ -867,21 +903,10 @@ ul.conat_info li a:focus {
   color: var(--color-primary);
 }
 
-.blu_colo i {
-  background-color: var(--color-primary);
-}
-
-.yell_colo i {
-  background-color: var(--color-accent-yellow);
-}
-
-.yelldark_colo {
-  margin: 0 50px;
-}
-
-.yelldark_colo i {
-  background-color: var(--color-accent-orange);
-}
+.blu_colo i { background-color: var(--color-primary); }
+.yell_colo i { background-color: var(--color-accent-yellow); }
+.yelldark_colo { margin: 0 50px; }
+.yelldark_colo i { background-color: var(--color-accent-orange); }
 
 .service .read_more {
   margin: 0 auto;
@@ -912,7 +937,6 @@ ul.conat_info li a:focus {
   font-weight: 400;
 }
 
-/* MEJORA 3: Animaciones escalonadas para vehicles_truck */
 .vehicles_truck {
   background-color: var(--color-light);
   transition: var(--transition-normal);
@@ -924,11 +948,32 @@ ul.conat_info li a:focus {
   contain: layout style paint;
   will-change: transform;
   animation: fadeInUp 0.5s ease-out both;
+  position: relative;
+  z-index: 2;
 }
 
 .vehicles_truck:nth-child(1) { animation-delay: 0.1s; }
 .vehicles_truck:nth-child(2) { animation-delay: 0.2s; }
 .vehicles_truck:nth-child(3) { animation-delay: 0.3s; }
+
+/* MEJORA 8: Efecto de brillo en hover */
+.vehicles_truck::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.6s ease;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 1;
+}
+
+.vehicles_truck:hover::before {
+  left: 100%;
+}
 
 .vehicles_truck:hover {
   background-color: var(--color-white);
@@ -967,14 +1012,8 @@ ul.conat_info li a:focus {
   margin: 0 auto;
 }
 
-#veh .carousel-caption {
-  position: inherit;
-  padding: 0;
-}
-
-#veh .carousel-indicators {
-  display: none;
-}
+#veh .carousel-caption { position: inherit; padding: 0; }
+#veh .carousel-indicators { display: none; }
 
 #veh .carousel-control-prev,
 #veh .carousel-control-next {
@@ -1004,21 +1043,10 @@ ul.conat_info li a:focus {
   transform: scale(1.1);
 }
 
-#veh a.carousel-control-prev {
-  position: absolute;
-  left: 46%;
-}
+#veh a.carousel-control-prev { position: absolute; left: 46%; }
+#veh a.carousel-control-next { position: absolute; right: 46%; bottom: 10px; }
 
-#veh a.carousel-control-next {
-  position: absolute;
-  right: 46%;
-  bottom: 10px;
-}
-
-.vehicles .read_more {
-  margin: 0 auto;
-  padding-top: 150px;
-}
+.vehicles .read_more { margin: 0 auto; padding-top: 150px; }
 
 /*---------------------------------------------------------------------
   SECCIÓN TESTIMONIAL
@@ -1043,29 +1071,11 @@ ul.conat_info li a:focus {
   pointer-events: none;
 }
 
-.testimonial > * {
-  position: relative;
-  z-index: 2;
-}
+.testimonial > * { position: relative; z-index: 2; }
 
-.testimonial .titlepage {
-  text-align: center;
-  padding-bottom: 60px;
-}
-
-.testimonial .titlepage h2 {
-  color: var(--text-light);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
-}
-
-.testimonial .titlepage p {
-  color: var(--text-light);
-  font-size: 17px;
-  line-height: 24px;
-  font-weight: 500;
-  padding-top: 20px;
-  opacity: 0.98;
-}
+.testimonial .titlepage { text-align: center; padding-bottom: 60px; }
+.testimonial .titlepage h2 { color: var(--text-light); text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15); }
+.testimonial .titlepage p { color: var(--text-light); font-size: 17px; line-height: 24px; font-weight: 500; padding-top: 20px; opacity: 0.98; }
 
 .testimonial_box {
   background: rgba(255, 255, 255, 0.15);
@@ -1077,54 +1087,15 @@ ul.conat_info li a:focus {
   contain: layout style paint;
 }
 
-.testimonial_box h3 {
-  color: var(--text-light);
-  font-size: 25px;
-  line-height: 36px;
-  font-weight: 600;
-  padding-top: 26px;
-  text-align: left;
-  padding-left: 20px;
-  display: table-cell;
-}
+.testimonial_box h3 { color: var(--text-light); font-size: 25px; line-height: 36px; font-weight: 600; padding-top: 26px; text-align: left; padding-left: 20px; display: table-cell; }
+.testimonial_box p { color: var(--text-light); font-size: 17px; line-height: 32px; padding-top: 30px; display: inline-block; text-align: left; font-weight: 400; opacity: 0.98; }
+.kisu { font-size: 17px; font-style: italic; opacity: 0.95; color: var(--text-light); }
 
-.testimonial_box p {
-  color: var(--text-light);
-  font-size: 17px;
-  line-height: 32px;
-  padding-top: 30px;
-  display: inline-block;
-  text-align: left;
-  font-weight: 400;
-  opacity: 0.98;
-}
+.testimonial_Carousel .carousel-caption { position: inherit; padding: 0; }
+.testimonial_box figure { margin: 0; float: left; }
+.testimonial_box figure img { border-radius: var(--border-radius-circle); border: 3px solid var(--text-light); box-shadow: var(--shadow-md); }
 
-.kisu {
-  font-size: 17px;
-  font-style: italic;
-  opacity: 0.95;
-  color: var(--text-light);
-}
-
-.testimonial_Carousel .carousel-caption {
-  position: inherit;
-  padding: 0;
-}
-
-.testimonial_box figure {
-  margin: 0;
-  float: left;
-}
-
-.testimonial_box figure img {
-  border-radius: var(--border-radius-circle);
-  border: 3px solid var(--text-light);
-  box-shadow: var(--shadow-md);
-}
-
-#myCarousel .carousel-indicators {
-  display: none;
-}
+#myCarousel .carousel-indicators { display: none; }
 
 #myCarousel .carousel-control-prev,
 #myCarousel .carousel-control-next {
@@ -1153,67 +1124,23 @@ ul.conat_info li a:focus {
   transform: scale(1.1);
 }
 
-#myCarousel a.carousel-control-prev {
-  position: absolute;
-  left: inherit;
-  right: -5%;
-  top: 32%;
-}
+#myCarousel a.carousel-control-prev { position: absolute; left: inherit; right: -5%; top: 32%; }
+#myCarousel a.carousel-control-next { position: absolute; right: -5%; bottom: 10px; top: 52%; }
 
-#myCarousel a.carousel-control-next {
-  position: absolute;
-  right: -5%;
-  bottom: 10px;
-  top: 52%;
-}
-
-.testimonial .read_more::before {
-  border-right: var(--text-light) solid 80px;
-}
-
-.testimonial .read_more {
-  position: relative;
-  color: var(--text-light) !important;
-  margin-top: 50px;
-  padding-left: 15px;
-  font-weight: 600;
-}
-
-.testimonial .read_more:hover {
-  color: var(--text-light) !important;
-  opacity: 0.95;
-}
+.testimonial .read_more::before { border-right: var(--text-light) solid 80px; }
+.testimonial .read_more { position: relative; color: var(--text-light) !important; margin-top: 50px; padding-left: 15px; font-weight: 600; }
+.testimonial .read_more:hover { color: var(--text-light) !important; opacity: 0.95; }
 
 /*---------------------------------------------------------------------
-  SECCIÓN CHOOSE - CORRECCIÓN PRINCIPAL
+  SECCIÓN CHOOSE
 ---------------------------------------------------------------------*/
 
-.choose {
-  background-color: var(--color-white);
-  padding-top: 90px;
-}
+.choose { background-color: var(--color-white); padding-top: 90px; }
+.choose .titlepage { text-align: center; padding-bottom: 60px; }
 
-.choose .titlepage {
-  text-align: center;
-  padding-bottom: 60px;
-}
+.choose .row { display: flex; flex-wrap: wrap; margin: 0 -15px; }
+.choose .col-md-6, .choose .col-lg-6 { flex: 0 0 50%; max-width: 50%; padding: 0 15px; box-sizing: border-box; }
 
-/* CORRECCIÓN: Grid system para mostrar en fila */
-.choose .row {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 -15px;
-}
-
-.choose .col-md-6,
-.choose .col-lg-6 {
-  flex: 0 0 50%;
-  max-width: 50%;
-  padding: 0 15px;
-  box-sizing: border-box;
-}
-
-/* MEJORA 3: Animaciones escalonadas para choose_box */
 .choose_box {
   display: flex;
   flex-direction: column;
@@ -1229,10 +1156,29 @@ ul.conat_info li a:focus {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
   height: 100%;
   animation: fadeInUp 0.5s ease-out both;
+  position: relative;
+  z-index: 2;
 }
 
 .choose_box:nth-child(1) { animation-delay: 0.1s; }
 .choose_box:nth-child(2) { animation-delay: 0.2s; }
+
+/* MEJORA 8: Efecto de brillo en hover */
+.choose_box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.6s ease;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 1;
+}
+
+.choose_box:hover::before { left: 100%; }
 
 .choose_box:hover {
   background-color: var(--color-light);
@@ -1240,49 +1186,16 @@ ul.conat_info li a:focus {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
-.choose_box i {
-  float: none !important;
-  font-size: 50px;
-  color: var(--color-primary);
-  min-width: 60px;
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-.choose_box h3 {
-  padding-top: 0;
-  color: var(--text-secondary);
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 1.3;
-  margin: 0 0 15px 0;
-  text-align: center;
-}
-
-.choose_box p {
-  display: block;
-  color: var(--text-secondary);
-  font-size: 16px;
-  line-height: 1.8;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  text-align: center;
-}
+.choose_box i { float: none !important; font-size: 50px; color: var(--color-primary); min-width: 60px; text-align: center; margin-bottom: 15px; }
+.choose_box h3 { padding-top: 0; color: var(--text-secondary); font-weight: 700; font-size: 24px; line-height: 1.3; margin: 0 0 15px 0; text-align: center; }
+.choose_box p { display: block; color: var(--text-secondary); font-size: 16px; line-height: 1.8; padding: 0; margin: 0; width: 100%; text-align: center; }
 
 /*---------------------------------------------------------------------
   SECCIÓN CONTACT
 ---------------------------------------------------------------------*/
 
-.contact {
-  background: var(--color-white);
-  padding-top: 90px;
-}
-
-.contact .titlepage {
-  text-align: left;
-  padding-bottom: 60px;
-}
+.contact { background: var(--color-white); padding-top: 90px; }
+.contact .titlepage { text-align: left; padding-bottom: 60px; }
 
 .main_form {
   background: var(--color-white);
@@ -1296,7 +1209,6 @@ ul.conat_info li a:focus {
   contain: layout style paint;
 }
 
-/* MEJORA 5: Validación en formulario de contacto */
 .main_form .contactus,
 .main_form .contactusmess {
   border: var(--border-color) solid var(--border-width);
@@ -1323,15 +1235,8 @@ ul.conat_info li a:focus {
   box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15) !important;
 }
 
-.main_form .contactus {
-  height: 60px;
-}
-
-.main_form .contactusmess {
-  padding: 15px;
-  height: 168px;
-  resize: vertical;
-}
+.main_form .contactus { height: 60px; }
+.main_form .contactusmess { padding: 15px; height: 168px; resize: vertical; }
 
 .main_form .contactus:focus,
 .main_form .contactusmess:focus {
@@ -1368,117 +1273,32 @@ ul.conat_info li a:focus {
   box-shadow: var(--shadow-lg);
 }
 
-#request *::placeholder {
-  color: var(--text-muted);
-  opacity: 1;
-}
+#request *::placeholder { color: var(--text-muted); opacity: 1; }
 
-.co_tru {
-  padding-right: 50px;
-}
-
-.co_tru figure {
-  margin: 0;
-  border-radius: var(--border-radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  contain: layout style paint;
-}
-
-.co_tru figure img {
-  width: 100%;
-  transition: var(--transition-normal);
-}
-
-.co_tru figure:hover img {
-  transform: scale(1.05);
-}
+.co_tru { padding-right: 50px; }
+.co_tru figure { margin: 0; border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); contain: layout style paint; }
+.co_tru figure img { width: 100%; transition: var(--transition-normal); }
+.co_tru figure:hover img { transform: scale(1.05); }
 
 /*---------------------------------------------------------------------
   FOOTER
 ---------------------------------------------------------------------*/
 
-.footer {
-  background: var(--color-light);
-  margin-top: 90px;
-  padding-top: 90px;
-  text-align: center;
-}
+.footer { background: var(--color-light); margin-top: 90px; padding-top: 90px; text-align: center; }
 
-ul.location_icon {
-  padding-top: 12px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-ul.location_icon li {
-  font-size: 16px;
-  line-height: 30px;
-  color: var(--text-secondary);
-  text-align: left;
-  padding-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  max-width: 250px;
-}
-
-ul.location_icon li a {
-  font-size: 24px;
-  color: var(--color-primary);
-  line-height: 40px;
-  transition: var(--transition-fast);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: var(--border-radius-circle);
-  background: rgba(15, 152, 248, 0.1);
-}
-
+ul.location_icon { padding-top: 12px; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+ul.location_icon li { font-size: 16px; line-height: 30px; color: var(--text-secondary); text-align: left; padding-bottom: 20px; display: flex; align-items: center; gap: 12px; max-width: 250px; }
+ul.location_icon li a { font-size: 24px; color: var(--color-primary); line-height: 40px; transition: var(--transition-fast); display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: var(--border-radius-circle); background: rgba(15, 152, 248, 0.1); }
 ul.location_icon li a:hover,
-ul.location_icon li a:focus {
-  color: var(--text-light);
-  background: var(--color-primary);
-  transform: translateY(-3px);
-}
+ul.location_icon li a:focus { color: var(--text-light); background: var(--color-primary); transform: translateY(-3px); }
 
-.map {
-  margin: var(--spacing-lg) 0;
-  border-radius: var(--border-radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-}
+.map { margin: var(--spacing-lg) 0; border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
+.map figure { margin: 0; }
+.map figure img { width: 100%; display: block; }
 
-.map figure {
-  margin: 0;
-}
+.bottom_form { margin-top: 50px; max-width: 500px; margin-left: auto; margin-right: auto; }
+.bottom_form h3 { font-weight: 600; font-size: 20px; text-align: center; color: var(--text-primary); padding-bottom: 15px; margin: 0; }
 
-.map figure img {
-  width: 100%;
-  display: block;
-}
-
-.bottom_form {
-  margin-top: 50px;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.bottom_form h3 {
-  font-weight: 600;
-  font-size: 20px;
-  text-align: center;
-  color: var(--text-primary);
-  padding-bottom: 15px;
-  margin: 0;
-}
-
-/* MEJORA 5: Validación en newsletter */
 .bottom_form .enter {
   border: 1px solid var(--color-gray-border);
   padding: 0 19px;
@@ -1533,48 +1353,12 @@ ul.location_icon li a:focus {
   color: var(--text-light);
 }
 
-.copyright {
-  background-color: var(--color-primary);
-  margin-top: 70px;
-  padding: 20px 0;
-  position: relative;
-}
-
-.copyright::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-}
-
-.copyright p {
-  color: var(--text-light);
-  font-size: 16px;
-  line-height: 22px;
-  text-align: center;
-  padding-top: 0;
-  font-weight: normal;
-  margin: 0;
-  opacity: 0.98;
-}
-
-.copyright a {
-  color: var(--text-light);
-  font-weight: 600;
-  text-decoration: none;
-  transition: var(--transition-fast);
-  border-bottom: 1px dashed rgba(255,255,255,0.5);
-}
-
+.copyright { background-color: var(--color-primary); margin-top: 70px; padding: 20px 0; position: relative; }
+.copyright::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); }
+.copyright p { color: var(--text-light); font-size: 16px; line-height: 22px; text-align: center; padding-top: 0; font-weight: normal; margin: 0; opacity: 0.98; }
+.copyright a { color: var(--text-light); font-weight: 600; text-decoration: none; transition: var(--transition-fast); border-bottom: 1px dashed rgba(255,255,255,0.5); }
 .copyright a:hover,
-.copyright a:focus {
-  color: var(--text-light);
-  opacity: 1;
-  border-bottom-color: var(--text-light);
-}
+.copyright a:focus { color: var(--text-light); opacity: 1; border-bottom-color: var(--text-light); }
 
 /*---------------------------------------------------------------------
   BOTÓN READ MORE
@@ -1625,7 +1409,6 @@ ul.location_icon li a:focus {
   TÍTULOS DE SECCIÓN
 ---------------------------------------------------------------------*/
 
-/* MEJORA 4: Tipografía fluida para títulos de sección */
 .titlepage h2 {
   font-size: clamp(2rem, 5vw, 3.125rem);
   color: var(--color-primary);
@@ -1685,207 +1468,53 @@ ul.location_icon li a:focus {
 ---------------------------------------------------------------------*/
 
 @media (max-width: 991px) {
-  .banner_main {
-    background-size: auto 60%;
-    min-height: 900px;
-    padding: 200px 0 0 0;
-  }
-  
-  .text-bg {
-    max-width: 100%;
-    float: none;
-    margin: 0 auto;
-  }
-  
-  .text-bg h1 {
-    font-size: clamp(2rem, 7vw, 2.8125rem);
-    line-height: 55px;
-  }
-  
-  .service_box {
-    width: 33.33%;
-  }
-  
-  .yelldark_colo {
-    margin: 0;
-  }
-  
-  #veh a.carousel-control-prev,
-  #veh a.carousel-control-next {
-    left: 40%;
-    right: 40%;
-  }
-  
-  .co_tru {
-    padding-right: 0;
-    margin-bottom: 30px;
-  }
-  
-  .map {
-    margin-right: 0;
-  }
-  
-  .choose .col-md-6,
-  .choose .col-lg-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
+  .banner_main { background-size: auto 60%; min-height: 900px; padding: 200px 0 0 0; }
+  .text-bg { max-width: 100%; float: none; margin: 0 auto; }
+  .text-bg h1 { font-size: clamp(2rem, 7vw, 2.8125rem); line-height: 55px; }
+  .service_box { width: 33.33%; }
+  .yelldark_colo { margin: 0; }
+  #veh a.carousel-control-prev, #veh a.carousel-control-next { left: 40%; right: 40%; }
+  .co_tru { padding-right: 0; margin-bottom: 30px; }
+  .map { margin-right: 0; }
+  .choose .col-md-6, .choose .col-lg-6 { flex: 0 0 50%; max-width: 50%; }
 }
 
 @media (max-width: 767px) {
-  .header {
-    padding: 15px;
-  }
-  
-  ul.conat_info li {
-    padding: 0 10px;
-  }
-  
-  ul.conat_info li a {
-    font-size: 20px;
-  }
-  
-  .banner_main {
-    background-size: auto 50%;
-    min-height: 700px;
-    padding: 150px 0 0 0;
-  }
-  
-  .text-bg h1 {
-    font-size: clamp(1.75rem, 6vw, 2.25rem);
-    line-height: 45px;
-  }
-  
-  .banner_slide {
-    padding: 0 20px;
-  }
-  
-  .service_box {
-    width: 50%;
-  }
-  
-  .titlepage h2 {
-    font-size: clamp(1.5rem, 5vw, 2.25rem);
-    line-height: 40px;
-  }
-  
-  .vehicles_truck {
-    margin-bottom: 20px;
-  }
-  
-  #veh a.carousel-control-prev,
-  #veh a.carousel-control-next {
-    left: 30%;
-    right: 30%;
-    top: 105%;
-  }
-  
-  .testimonial {
-    border-radius: 30px;
-  }
-  
-  #myCarousel a.carousel-control-prev,
-  #myCarousel a.carousel-control-next {
-    right: 0;
-    left: 0;
-    margin: 0 auto;
-    top: auto;
-    bottom: -60px;
-  }
-  
-  #myCarousel a.carousel-control-prev {
-    right: 55%;
-  }
-  
-  #myCarousel a.carousel-control-next {
-    right: 45%;
-  }
-  
-  .bottom_form .enter {
-    width: 100%;
-    border-radius: var(--border-radius-md);
-    margin-bottom: 10px;
-  }
-  
-  .sub_btn {
-    max-width: 100%;
-    border-radius: var(--border-radius-md);
-  }
-  
-  .choose .col-md-6,
-  .choose .col-lg-6 {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-  
-  .choose_box {
-    padding: 30px 20px;
-  }
+  .header { padding: 15px; }
+  ul.conat_info li { padding: 0 10px; }
+  ul.conat_info li a { font-size: 20px; }
+  .banner_main { background-size: auto 50%; min-height: 700px; padding: 150px 0 0 0; }
+  .text-bg h1 { font-size: clamp(1.75rem, 6vw, 2.25rem); line-height: 45px; }
+  .banner_slide { padding: 0 20px; }
+  .service_box { width: 50%; }
+  .titlepage h2 { font-size: clamp(1.5rem, 5vw, 2.25rem); line-height: 40px; }
+  .vehicles_truck { margin-bottom: 20px; }
+  #veh a.carousel-control-prev, #veh a.carousel-control-next { left: 30%; right: 30%; top: 105%; }
+  .testimonial { border-radius: 30px; }
+  #myCarousel a.carousel-control-prev, #myCarousel a.carousel-control-next { right: 0; left: 0; margin: 0 auto; top: auto; bottom: -60px; }
+  #myCarousel a.carousel-control-prev { right: 55%; }
+  #myCarousel a.carousel-control-next { right: 45%; }
+  .bottom_form .enter { width: 100%; border-radius: var(--border-radius-md); margin-bottom: 10px; }
+  .sub_btn { max-width: 100%; border-radius: var(--border-radius-md); }
+  .choose .col-md-6, .choose .col-lg-6 { flex: 0 0 100%; max-width: 100%; }
+  .choose_box { padding: 30px 20px; }
 }
 
 @media (max-width: 575px) {
-  .text-bg h1 {
-    font-size: clamp(1.5rem, 7vw, 2rem);
-    line-height: 40px;
-  }
-  
-  .text-bg span {
-    font-size: 15px;
-  }
-  
-  .service_box {
-    width: 100%;
-  }
-  
-  .service_box i {
-    width: 150px !important;
-    height: 150px !important;
-    margin: 0 auto;
-  }
-  
-  .titlepage h2 {
-    font-size: clamp(1.25rem, 6vw, 2rem);
-  }
-  
-  .read_more {
-    font-size: 18px;
-    max-width: 180px;
-  }
-  
-  .read_more::before {
-    border-right-width: 70px;
-  }
-  
-  .main_form {
-    float: none;
-    margin: 0 auto;
-  }
-  
-  ul.location_icon {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  ul.location_icon li {
-    justify-content: center;
-  }
-  
-  .transfot_form {
-    font-size: 14px;
-    padding: 10px 12px;
-  }
-  
-  .choose_box {
-    padding: 25px 15px;
-  }
-  
-  .choose_box h3 {
-    font-size: 20px;
-  }
-  
-  .choose_box p {
-    font-size: 15px;
-  }
+  .text-bg h1 { font-size: clamp(1.5rem, 7vw, 2rem); line-height: 40px; }
+  .text-bg span { font-size: 15px; }
+  .service_box { width: 100%; }
+  .service_box i { width: 150px !important; height: 150px !important; margin: 0 auto; }
+  .titlepage h2 { font-size: clamp(1.25rem, 6vw, 2rem); }
+  .read_more { font-size: 18px; max-width: 180px; }
+  .read_more::before { border-right-width: 70px; }
+  .main_form { float: none; margin: 0 auto; }
+  ul.location_icon { flex-direction: column; align-items: center; }
+  ul.location_icon li { justify-content: center; }
+  .transfot_form { font-size: 14px; padding: 10px 12px; }
+  .choose_box { padding: 25px 15px; }
+  .choose_box h3 { font-size: 20px; }
+  .choose_box p { font-size: 15px; }
 }
 
 /*---------------------------------------------------------------------
@@ -1893,114 +1522,128 @@ ul.location_icon li a:focus {
 ---------------------------------------------------------------------*/
 
 @media (prefers-contrast: high) {
-  :root {
-    --color-primary: #0066cc;
-    --text-primary: #111111;
-    --text-secondary: #222222;
-  }
-  
-  a:focus-visible,
-  button:focus-visible,
-  input:focus-visible,
-  textarea:focus-visible {
-    outline: 3px solid var(--color-primary) !important;
-    outline-offset: 3px;
+  :root { --color-primary: #0066cc; --text-primary: #111111; --text-secondary: #222222; }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 3px solid var(--color-primary) !important; outline-offset: 3px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important;
   }
-  
-  html {
-    scroll-behavior: auto;
-  }
+  html { scroll-behavior: auto; }
 }
 
 /*---------------------------------------------------------------------
-  PRINT STYLES
+  PRINT STYLES - MEJORA 9: Optimización mejorada
 ---------------------------------------------------------------------*/
 
 @media print {
-  .header,
-  .footer,
-  .banner_main,
-  .loader_bg,
-  .sidepanel,
-  .openbtn,
-  #banner1 .carousel-control-prev,
-  #banner1 .carousel-control-next,
-  #veh .carousel-control-prev,
-  #veh .carousel-control-next,
-  #myCarousel .carousel-control-prev,
-  #myCarousel .carousel-control-next {
+  .header, .footer, .banner_main, .loader_bg, .sidepanel, .openbtn,
+  #banner1 .carousel-control-prev, #banner1 .carousel-control-next,
+  #veh .carousel-control-prev, #veh .carousel-control-next,
+  #myCarousel .carousel-control-prev, #myCarousel .carousel-control-next {
     display: none !important;
   }
   
-  body {
-    color: #111;
-    background: #fff;
-    font-size: 12pt;
-  }
+  body { color: #000 !important; background: #fff !important; }
   
-  a {
-    color: #111;
-    text-decoration: underline;
-  }
-  
+  a { color: #000; text-decoration: underline; }
   a[href]::after {
-    content: " (" attr(href) ")";
-    font-size: 0.9em;
+    content: " [" attr(href) "]";
+    font-size: 0.85em;
+    color: #666;
+    font-weight: normal;
   }
   
-  .about,
-  .service,
-  .vehicles,
-  .testimonial,
-  .choose,
-  .contact {
+  h1, h2, h3, h4, h5, h6 { page-break-after: avoid; }
+  img, figure { page-break-inside: avoid; }
+  
+  ul.location_icon { display: block !important; }
+  ul.location_icon li {
+    display: block !important;
+    margin-bottom: 10px !important;
     page-break-inside: avoid;
-    margin: 20px 0;
   }
   
-  img {
-    max-width: 100% !important;
-    height: auto !important;
+  button, .get_now, .send_btn, .sub_btn,
+  .carousel-control-prev, .carousel-control-next, .openbtn {
+    display: none !important;
   }
+  
+  .about, .service, .vehicles, .testimonial, .choose, .contact {
+    page-break-inside: avoid; margin: 20px 0;
+  }
+  
+  img { max-width: 100% !important; height: auto !important; }
 }
 
 /*---------------------------------------------------------------------
   MEJORA 1: SCROLLBAR PERSONALIZADO
 ---------------------------------------------------------------------*/
 
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-light);
-  border-radius: 10px;
-}
-
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-light); border-radius: 10px; }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
   border-radius: 10px;
   border: 2px solid var(--color-light);
   transition: var(--transition-fast);
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
   transform: scale(1.05);
 }
+* { scrollbar-width: thin; scrollbar-color: var(--color-primary) var(--color-light); }
 
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-primary) var(--color-light);
+/*---------------------------------------------------------------------
+  MEJORA 6: MICRO-INTERACCIONES EN ENLACES Y BOTONES
+---------------------------------------------------------------------*/
+
+/* Subrayado animado en enlaces de texto */
+a:not(.btn-custom):not(.get_now):not(.send_btn):not(.sub_btn):not(.read_more) {
+  position: relative;
+  display: inline-block;
+}
+
+a:not(.btn-custom):not(.get_now):not(.send_btn):not(.sub_btn):not(.read_more)::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width var(--transition-fast) var(--ease-out-back);
+}
+
+a:not(.btn-custom):not(.get_now):not(.send_btn):not(.sub_btn):not(.read_more):hover::after {
+  width: 100%;
+}
+
+/* Efecto de pulsación en botones al hacer click */
+.btn-custom:active,
+.get_now:active,
+.send_btn:active,
+.sub_btn:active,
+.read_more:active {
+  transform: scale(0.98) !important;
+  transition: transform 0.1s ease;
+}
+
+/*---------------------------------------------------------------------
+  MEJORA 7: COLOR DE SELECCIÓN DE TEXTO PERSONALIZADO
+---------------------------------------------------------------------*/
+
+::selection {
+  background-color: rgba(15, 152, 248, 0.25);
+  color: var(--text-primary);
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background-color: rgba(15, 152, 248, 0.25);
+  color: var(--text-primary);
+  text-shadow: none;
 }
