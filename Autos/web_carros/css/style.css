@@ -1,7 +1,7 @@
 /*---------------------------------------------------------------------
      ESTILOS PRINCIPALES - Estructura y diseño base
      Define estilos globales, tipografía, colores y componentes reutilizables
-     Commit 1: Contraste de texto mejorado y optimizaciones de rendimiento
+     Versión final: Contraste optimizado, círculos perfectos, alineación corregida
 ---------------------------------------------------------------------*/
 
 /*---------------------------------------------------------------------
@@ -17,7 +17,7 @@
   /* Colores secundarios */
   --color-secondary: #7a7a7a;       
   --color-secondary-light: #9a9a9a; 
-  --color-secondary-dark: #2a2a2a; /* AJUSTADO: más oscuro para mejor contraste en títulos */
+  --color-secondary-dark: #2a2a2a;
   
   /* Colores de acento */
   --color-accent-yellow: #fed806;
@@ -31,23 +31,20 @@
   --color-gray: #777777;            
   --color-gray-light: #bbbbbb;      
   --color-gray-border: #dee2e6;
-  --color-black: #222222; /* AJUSTADO: ligeramente más oscuro para mejor contraste */
+  --color-black: #222222;
   
-  /* Colores de texto - AJUSTADOS para mejor legibilidad sobre fondos claros */
-  --text-primary: #222222; /* Antes: #444444 - Más visible sobre blanco */
-  --text-secondary: #333333; /* Antes: #666666 - Mejor contraste */
+  /* Colores de texto - Optimizados para legibilidad sobre fondos claros */
+  --text-primary: #222222;
+  --text-secondary: #333333;
   --text-light: #ffffff;
-  --text-muted: #666666; /* Antes: #999999 - Más legible */
+  --text-muted: #666666;
   
-  /* Sombras - valores originales */
+  /* Sombras */
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
-  --shadow-hover: 0 0 16px rgba(22, 22, 23, 0.15);
-  
-  /* Sombras - NUEVAS VARIABLES para efectos mejorados */
+  --shadow-hover: 0 12px 40px rgba(15, 152, 248, 0.15);
   --shadow-focus: 0 0 0 3px rgba(15, 152, 248, 0.25);
-  --shadow-elevated: 0 12px 40px rgba(15, 152, 248, 0.15);
   
   /* Bordes */
   --border-radius-sm: 5px;
@@ -62,8 +59,6 @@
   --transition-fast: 0.3s ease-in-out;
   --transition-normal: 0.5s ease-in-out;
   --transition-slow: 0.7s ease-in-out;
-  
-  /* NUEVO: Easing personalizado para animaciones más naturales */
   --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
   
   /* Espaciado */
@@ -83,7 +78,7 @@
   --line-height-base: 1.8;
   --line-height-lg: 1.5;
   
-  /* NUEVAS VARIABLES para consistencia global */
+  /* Variables adicionales para consistencia */
   --container-max-width: 1200px;
   --container-padding: 15px;
   --focus-ring-color: rgba(15, 152, 248, 0.4);
@@ -116,20 +111,16 @@
   RESETEO Y ESTILOS BASE
 ---------------------------------------------------------------------*/
 
-/* Box-sizing global para consistencia en dimensiones */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Comportamiento de scroll suave para navegación interna */
 html {
   scroll-behavior: smooth;
 }
 
-/* Estilos base del cuerpo del documento */
-/* NUEVO: transición suave para cambios de estado */
 body {
   color: var(--text-secondary);
   font-size: var(--font-size-sm);
@@ -140,7 +131,6 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Enlaces - estilos base y hover */
 a {
   color: var(--text-primary);
   text-decoration: none !important;
@@ -154,7 +144,6 @@ a:focus {
   text-decoration: none;
 }
 
-/* Enlaces dentro de encabezados */
 h1 a,
 h2 a,
 h3 a,
@@ -176,7 +165,6 @@ h6 a:hover {
   color: var(--color-primary);
 }
 
-/* Encabezados - jerarquía tipográfica */
 h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0;
   font-weight: normal;
@@ -194,41 +182,35 @@ h4 { font-size: 16px; }
 h5 { font-size: 14px; }
 h6 { font-size: 13px; }
 
-/* Párrafos */
 p {
   margin: 0;
   font-weight: 500;
   font-size: var(--font-size-base);
   line-height: 24px;
-  color: var(--text-secondary); /* Asegurar color legible */
+  color: var(--text-secondary);
 }
 
-/* Listas */
 ul, li, ol {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* Imágenes - responsive por defecto */
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-/* Eliminación de outline por defecto, usar focus-visible para accesibilidad */
 :focus {
   outline: 0;
 }
 
-/* Focus visible mejorado para accesibilidad */
 :focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
-/* Botones - reset de estilos */
 button {
   border: 0;
   margin: 0;
@@ -242,7 +224,6 @@ button:focus {
   outline: none;
 }
 
-/* Clases de utilidad */
 .full {
   width: 100%;
   float: left;
@@ -261,8 +242,6 @@ button:focus {
   COMPONENTES REUTILIZABLES
 ---------------------------------------------------------------------*/
 
-/* Botón personalizado - estilo base */
-/* NUEVO: will-change para optimizar animaciones */
 .btn-custom {
   margin-top: 20px;
   background-color: transparent !important;
@@ -282,7 +261,6 @@ button:focus {
   background-color: rgba(15, 152, 248, 0.1);
 }
 
-/* Texto destacado - lead */
 .lead {
   font-size: 18px;
   line-height: 30px;
@@ -292,7 +270,6 @@ button:focus {
   font-weight: 400;
 }
 
-/* Badge - etiquetas */
 .badge {
   font-weight: 500;
   padding: 4px 8px;
@@ -301,7 +278,6 @@ button:focus {
   color: var(--text-primary);
 }
 
-/* Blockquote - citas */
 blockquote {
   margin: 20px 0;
   padding: 30px;
@@ -311,8 +287,6 @@ blockquote {
   color: var(--text-secondary);
 }
 
-/* Formularios - inputs */
-/* NUEVO: border-radius unificado para consistencia */
 .form-control {
   border: 1px solid var(--color-gray-border);
   border-radius: var(--border-radius-md);
@@ -333,7 +307,6 @@ blockquote {
   opacity: 1;
 }
 
-/* Navbar form - búsqueda */
 .navbar-form input {
   border: none !important;
   background-color: var(--color-light);
@@ -343,7 +316,7 @@ blockquote {
 }
 
 /*---------------------------------------------------------------------
-  PRELOADER - Pantalla de carga
+  PRELOADER
 ---------------------------------------------------------------------*/
 
 .loader_bg {
@@ -379,10 +352,9 @@ blockquote {
 }
 
 /*---------------------------------------------------------------------
-  HEADER - Cabecera y Navegación
+  HEADER
 ---------------------------------------------------------------------*/
 
-/* Header principal */
 .header {
   width: 100%;
   padding: 30px;
@@ -392,7 +364,6 @@ blockquote {
   transition: var(--transition-fast);
 }
 
-/* Header con efecto al hacer scroll */
 .header.scrolled {
   background: rgba(255, 255, 255, 0.98);
   box-shadow: var(--shadow-md);
@@ -401,7 +372,6 @@ blockquote {
   top: 0;
 }
 
-/* Logo */
 .logo {
   padding-top: 12px;
   transition: var(--transition-fast);
@@ -412,7 +382,6 @@ blockquote {
   width: auto;
 }
 
-/* Información de contacto en header */
 ul.conat_info {
   display: flex;
   align-items: center;
@@ -438,7 +407,6 @@ ul.conat_info li a:focus {
   transform: translateY(-2px);
 }
 
-/* Botones del header - alineación derecha */
 .right_bottun {
   float: right;
   display: flex;
@@ -448,7 +416,7 @@ ul.conat_info li a:focus {
 }
 
 /*---------------------------------------------------------------------
-  SIDEBAR NAVIGATION - Menú lateral
+  SIDEBAR
 ---------------------------------------------------------------------*/
 
 .sidepanel {
@@ -502,8 +470,6 @@ ul.conat_info li a:focus {
   transform: rotate(90deg);
 }
 
-/* Botón para abrir sidebar */
-/* NUEVO: will-change para optimizar animación */
 .openbtn {
   font-size: 20px;
   cursor: pointer;
@@ -525,7 +491,7 @@ ul.conat_info li a:focus {
 }
 
 /*---------------------------------------------------------------------
-  BANNER SECTION - Sección principal hero
+  BANNER SECTION - CORRECCIONES APLICADAS
 ---------------------------------------------------------------------*/
 
 .banner_main {
@@ -539,7 +505,6 @@ ul.conat_info li a:focus {
   overflow: hidden;
 }
 
-/* Overlay para mejorar legibilidad del texto */
 .banner_main::before {
   content: '';
   position: absolute;
@@ -556,7 +521,6 @@ ul.conat_info li a:focus {
   z-index: 2;
 }
 
-/* Contenedor de texto del banner */
 .text-bg {
   margin-top: 70px;
   text-align: left;
@@ -587,7 +551,6 @@ ul.conat_info li a:focus {
   display: block;
 }
 
-/* Formulario de tracking en banner */
 .ban_track {
   margin-top: 55px;
 }
@@ -600,24 +563,16 @@ ul.conat_info li a:focus {
   margin: 0;
 }
 
-/* Formulario de transformación */
+/* FORMULARIO - CORRECCIÓN DE CONTRASTE */
 .transfot {
   text-align: left;
 }
 
-.transfot span {
-  color: var(--text-light);
-  font-size: 17px;
-  display: block;
-  margin-bottom: 8px;
-}
-
+.transfot span,
 .transfot h3 {
-  color: var(--text-light);
-  font-size: 23px;
-  line-height: 30px;
-  font-weight: 500;
-  margin-bottom: 16px;
+  color: #222222 !important;
+  font-weight: 600;
+  text-shadow: none;
 }
 
 .transfot_form {
@@ -625,34 +580,34 @@ ul.conat_info li a:focus {
   padding: 12px 15px;
   height: 45px;
   margin-bottom: 15px;
-  border: var(--text-light) solid 2px;
+  border: 2px solid #0f98f8 !important;
   font-size: 16px;
   border-radius: var(--border-radius-md);
-  background: rgba(255, 255, 255, 0.2);
-  color: var(--text-light);
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #333333 !important;
   transition: var(--transition-fast);
 }
 
 .transfot_form::placeholder {
-  color: rgba(255, 255, 255, 0.9);
+  color: #666666 !important;
+  opacity: 0.8;
 }
 
 .transfot_form:focus {
-  background: rgba(255, 255, 255, 0.3);
+  background: #ffffff !important;
   outline: none;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 0 4px rgba(15, 152, 248, 0.3) !important;
 }
 
-/* Botón "Get Now" */
-/* NUEVO: will-change para optimizar animación */
+/* BOTÓN GET NOW - MEJOR CONTRASTE */
 .get_now {
   max-width: 150px;
   width: 100%;
   padding: 12px 0;
-  background: var(--color-secondary);
-  color: var(--text-light);
+  background: linear-gradient(135deg, #0f98f8 0%, #0d7dd1 100%) !important;
+  color: #ffffff !important;
   font-size: 17px;
-  font-weight: 500;
+  font-weight: 600;
   border: none;
   border-radius: var(--border-radius-md);
   cursor: pointer;
@@ -660,16 +615,16 @@ ul.conat_info li a:focus {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   will-change: transform;
+  box-shadow: 0 4px 15px rgba(15, 152, 248, 0.4);
 }
 
 .get_now:hover,
 .get_now:focus {
-  background-color: var(--color-black);
+  background: linear-gradient(135deg, #0d7dd1 0%, #0a6bb8 100%) !important;
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 6px 20px rgba(15, 152, 248, 0.5);
 }
 
-/* Controles del carousel del banner */
 #banner1 .carousel-caption {
   position: inherit;
   padding: 0;
@@ -720,7 +675,7 @@ ul.conat_info li a:focus {
 }
 
 /*---------------------------------------------------------------------
-  SECCIÓN ABOUT - Sobre nosotros
+  SECCIÓN ABOUT
 ---------------------------------------------------------------------*/
 
 .about {
@@ -731,7 +686,6 @@ ul.conat_info li a:focus {
   padding: var(--spacing-xl) 0;
 }
 
-/* NUEVO: contain para optimizar rendering del navegador */
 .about .about_img figure {
   margin: 0;
   border-radius: var(--border-radius-lg);
@@ -765,7 +719,7 @@ ul.conat_info li a:focus {
 }
 
 /*---------------------------------------------------------------------
-  SECCIÓN SERVICE - Servicios
+  SECCIÓN SERVICE - CORRECCIÓN DE CÍRCULOS
 ---------------------------------------------------------------------*/
 
 .service {
@@ -792,40 +746,46 @@ ul.conat_info li a:focus {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
+  align-items: flex-start;
 }
 
-/* NUEVO: contain y will-change para optimización */
 .service_box {
   text-align: center;
   width: 16.3%;
   margin-top: 30px !important;
   transition: var(--transition-fast);
-  padding: 20px;
+  padding: 20px 15px;
   contain: layout style paint;
   will-change: transform;
+  overflow: visible !important;
 }
 
 .service_box:hover {
   transform: translateY(-5px);
 }
 
+/* CÍRCULOS PERFECTOS - CORRECCIÓN */
 .service_box i {
-  width: 181px;
-  display: block;
-  height: 181px;
-  border-radius: var(--border-radius-circle);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 181px !important;
+  height: 181px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   transition: var(--transition-normal);
   box-shadow: var(--shadow-md);
+  overflow: hidden;
+  margin: 0 auto 20px auto;
 }
 
 .service_box i img {
-  text-align: center;
-  padding-top: 33%;
-  max-width: 80px;
+  max-width: 80px !important;
+  max-height: 80px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain;
+  padding-top: 0 !important;
   transition: var(--transition-fast);
 }
 
@@ -837,7 +797,7 @@ ul.conat_info li a:focus {
 .service_box h4 {
   color: var(--text-secondary);
   font-size: 17px;
-  margin-top: 25px;
+  margin-top: 15px;
   padding: 0;
   font-weight: 500;
   transition: var(--transition-fast);
@@ -847,7 +807,6 @@ ul.conat_info li a:focus {
   color: var(--color-primary);
 }
 
-/* Variantes de color para servicios */
 .blu_colo i {
   background-color: var(--color-primary);
 }
@@ -870,7 +829,7 @@ ul.conat_info li a:focus {
 }
 
 /*---------------------------------------------------------------------
-  SECCIÓN VEHICLES - Vehículos
+  SECCIÓN VEHICLES
 ---------------------------------------------------------------------*/
 
 .vehicles {
@@ -893,8 +852,6 @@ ul.conat_info li a:focus {
   font-weight: 400;
 }
 
-/* Tarjeta de vehículo */
-/* NUEVO: contain y will-change para optimización */
 .vehicles_truck {
   background-color: var(--color-light);
   transition: var(--transition-normal);
@@ -944,7 +901,6 @@ ul.conat_info li a:focus {
   margin: 0 auto;
 }
 
-/* Carousel de vehículos */
 #veh .carousel-caption {
   position: inherit;
   padding: 0;
@@ -954,7 +910,6 @@ ul.conat_info li a:focus {
   display: none;
 }
 
-/* NUEVO: will-change para optimizar animación de controles */
 #veh .carousel-control-prev,
 #veh .carousel-control-next {
   width: 50px;
@@ -1000,7 +955,7 @@ ul.conat_info li a:focus {
 }
 
 /*---------------------------------------------------------------------
-  SECCIÓN TESTIMONIAL - Testimonios
+  SECCIÓN TESTIMONIAL
 ---------------------------------------------------------------------*/
 
 .testimonial {
@@ -1011,7 +966,6 @@ ul.conat_info li a:focus {
   overflow: hidden;
 }
 
-/* Patrón decorativo de fondo */
 .testimonial::before {
   content: '';
   position: absolute;
@@ -1047,8 +1001,6 @@ ul.conat_info li a:focus {
   opacity: 0.98;
 }
 
-/* Caja de testimonio individual */
-/* NUEVO: contain para optimizar rendering */
 .testimonial_box {
   background: rgba(255, 255, 255, 0.15);
   border-radius: var(--border-radius-lg);
@@ -1088,7 +1040,6 @@ ul.conat_info li a:focus {
   color: var(--text-light);
 }
 
-/* Carousel de testimonios */
 .testimonial_Carousel .carousel-caption {
   position: inherit;
   padding: 0;
@@ -1109,7 +1060,6 @@ ul.conat_info li a:focus {
   display: none;
 }
 
-/* NUEVO: will-change para optimizar animación de controles */
 #myCarousel .carousel-control-prev,
 #myCarousel .carousel-control-next {
   width: 50px;
@@ -1151,7 +1101,6 @@ ul.conat_info li a:focus {
   top: 52%;
 }
 
-/* Botón read_more en testimonios */
 .testimonial .read_more::before {
   border-right: var(--text-light) solid 80px;
 }
@@ -1170,7 +1119,7 @@ ul.conat_info li a:focus {
 }
 
 /*---------------------------------------------------------------------
-  SECCIÓN CHOOSE - Por qué elegirnos
+  SECCIÓN CHOOSE - CORRECCIÓN DE ALINEACIÓN
 ---------------------------------------------------------------------*/
 
 .choose {
@@ -1183,16 +1132,18 @@ ul.conat_info li a:focus {
   padding-bottom: 60px;
 }
 
-/* Ítem individual de "por qué elegirnos" */
-/* NUEVO: will-change para optimizar animación */
+/* ALINEACIÓN PERFECTA - CORRECCIÓN */
 .choose_box {
   display: flex;
   align-items: flex-start;
+  gap: 20px;
   margin-bottom: 40px;
-  padding: 20px;
+  padding: 30px;
+  background: var(--color-white);
   border-radius: var(--border-radius-md);
   transition: var(--transition-fast);
   will-change: transform;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 }
 
 .choose_box:hover {
@@ -1201,34 +1152,51 @@ ul.conat_info li a:focus {
 }
 
 .choose_box i {
-  float: left;
-  padding-right: 20px;
-  font-size: 40px;
+  float: none !important;
+  font-size: 50px;
   color: var(--color-primary);
   min-width: 60px;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .choose_box h3 {
-  padding-top: 10px;
+  padding-top: 0;
   color: var(--text-secondary);
-  font-weight: bold;
+  font-weight: 700;
   font-size: 24px;
-  line-height: 30px;
-  margin: 0;
+  line-height: 1.3;
+  margin: 0 0 15px 0;
+  flex: 1;
 }
 
 .choose_box p {
-  display: inline-block;
+  display: block;
   color: var(--text-secondary);
-  font-size: 17px;
-  line-height: 30px;
-  padding: 10px 0;
+  font-size: 16px;
+  line-height: 1.8;
+  padding: 0;
   margin: 0;
+  width: 100%;
+  text-align: left;
+}
+
+/* Contenedor de grid para choose */
+.choose .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.choose .col-md-6,
+.choose .col-lg-6 {
+  flex: 0 0 calc(50% - 30px);
+  max-width: calc(50% - 30px);
 }
 
 /*---------------------------------------------------------------------
-  SECCIÓN CONTACT - Formulario de contacto
+  SECCIÓN CONTACT
 ---------------------------------------------------------------------*/
 
 .contact {
@@ -1241,8 +1209,6 @@ ul.conat_info li a:focus {
   padding-bottom: 60px;
 }
 
-/* Formulario de contacto principal */
-/* NUEVO: contain para optimizar rendering */
 .main_form {
   background: var(--color-white);
   border-radius: var(--border-radius-lg);
@@ -1286,8 +1252,6 @@ ul.conat_info li a:focus {
   outline: none;
 }
 
-/* Botón de envío */
-/* NUEVO: will-change para optimizar animación */
 .send_btn {
   background: var(--color-primary);
   font-weight: 500;
@@ -1316,18 +1280,15 @@ ul.conat_info li a:focus {
   box-shadow: var(--shadow-lg);
 }
 
-/* Placeholder personalizado */
 #request *::placeholder {
   color: var(--text-muted);
   opacity: 1;
 }
 
-/* Imagen de contacto */
 .co_tru {
   padding-right: 50px;
 }
 
-/* NUEVO: contain para optimizar rendering */
 .co_tru figure {
   margin: 0;
   border-radius: var(--border-radius-lg);
@@ -1346,7 +1307,7 @@ ul.conat_info li a:focus {
 }
 
 /*---------------------------------------------------------------------
-  FOOTER - Pie de página
+  FOOTER
 ---------------------------------------------------------------------*/
 
 .footer {
@@ -1356,7 +1317,6 @@ ul.conat_info li a:focus {
   text-align: center;
 }
 
-/* Iconos de ubicación y contacto */
 ul.location_icon {
   padding-top: 12px;
   display: flex;
@@ -1398,7 +1358,6 @@ ul.location_icon li a:focus {
   transform: translateY(-3px);
 }
 
-/* Mapa */
 .map {
   margin: var(--spacing-lg) 0;
   border-radius: var(--border-radius-lg);
@@ -1415,7 +1374,6 @@ ul.location_icon li a:focus {
   display: block;
 }
 
-/* Formulario de newsletter */
 .bottom_form {
   margin-top: 50px;
   max-width: 500px;
@@ -1451,7 +1409,6 @@ ul.location_icon li a:focus {
   box-shadow: var(--shadow-focus);
 }
 
-/* NUEVO: will-change para optimizar animación */
 .sub_btn {
   font-size: 16px;
   transition: var(--transition-fast);
@@ -1477,7 +1434,6 @@ ul.location_icon li a:focus {
   color: var(--text-light);
 }
 
-/* Copyright */
 .copyright {
   background-color: var(--color-primary);
   margin-top: 70px;
@@ -1522,10 +1478,9 @@ ul.location_icon li a:focus {
 }
 
 /*---------------------------------------------------------------------
-  BOTÓN READ MORE - Componente reutilizable
+  BOTÓN READ MORE
 ---------------------------------------------------------------------*/
 
-/* NUEVO: will-change para optimizar animación */
 .read_more {
   font-size: 20px;
   background-color: transparent;
@@ -1568,7 +1523,7 @@ ul.location_icon li a:focus {
 }
 
 /*---------------------------------------------------------------------
-  TÍTULOS DE SECCIÓN - Estilo consistente
+  TÍTULOS DE SECCIÓN
 ---------------------------------------------------------------------*/
 
 .titlepage h2 {
@@ -1597,7 +1552,6 @@ ul.location_icon li a:focus {
   UTILIDADES ADICIONALES
 ---------------------------------------------------------------------*/
 
-/* Clases de utilidad para espaciado */
 .mt-0 { margin-top: 0 !important; }
 .mt-sm { margin-top: var(--spacing-sm) !important; }
 .mt-md { margin-top: var(--spacing-md) !important; }
@@ -1607,34 +1561,29 @@ ul.location_icon li a:focus {
 .mb-md { margin-bottom: var(--spacing-md) !important; }
 .mb-lg { margin-bottom: var(--spacing-lg) !important; }
 
-/* Clases de utilidad para texto */
 .text-center { text-align: center !important; }
 .text-left { text-align: left !important; }
 .text-right { text-align: right !important; }
 .text-primary { color: var(--text-primary) !important; }
 .text-white { color: var(--text-light) !important; }
 
-/* Clases de utilidad para fondos */
 .bg-white { background-color: var(--color-white) !important; }
 .bg-light { background-color: var(--color-light) !important; }
 .bg-primary { background-color: var(--color-primary) !important; }
 
-/* Clases de utilidad para sombras */
 .shadow-sm { box-shadow: var(--shadow-sm) !important; }
 .shadow-md { box-shadow: var(--shadow-md) !important; }
 .shadow-lg { box-shadow: var(--shadow-lg) !important; }
 
-/* Clases de utilidad para bordes */
 .rounded-sm { border-radius: var(--border-radius-sm) !important; }
 .rounded-md { border-radius: var(--border-radius-md) !important; }
 .rounded-lg { border-radius: var(--border-radius-lg) !important; }
 .rounded-circle { border-radius: var(--border-radius-circle) !important; }
 
 /*---------------------------------------------------------------------
-  MEDIA QUERIES - Responsividad
+  MEDIA QUERIES - RESPONSIVE CON CORRECCIONES
 ---------------------------------------------------------------------*/
 
-/* Tablets y pantallas medianas */
 @media (max-width: 991px) {
   .banner_main {
     background-size: auto 60%;
@@ -1677,7 +1626,6 @@ ul.location_icon li a:focus {
   }
 }
 
-/* Móviles */
 @media (max-width: 767px) {
   .header {
     padding: 15px;
@@ -1757,9 +1705,24 @@ ul.location_icon li a:focus {
     max-width: 100%;
     border-radius: var(--border-radius-md);
   }
+  
+  /* CORRECCIÓN: Choose box en móvil */
+  .choose_box {
+    flex-direction: column;
+    text-align: center;
+    padding: 25px;
+  }
+  
+  .choose_box i {
+    margin: 0 auto 15px auto;
+  }
+  
+  .choose_box h3,
+  .choose_box p {
+    text-align: center;
+  }
 }
 
-/* Móviles pequeños */
 @media (max-width: 575px) {
   .text-bg h1 {
     font-size: 32px;
@@ -1775,8 +1738,8 @@ ul.location_icon li a:focus {
   }
   
   .service_box i {
-    width: 150px;
-    height: 150px;
+    width: 150px !important;
+    height: 150px !important;
     margin: 0 auto;
   }
   
@@ -1806,13 +1769,18 @@ ul.location_icon li a:focus {
   ul.location_icon li {
     justify-content: center;
   }
+  
+  /* CORRECCIÓN: Formulario en móvil pequeño */
+  .transfot_form {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
 }
 
 /*---------------------------------------------------------------------
-  ACCESIBILIDAD - Mejoras para usuarios con necesidades especiales
+  ACCESIBILIDAD
 ---------------------------------------------------------------------*/
 
-/* Modo de alto contraste para usuarios con baja visión */
 @media (prefers-contrast: high) {
   :root {
     --color-primary: #0066cc;
@@ -1829,7 +1797,6 @@ ul.location_icon li a:focus {
   }
 }
 
-/* Reducción de movimiento para usuarios con sensibilidad */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1844,11 +1811,8 @@ ul.location_icon li a:focus {
   }
 }
 
-/* Modo claro por defecto - colores optimizados para visibilidad */
-/* Nota: Se mantiene esquema de colores claros con texto oscuro para legibilidad */
-
 /*---------------------------------------------------------------------
-  PRINT STYLES - Estilos para impresión
+  PRINT STYLES
 ---------------------------------------------------------------------*/
 
 @media print {
