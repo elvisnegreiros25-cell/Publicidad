@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="es">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>BMW | El Placer de Conducir</title>
+      <meta name="keywords" content="BMW, M Motorsport, autos deportivos, venta de autos">
+      <meta name="description" content="Descubre la gama completa de vehículos BMW, desde deportivos M hasta modelos eléctricos i.">
+      <meta name="author" content="BMW Digital">
+      
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/responsive.css">
+      <link rel="icon" href="images/bmw_logo.png" type="image/png" />
+      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+   </head>
+
+   <body class="main-layout">
+   <div class="loader_bg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, #1a1a1a 0%, #000 100%); display: flex; justify-content: center; align-items: center; z-index: 9999;">
+    
+    <div class="loader" style="text-align: center; display: flex; flex-direction: column; align-items: center; animation: fadeIn 1.5s ease-in-out;">
+        
+        <img src="images/bmw_logo.png" alt="BMW Logo" style="width: 220px; filter: drop-shadow(0px 0px 30px rgba(255,255,255,0.2)); margin-bottom: 25px;" />
+         
+        <h2 style="color: #fff; font-family: 'Arial Black', sans-serif; font-style: italic; font-weight: 900; font-size: 3.5rem; letter-spacing: 10px; margin: 0; text-transform: uppercase; background: linear-gradient(180deg, #ffffff 30%, #777 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0px 5px 15px rgba(0,0,0,0.9));">
+            BMW MOTORSPORT
+        </h2>
+        
+        <div style="height: 6px; width: 180px; margin: 10px 0; display: flex; border-radius: 4px; overflow: visible; box-shadow: 0px 0px 15px rgba(226, 27, 34, 0.4);">
+            <div style="flex: 1; background-color: #00a2ed; box-shadow: 0 0 10px #00a2ed;"></div> 
+            <div style="flex: 1; background-color: #102542;"></div> 
+            <div style="flex: 1; background-color: #e21b22; box-shadow: 0 0 10px #e21b22;"></div> 
+        </div>
+
+        <p style="color: #fff; font-family: 'Verdana', sans-serif; font-style: italic; letter-spacing: 8px; font-size: 0.9rem; font-weight: 900; margin: 5px 0 0 0; text-transform: uppercase; text-shadow: 1px 1px 2px #000;">
+            El placer de conducir
+        </p>
+
+        <div class="loader-dots" style="color: #666; font-family: Arial; font-size: 11px; font-weight: bold; letter-spacing: 6px; margin-top: 40px; text-transform: uppercase;">
+            Iniciando Motores...
+        </div>
+    </div>
+
+</div>
+<style>
+    /* COMPORTAMIENTO DE DESPLAZAMIENTO SUAVE */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* IMPORTANTE: Este ajuste evita que el menú sticky tape los títulos.
+       Asegúrate de que tus secciones tengan estos IDs.
+    */
+    #deportivos, #electric, #choose, #contact, #sedanes, #suv, #configurador, #sucursales {
+        scroll-margin-top: 90px; 
+    }
+
+    /* --- ESTILOS DEL PANEL LATERAL --- */
+    .sidepanel {
+        height: 100%;
+        width: 0; /* Controlado por JS */
+        position: fixed;
+        z-index: 2000;
+        top: 0;
+        left: 0;
+        background-color: #000;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        border-right: 1px solid #1c1c1c;
+    }
+
+    .sidepanel a {
+        padding: 15px 30px;
+        text-decoration: none;
+        font-size: 14px;
+        color: #fff;
+        display: block;
+        transition: 0.3s;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .sidepanel a:hover {
+        color: #e22718;
+        padding-left: 40px;
+    }
+
+    .sidepanel .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+    }
+</style>
+
+<div id="mySidepanel" class="sidepanel">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    
+    <div class="sidepanel-header" style="text-align: center; padding: 10px 30px 30px 30px;">
+        <img src="images/bmw_logo.png" alt="BMW Logo" style="width: 60px;">
+        <h3 style="color: #fff; font-size: 10px; margin-top: 10px; letter-spacing: 3px;">M PERFORMANCE</h3>
+    </div>
+
+    <a href="index.html" onclick="closeNav()">Inicio</a>
+    <hr style="border-color: #222; margin: 10px 20px;">
+    
+    <a href="#deportivos" onclick="closeNav()"><span style="color: #0066b1;">///</span> M Motorsport</a>
+    <a href="#sedanes" onclick="closeNav()">Sedanes y Turismos</a>
+    <a href="#suv" onclick="closeNav()">Modelos X (SUV)</a>
+    <a href="#electric" onclick="closeNav()">BMW i (Eléctricos)</a>
+    
+    <hr style="border-color: #222; margin: 10px 20px;">
+
+    <a href="#configurador" onclick="closeNav()">Configurador</a>
+    <a href="#contact" onclick="closeNav()">Solicitar Cotización</a> 
+    <a href="#sucursales" onclick="closeNav()">Sucursales</a>
+</div>
+
+<header style="background: #000; border-bottom: 1px solid #1c1c1c; position: sticky; top: 0; z-index: 1000;">
+    <div class="container-fluid">
+        <div class="row align-items-center" style="height: 70px;">
+            <div class="col-md-2 col-sm-3 col-4">
+                <div class="logo" style="padding-left: 20px;">
+                    <a href="index.html"><img src="images/bmw_logo.png" alt="BMW" style="width: 45px;" /></a>
+                </div>
+            </div>
+            <div class="col-md-7 d-none d-md-block">
+                <nav style="display: flex; gap: 30px; align-items: center;">
+                    <a href="#choose" style="color: #fff; font-size: 12px; font-weight: bold; text-transform: uppercase;">Elegirnos</a>
+                    <a href="#electric" style="color: #fff; font-size: 12px; text-transform: uppercase;">Eléctricos</a>
+                    <a href="#deportivos" style="color: #fff; font-size: 12px; text-transform: uppercase;">M Motorsport</a>
+                    <a href="#contact" style="color: #fff; font-size: 12px; text-transform: uppercase;">Contacto</a>
+                </nav>
+            </div>
+            <div class="col-md-3 col-sm-9 col-8">
+                <div class="header_icons" style="display: flex; justify-content: flex-end; align-items: center; gap: 25px; padding-right: 30px;">
+                    <a href="#" style="color: #fff;"><i class="fa fa-user-o"></i></a>
+                    <a href="#" style="color: #fff;"><i class="fa fa-map-marker"></i></a>
+                    <button class="openbtn" onclick="openNav()" style="background: transparent; border: none; color: #fff; font-size: 22px; cursor: pointer;">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidepanel").style.width = "300px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidepanel").style.width = "0";
+    }
+</script>
+
+    <div id="bmw-m-portal-wrapper">
+    <style>
+        #bmw-m-portal-wrapper {
+            background: #000;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #bmw-m-portal-wrapper .banner_main {
+            position: relative;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4vh 5% 0 5%;
+            z-index: 1;
+        }
+
+        #bmw-m-portal-wrapper .bg-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(20, 20, 20, 0.7) 0%, rgba(0, 0, 0, 1) 100%);
+            z-index: 2;
+        }
+
+        #bmw-m-portal-wrapper .bg-watermark {
+            position: absolute;
+            top: 45%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: clamp(100px, 20vw, 350px);
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            letter-spacing: 20px;
+            z-index: 1;
+            text-transform: uppercase;
+        }
+
+        #bmw-m-portal-wrapper .content-grid {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            height: 100%;
+            position: relative;
+        }
+
+        #bmw-m-portal-wrapper .car-container {
+            position: absolute;
+            left: 55%;
+            top: 50%;
+            transform: translate(-40%, -50%);
+            width: 80%;
+            max-width: 1100px;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        #bmw-m-portal-wrapper .car-float {
+            width: 100%;
+            height: auto;
+            animation: bmwFloat 6s infinite ease-in-out;
+            filter: drop-shadow(0 30px 50px rgba(0,0,0,0.8));
+        }
+
+        @keyframes bmwFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.02); }
+        }
+
+        #bmw-m-portal-wrapper .info-side {
+            flex: 0 0 320px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 35px;
+            border-left: 8px solid #0056b3;
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        #bmw-m-portal-wrapper .form-side {
+            flex: 0 0 300px;
+            background: rgba(15, 15, 15, 0.85);
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        }
+
+        #bmw-m-portal-wrapper .m-title {
+            color: #0056b3;
+            font-size: 70px;
+            font-weight: 900;
+            margin: 0;
+            line-height: 0.9;
+            letter-spacing: -3px;
+        }
+
+        #bmw-m-portal-wrapper .m-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            box-sizing: border-box;
+        }
+
+        #bmw-m-portal-wrapper .m-btn {
+            width: 100%;
+            background: #e21b22;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #bmw-m-portal-wrapper .footer-accent {
+            background-color: #0066b1;
+            height: 8vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+        }
+
+        /* --- LÍNEA DE TRANSICIÓN MEJORADA --- */
+        #bmw-m-portal-wrapper .view-separator {
+            width: 100%;
+            height: 120px; /* Más alta para que se note el corte */
+            background: #0066b1;
+            /* Crea un corte diagonal marcado hacia abajo */
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 40%); 
+            position: relative;
+            z-index: 25;
+            margin-top: -2px; /* Evita cualquier línea blanca de separación */
+        }
+    </style>
+
+    <section class="banner_main">
+    <div class="bg-overlay"></div>
+    <div class="bg-watermark">M POWER</div>
+    
+    <div class="header-top-text">
+        <h2 class="main-brand-title">BMW MOTORSPORT</h2>
+        <div class="m-stripe-container">
+            <div class="stripe s-blue"></div>
+            <div class="stripe s-navy"></div>
+            <div class="stripe s-red"></div>
+        </div>
+    </div>
+
+    <div class="cfmoto-layout">
+        
+        <div class="info-side-premium">
+            <div class="label-box">EDICIÓN LIMITADA</div>
+            <h1 class="big-m">M8</h1>
+            <h3 class="sub-model">COMPETITION</h3>
+            <p class="desc-text">
+                Ingeniería de circuito adaptada a la carretera. El BMW M8 Competition combina el ADN de carreras con el lujo más exclusivo.
+            </p>
+            
+            <div class="stats-row">
+                <div class="stat-card">
+                    <span class="stat-val">625</span>
+                    <span class="stat-unit">CV POTENCIA</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-val">3.2s</span>
+                    <span class="stat-unit">0-100 KM/H</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="car-visual-wrapper">
+            <img src="images/m8.png" alt="BMW M8" class="car-main-img">
+            <div class="glow-effect"></div>
+        </div>
+
+        <div class="form-side-glass">
+            <div class="form-header">RESERVA TU PRUEBA</div>
+            <div class="input-group">
+                <input type="text" placeholder="NOMBRE COMPLETO" class="cfm-input">
+                <input type="text" placeholder="WHATSAPP / EMAIL" class="cfm-input">
+                <select class="cfm-input">
+                    <option>M8 COUPE</option>
+                    <option>M8 GRAN COUPE</option>
+                </select>
+                <button class="cfm-btn-submit">ENVIAR SOLICITUD <i class="arrow"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* --- ESTILO BASE INSPIRADO EN CF MOTO --- */
+.banner_main {
+    background: #e5e5e5; /* Gris claro industrial */
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    font-family: 'Arial Black', sans-serif;
+}
+
+/* Marca de agua gigante de fondo */
+.bg-watermark {
+    position: absolute;
+    font-size: 35vw;
+    font-weight: 900;
+    color: rgba(0,0,0,0.04);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    white-space: nowrap;
+}
+
+/* Layout Asimétrico */
+.cfmoto-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1.5fr 0.8fr;
+    width: 90%;
+    margin: 0 auto;
+    z-index: 5;
+    align-items: center;
+}
+
+/* Texto Izquierdo */
+.info-side-premium {
+    z-index: 10;
+}
+
+.label-box {
+    background: #111;
+    color: #fff;
+    display: inline-block;
+    padding: 5px 15px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.big-m {
+    font-size: 120px;
+    line-height: 0.8;
+    margin: 0;
+    color: #111;
+    font-style: italic;
+}
+
+.sub-model {
+    font-size: 30px;
+    color: #e21b22; /* Rojo M */
+    margin-bottom: 20px;
+}
+
+.desc-text {
+    font-family: 'Arial', sans-serif;
+    color: #444;
+    font-size: 14px;
+    max-width: 300px;
+    line-height: 1.6;
+}
+
+/* Stats estilo ficha técnica */
+.stats-row {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.stat-card {
+    border-left: 3px solid #00a2ed;
+    padding-left: 15px;
+}
+
+.stat-val {
+    display: block;
+    font-size: 28px;
+    color: #111;
+}
+
+.stat-unit {
+    font-size: 10px;
+    color: #888;
+}
+
+/* Imagen del Auto Central */
+.car-visual-wrapper {
+    position: relative;
+    z-index: 6;
+}
+
+.car-main-img {
+    width: 140%; /* El auto sobresale para dar impacto */
+    margin-left: -20%;
+    filter: drop-shadow(0 30px 50px rgba(0,0,0,0.3));
+    transition: transform 0.5s ease;
+}
+
+.car-main-img:hover {
+    transform: scale(1.05) rotate(-2deg);
+}
+
+/* Formulario Estilo Glassmorphism */
+.form-side-glass {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 4px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.form-header {
+    font-size: 14px;
+    color: #00a2ed;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.cfm-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    background: white;
+    font-size: 12px;
+    outline: none;
+}
+
+.cfm-btn-submit {
+    width: 100%;
+    background: #111;
+    color: white;
+    padding: 15px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cfm-btn-submit:hover {
+    background: #e21b22;
+}
+
+/* Rayas M decorativas */
+.m-stripe-container {
+    height: 6px;
+    width: 180px;
+    display: flex;
+    margin: 10px auto;
+}
+
+.stripe { flex: 1; }
+.s-blue { background: #00a2ed; }
+.s-navy { background: #102542; }
+.s-red { background: #e21b22; }
+
+.header-top-text {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+}
+
+.main-brand-title {
+    color: rgba(0,0,0,0.1);
+    letter-spacing: 20px;
+    font-size: 40px;
+}
+</style>
+
+<div style="width: 100%; height: 120px; background: #d6d6d6; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 25%); margin-top: -1px; border-top: 4px solid #e22718; position: relative; z-index: 5;"></div>
+
+<section id="bmw-m-about-section" class="about">
+    <div class="tech-lines"></div>
+
+    <div style="position: absolute; top: -10%; left: -10%; width: 600px; height: 600px; background: rgba(0, 102, 177, 0.08); filter: blur(120px); border-radius: 50%; z-index: 2; pointer-events: none;"></div>
+
+    <div class="container">
+        <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 40px;">
+            
+            <div style="flex: 1.6; min-width: 450px; perspective: 1500px;">
+                <div class="about_right" style="position: relative; padding: 20px;">
+                    
+                    <div style="position: absolute; top: -10px; left: 0; font-family: monospace; font-size: 11px; color: #0066b1; font-weight: bold; z-index: 3;">
+                        [ HIGH_RESOLUTION_RENDER ] // SCALE_1.2X <br> 
+                        ENGINE_SCAN: ACTIVE
+                    </div>
+
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 1px solid rgba(0, 102, 177, 0.25); z-index: 1;">
+                        <div style="position: absolute; top: -5px; left: -5px; width: 30px; height: 2px; background: #0066b1;"></div>
+                        <div style="position: absolute; top: -5px; left: -5px; width: 2px; height: 30px; background: #0066b1;"></div>
+                        <div style="position: absolute; bottom: -5px; right: -5px; width: 30px; height: 2px; background: #e22718;"></div>
+                        <div style="position: absolute; bottom: -5px; right: -5px; width: 2px; height: 30px; background: #e22718;"></div>
+                    </div>
+
+                    <figure style="margin: 0; position: relative; z-index: 2; overflow: hidden; 
+                            clip-path: polygon(8% 0, 100% 0, 100% 92%, 92% 100%, 0 100%, 0 8%);
+                            box-shadow: 0 60px 100px rgba(0,0,0,0.3); background: #000;
+                            transition: transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);"
+                            onmouseover="this.style.transform='rotateY(-8deg) rotateX(4deg) scale(1.05)';"
+                            onmouseout="this.style.transform='rotateY(0) rotateX(0) scale(1)';">
+                        
+                        <img src="images/bestia.jpg" alt="BMW Performance" style="width: 100%; height: auto; display: block; filter: contrast(1.1) brightness(1.05) saturate(1.1);" />
+
+                        <div class="shine-effect" style="position: absolute; top: 0; left: -150%; width: 100%; height: 100%; 
+                                    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+                                    transition: 0.9s ease-in-out; z-index: 4;">
+                        </div>
+
+                        <div style="position: absolute; bottom: 30px; right: 30px; background: #e22718; color: #fff; padding: 8px 20px; font-weight: 900; font-size: 14px; font-style: italic; letter-spacing: 2px; z-index: 5; box-shadow: 10px 10px 30px rgba(0,0,0,0.5);">
+                            M POWER
+                        </div>
+                    </figure>
+
+                    <div style="position: absolute; bottom: -10px; left: 10%; width: 80%; height: 30px; background: rgba(0,0,0,0.4); filter: blur(25px); border-radius: 50%; z-index: 0;"></div>
+                </div>
+            </div>
+
+            <div style="flex: 1; min-width: 320px;">
+                <div class="titlepage">
+                    
+                    <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                        <div style="width: 50px; height: 5px; background: #e22718;"></div>
+                        <div style="width: 25px; height: 5px; background: #e22718; opacity: 0.6;"></div>
+                    </div>
+
+                    <span class="tech-subtitle">Legado y Visión M</span>
+                    
+                    <h2 class="main-title">
+                        Ingeniería <span class="stroke-text">Sin Límites</span>
+                    </h2>
+                    
+                    <div class="info-box">
+                        <p style="color: #333; font-size: 17px; line-height: 1.7; margin: 0;">
+                            En <strong style="color: #000; font-weight: 800;">BMW Motorsport</strong>, la perfección no es una meta, es nuestra norma. Optimizamos cada milímetro integrando una logística de alta precisión.
+                        </p>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 20px; padding-left: 10px;">
+                        <div class="pilar-card">
+                            <h4>01. Rendimiento Bruto</h4>
+                            <p style="color: #666; font-size: 14px; margin: 0;">Motores diseñados para dominar el asfalto.</p>
+                        </div>
+                        <div class="pilar-card">
+                            <h4>02. Innovación Digital</h4>
+                            <p style="color: #666; font-size: 14px; margin: 0;">Sistemas inteligentes de anticipación técnica.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    let lastScrollTop = 0;
+    const navbar = document.querySelector('header'); 
+
+    window.addEventListener('scroll', function() {
+        if (!navbar) return;
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            navbar.classList.add('nav-hidden');
+        } else {
+            navbar.classList.remove('nav-hidden');
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }, false);
+</script>
+      <style>
+    /* --- SECCIÓN DE SERVICIOS PREMIUM (FONDO NEGRO UNIFICADO) --- */
+    #service {
+        /* Fondo negro con degradado radial sutil, igual que la imagen principal */
+        background: rgb(20,20,20);
+        background: radial-gradient(circle, rgba(30,30,30,1) 0%, rgba(10,10,10,1) 100%);
+        padding: 120px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Patrón de líneas técnicas sutiles (Tech-Lines) para dar textura industrial */
+    #service::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 100% 4px;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    /* Elementos decorativos flotantes M-Motorsport */
+    .bg-shape {
+        position: absolute;
+        z-index: 0;
+        filter: blur(100px);
+        border-radius: 50%;
+        opacity: 0.1; /* Muy sutil sobre negro */
+    }
+    .shape-red { top: -10%; right: -5%; width: 400px; height: 400px; background: #e21b22; }
+    .shape-blue { bottom: -10%; left: -5%; width: 500px; height: 500px; background: #0066b1; }
+
+    /* Marca de agua de fondo */
+    .watermark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 15vw;
+        font-weight: 900;
+        color: rgba(255, 255, 255, 0.015); /* Casi invisible sobre negro */
+        text-transform: uppercase;
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    /* Títulos ajustados para fondo oscuro */
+    #service .titlepage h2 {
+        color: #ffffff; /* Texto blanco */
+        font-family: 'Arial Black', sans-serif;
+        text-transform: uppercase;
+        font-style: italic;
+        font-size: clamp(30px, 5vw, 45px);
+        margin: 15px 0;
+    }
+
+    #service .titlepage p {
+        color: #aaaaaa; /* Gris claro para descripción */
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .service_main_bmw {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-top: 60px;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* --- TARJETAS TÉCNICAS (ESTILO PANEL BLANCO FLOTANTE) --- */
+    .service_box_m {
+        /* Fondo blanco de alta opacidad con blur ligero (Glassmorphism inverso) */
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(5px);
+        width: 240px;
+        padding: 50px 25px;
+        text-align: center;
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        border: 1px solid rgba(255,255,255,1);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2); /* Sombra más fuerte sobre negro */
+        position: relative;
+        /* Geometría técnica M-Motorsport */
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%);
+    }
+
+    /* Indicador lateral de color (M-Colors) */
+    .service_box_m::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 5px; height: 100%;
+        transition: 0.3s;
+    }
+    .m_blue::before { background: #0066b1; }
+    .m_red::before { background: #e21b22; }
+    .m_silver::before { background: #aaaaaa; }
+
+    /* Efecto Hover: Cambio a modo Pista (Inversión) */
+    .service_box_m:hover {
+        transform: translateY(-20px) scale(1.02);
+        background: #e21b22; /* Fondo Rojo M en hover */
+        border-color: #e21b22;
+    }
+
+    .service_box_m i {
+        display: block;
+        margin-bottom: 30px;
+        position: relative;
+    }
+
+    .service_box_m i img {
+        width: 70px;
+        height: auto;
+        transition: 0.5s;
+        /* Iconos oscuros sobre fondo blanco por defecto */
+        filter: brightness(0) saturate(100%) invert(14%) sepia(10%) saturate(1915%) hue-rotate(182deg) brightness(96%) contrast(92%);
+    }
+
+    /* Al hacer hover, iconos blancos sobre fondo rojo */
+    .service_box_m:hover i img {
+        filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(255,255,255,0.5));
+        transform: rotateY(180deg);
+    }
+
+    /* Texto oscuro sobre fondo blanco por defecto */
+    .service_box_m h4 {
+        font-family: 'Arial Black', sans-serif;
+        font-size: 13px;
+        text-transform: uppercase;
+        color: #1a1a1a;
+        margin: 0;
+        letter-spacing: 1.5px;
+        transition: 0.4s;
+    }
+
+    /* Texto blanco sobre fondo rojo en hover */
+    .service_box_m:hover h4 {
+        color: #ffffff;
+    }
+
+    /* --- BOTÓN DE ACCIÓN PERFORMANCE --- */
+    .btn_m_container {
+        margin-top: 70px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .btn_m_performance {
+        background: #0066b1; /* Azul BMW */
+        color: #fff;
+        padding: 20px 50px;
+        display: inline-block;
+        text-transform: uppercase;
+        font-weight: 900;
+        font-style: italic;
+        letter-spacing: 3px;
+        transition: 0.4s;
+        border: none;
+        /* Corte geométrico M-Power */
+        clip-path: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+        box-shadow: 0 10px 30px rgba(0,102,177,0.3);
+    }
+
+    .btn_m_performance:hover {
+        background: #e21b22; /* Rojo M en hover */
+        color: #fff;
+        transform: translateX(10px);
+        box-shadow: -10px 10px 0px #0066b1;
+        text-decoration: none;
+    }
+</style>
+
+<div id="service">
+    <div class="bg-shape shape-red"></div>
+    <div class="bg-shape shape-blue"></div>
+    
+    <div class="watermark">MOTORSPORT</div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="titlepage" style="text-align: center; position: relative; z-index: 2;">
+                    <div style="width: 80px; height: 4px; background: #e21b22; margin: 0 auto 20px;"></div>
+                    <span style="color: #0066b1; font-weight: 900; letter-spacing: 8px; text-transform: uppercase; font-size: 13px;">Advanced Engineering</span>
+                    <h2>
+                        SERVICIOS <span style="color: #e21b22;">M PERFORMANCE</span>
+                    </h2>
+                    <p>
+                        Transformamos la potencia en dominio. Cada servicio está calibrado bajo los estándares de competición más rigurosos del mundo.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="service_main_bmw">
+                    
+                    <div class="service_box_m m_blue">
+                        <i><img src="images/ser1.png" alt="Motor"/></i>
+                        <h4>Optimización de Power Unit</h4>
+                    </div>
+
+                    <div class="service_box_m m_red">
+                        <i><img src="images/ser2.png" alt="Suspension"/></i>
+                        <h4>Dinámica de Chasis M</h4>
+                    </div>
+
+                    <div class="service_box_m m_silver">
+                        <i><img src="images/ser3.png" alt="Telemetry"/></i>
+                        <h4>Análisis de Telemetría</h4>
+                    </div>
+
+                    <div class="service_box_m m_blue">
+                        <i><img src="images/ser4.png" alt="Aero"/></i>
+                        <h4>Componentes de Carbono</h4>
+                    </div>
+
+                    <div class="service_box_m m_red">
+                        <i><img src="images/ser5.png" alt="Brakes"/></i>
+                        <h4>Sistemas de Frenado M</h4>
+                    </div>
+
+                </div>
+            </div>
+            
+            <div class="col-md-12 btn_m_container" style="text-align: center;">
+                <a class="btn_m_performance" href="#">Explorar Catálogo M</a>
+            </div>
+        </div>
+    </div>
+</div>
+    <style>
+    /* --- SECCIÓN DE FLOTA MOTORSPORT / ECOTRACE --- */
+    #vehicles {
+        background: #0a0a0a;
+        padding: 100px 0;
+        position: relative;
+    }
+
+    /* Título con estilo de ingeniería */
+    #vehicles .titlepage h2 {
+        color: #fff;
+        font-family: 'Arial Black', sans-serif;
+        text-transform: uppercase;
+        font-style: italic;
+        letter-spacing: 2px;
+    }
+
+    #vehicles .titlepage p {
+        color: #0066b1; /* Azul BMW */
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 4px;
+    }
+
+    /* Contenedor de Vehículo con marco técnico */
+    .vehicles_truck {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        transition: 0.5s;
+        position: relative;
+        overflow: hidden;
+        clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+    }
+
+    .vehicles_truck:hover {
+        background: rgba(226, 39, 24, 0.1); /* Brillo Rojo M */
+        border-color: #e22718;
+        transform: translateY(-10px);
+    }
+
+    .vehicles_truck figure img {
+        width: 100%;
+        filter: grayscale(100%) brightness(0.8);
+        transition: 0.5s;
+    }
+
+    .vehicles_truck:hover figure img {
+        filter: grayscale(0%) brightness(1);
+        transform: scale(1.1);
+    }
+
+    /* Etiquetas de especificaciones tipo Dashboard */
+    .spec_label {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 10px;
+        color: #d6d6d6;
+        text-transform: uppercase;
+        display: block;
+        margin-top: 10px;
+        border-left: 2px solid #e22718;
+        padding-left: 8px;
+    }
+
+    .blac_co {
+        color: #fff;
+        font-family: 'Arial Black', sans-serif;
+        font-style: italic;
+        margin-top: 25px;
+        text-transform: uppercase;
+    }
+</style>
+
+<section id="vehicles" class="vehicles">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage" style="text-align: center;">
+                    <p>Logística de Alta Precisión</p>
+                    <h2>Flota <span style="color: #e22718;">M Motorsport</span></h2>
+                    <div style="width: 60px; height: 3px; background: #0066b1; margin: 20px auto; display: inline-block;"></div>
+                    <div style="width: 60px; height: 3px; background: #e22718; margin: 20px auto; display: inline-block;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="veh" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="carousel-caption" style="position: relative; left: 0; right: 0; padding: 0;">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="vehicles_truck">
+                                    <figure><img src="images/m8_2026.png" alt="M8"/></figure>
+                                    <span class="spec_label">Status: Optimized</span>
+                                    <span class="spec_label">Unit: BMW-M8-2026</span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="vehicles_truck">
+                                    <figure><img src="images/m4.png" alt="M4"/></figure>
+                                    <span class="spec_label">Status: Active Monitor</span>
+                                    <span class="spec_label">Unit: BMW-M4-GT3</span>
+                                </div>
+                                <h3 class="blac_co">ALTO RENDIMIENTO 🔥 <br><span style="color: #0066b1;">Y TU LO SABES 🏁</span></h3>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="vehicles_truck">
+                                    <figure><img src="images/m9.png" alt="X5M"/></figure>
+                                    <span class="spec_label">Status: Traceability On</span>
+                                    <span class="spec_label">Unit: BMW-X5M-Ecotrace</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <style>
+    /* --- SECCIÓN DE TESTIMONIOS WHITE & BLUE TECH --- */
+    #testimonial {
+        /* Fondo combinado Blanco y Azul sutil */
+        background: linear-gradient(135deg, #ffffff 0%, #f0f4f8 50%, #e1e8f0 100%);
+        padding: 120px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Decoración geométrica en azul */
+    #testimonial::before {
+        content: '';
+        position: absolute;
+        top: -10%;
+        left: -5%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(0, 61, 120, 0.05) 0%, transparent 70%);
+        border-radius: 50%;
+    }
+
+    #testimonial .titlepage h2 {
+        color: #1a1a1a;
+        font-family: 'Arial Black', sans-serif;
+        text-transform: uppercase;
+        font-style: italic;
+        position: relative;
+        z-index: 2;
+    }
+
+    #testimonial .titlepage h2 span {
+        color: #003d78; /* Azul BMW */
+    }
+
+    /* Caja de Testimonio Refinada */
+    .testimonial_box {
+        background: #ffffff;
+        border: 1px solid #e1e8f0;
+        padding: 60px 50px;
+        border-radius: 0;
+        /* Corte inclinado dinámico */
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
+        transition: all 0.4s ease;
+        max-width: 850px;
+        margin: 40px auto;
+        box-shadow: 0 20px 40px rgba(0, 61, 120, 0.08);
+    }
+
+    .testimonial_box:hover {
+        transform: translateY(-5px);
+        border-left: 10px solid #e22718; /* Acento Rojo M al pasar el mouse */
+    }
+
+    .testimonial_box figure {
+        margin-bottom: 25px;
+    }
+
+    .testimonial_box figure img {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        border: 4px solid #003d78;
+        padding: 3px;
+        object-fit: cover;
+        background: #fff;
+    }
+
+    .testimonial_box h3 {
+        color: #1a1a1a;
+        font-family: 'Arial Black', sans-serif;
+        text-transform: uppercase;
+        font-size: 22px;
+        margin-bottom: 5px;
+    }
+
+    .testimonial_box .kisu {
+        color: #e22718; /* Rojo M para el cargo */
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        font-size: 13px;
+        text-transform: uppercase;
+    }
+
+    .testimonial_box p {
+        color: #444;
+        font-style: italic;
+        font-size: 19px;
+        line-height: 32px;
+        margin-top: 25px;
+        position: relative;
+    }
+
+    /* Comillas decorativas */
+    .testimonial_box p::before {
+        content: '"';
+        font-size: 80px;
+        color: rgba(0, 61, 120, 0.1);
+        position: absolute;
+        top: -40px;
+        left: -20px;
+        font-family: serif;
+    }
+
+    /* Indicadores del carrusel en Azul */
+    .testimonial_Carousel .carousel-indicators li {
+        background-color: #003d78;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+    }
+
+    /* Flechas de control personalizadas */
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+        background-color: #003d78;
+        border-radius: 50%;
+        background-size: 50%;
+        width: 50px;
+        height: 50px;
+    }
+</style>
+
+<div id="testimonial" class="testimonial">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage" style="text-align: center;">
+                    <span style="color: #003d78; font-weight: 900; letter-spacing: 6px; text-transform: uppercase; font-size: 14px;">ELITE DE CLASE MUNDIAL</span>
+                    <h2>OPINIONES DE <span>ALTO RENDIMIENTO</span></h2>
+                </div>
+            </div>
+        </div>
+        
+        <div id="myCarousel" class="carousel slide testimonial_Carousel" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            
+            <div class="carousel-inner">
+                
+                <div class="carousel-item active">
+                    <div class="testimonial_box">
+                        <figure><img src="images/MX.jpg" alt="Max Verstappen"/></figure>
+                        <h3>Max Verstappen <br><span class="kisu">(3x F1 World Champion)</span></h3>
+                        <p>La respuesta del motor y la precisión técnica de la telemetría son simplemente de otro nivel. Para ganar, necesitas datos exactos y potencia pura, y aquí los tienes de sobra. Simply lovely! 🏆</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="testimonial_box">
+                        <figure><img src="images/LW.jpg" alt="Lewis Hamilton"/></figure>
+                        <h3>Lewis Hamilton <br><span class="kisu">(7x F1 World Champion)</span></h3>
+                        <p>El balance entre la aerodinámica y la estabilidad en curvas es impresionante. Se nota el compromiso con la excelencia y el detalle en cada ajuste de chasis. Es una experiencia de conducción definitiva.</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="testimonial_box">
+                        <figure><img src="images/cr.jpg" alt="Director Técnico"/></figure>
+                        <h3>Pedro Lemesda <br><span class="kisu">Adquisidor del servicio</span></h3>
+                        <p>Es increible , fue una de las experiencias mas hermosas de mi vida , y espero que el mundo de los motores nunca se apague gracias por el exelente servicio 👑.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Siguiente</span>
+            </a>
+        </div>
+    </div>
+</div>
+      <style>
+    /* --- SECCIÓN CHOOSE: M-POWER ENGINEERING --- */
+    .choose {
+        background: linear-gradient(180deg, #0a0a0a 0%, #001a33 100%);
+        padding: 120px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Elementos de fondo: Líneas de velocidad */
+    .choose::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: repeating-linear-gradient(45deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 10px);
+        pointer-events: none;
+    }
+
+    .choose .titlepage h2 {
+        color: #fff;
+        font-family: 'Arial Black', sans-serif;
+        text-transform: uppercase;
+        font-style: italic;
+        letter-spacing: 2px;
+        margin-bottom: 60px;
+    }
+
+    /* Tarjetas de Selección */
+    .choose_box {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 50px 40px;
+        transition: all 0.5s ease;
+        position: relative;
+        /* Corte diagonal en la esquina */
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 92% 100%, 0 100%);
+    }
+
+    .choose_box:hover {
+        background: rgba(255, 255, 255, 0.07);
+        border-bottom: 4px solid #e22718; /* Línea Roja M */
+        transform: translateY(-10px);
+    }
+
+    .choose_box i {
+        display: inline-block;
+        margin-bottom: 30px;
+        background: #003d78;
+        padding: 20px;
+        clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%);
+    }
+
+    .choose_box i img {
+        width: 50px;
+        filter: brightness(0) invert(1);
+    }
+
+    .choose_box h3 {
+        color: #fff;
+        font-family: 'Arial Black', sans-serif;
+        text-transform: uppercase;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .choose_box p {
+        color: #aaaaaa;
+        font-size: 16px;
+        line-height: 26px;
+        margin-bottom: 30px;
+    }
+
+    /* Botón Read More Estilo M */
+    .choose_box .read_more {
+        background: transparent;
+        color: #e22718;
+        text-transform: uppercase;
+        font-weight: 900;
+        font-style: italic;
+        letter-spacing: 2px;
+        border: 2px solid #e22718;
+        padding: 10px 25px;
+        transition: 0.3s;
+        display: inline-block;
+    }
+
+    .choose_box .read_more:hover {
+        background: #e22718;
+        color: #fff;
+        text-decoration: none;
+        box-shadow: 0 0 20px rgba(226, 39, 24, 0.4);
+    }
+
+    /* Acento tricolor en el borde superior de la sección */
+    .m-stripe {
+        height: 6px;
+        width: 100%;
+        display: flex;
+        position: absolute;
+        top: 0;
+    }
+    .stripe-1 { background: #0066b1; width: 33.3%; }
+    .stripe-2 { background: #00305b; width: 33.3%; }
+    .stripe-3 { background: #e22718; width: 33.3%; }
+</style>
+
+<div class="choose">
+    <div class="m-stripe">
+        <div class="stripe-1"></div>
+        <div class="stripe-2"></div>
+        <div class="stripe-3"></div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage" style="text-align: center;">
+                    <span style="color: #0066b1; font-weight: 900; letter-spacing: 5px;">M-TECH EXCELLENCE</span>
+                    <h2>POR QUÉ ELEGIR <span style="color: #e22718;">NUESTRO SERVICIO</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="choose_box">
+                    <i><img src="images/why1.png" alt="Vision"/></i>
+                    <h3>Visión</h3>
+                    <p>Lideramos la integración de software avanzado y monitoreo en tiempo real para garantizar que cada unidad mantenga su ADN competitivo bajo control total.</p>
+                    <a class="read_more" href="#">VISTAZO</a>
+                </div>
+            </div>
+
+            <div class="col-md-5 offset-md-2">
+                <div class="choose_box">
+                    <i><img src="images/why2.png" alt="Engineering"/></i>
+                    <h3>Ingeniería de Precisión</h3>
+                    <p>Cálculos de rendimiento exactos y diagnósticos de telemetría de vanguardia para asegurar una inversión transparente en alta performance.</p>
+                    <a class="read_more" href="#">Cotizacion</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+      <style>
+    /* --- SECCIÓN CONTACTO: COMMAND CENTER --- */
+    #contact {
+        background: #0a0a0a;
+        padding: 100px 0;
+        position: relative;
+    }
+
+    #contact .titlepage h2 {
+        color: #fff;
+        font-family: 'Arial Black', sans-serif;
+        text-transform: uppercase;
+        font-style: italic;
+        letter-spacing: 2px;
+    }
+
+    /* Contenedor del Formulario Estilo Panel Técnico */
+    .con_bg {
+        background: transparent;
+        margin-top: 50px;
+    }
+
+    .main_form {
+        background: #ffffff; /* Panel blanco limpio */
+        padding: 50px 40px;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 90% 100%, 0 100%);
+        box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    }
+
+    .contactus {
+        border: none;
+        border-bottom: 2px solid #d6d6d6;
+        background: transparent;
+        width: 100%;
+        height: 50px;
+        margin-bottom: 25px;
+        color: #1a1a1a;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+    .contactus:focus {
+        border-bottom: 2px solid #003d78;
+        outline: none;
+    }
+
+    .contactusmess {
+        border: none;
+        border-bottom: 2px solid #d6d6d6;
+        background: transparent;
+        width: 100%;
+        height: 80px;
+        margin-bottom: 35px;
+        color: #1a1a1a;
+        font-weight: 600;
+    }
+
+    /* Botón Send con los colores de M Motorsport */
+    .send_btn {
+        background: #1a1a1a;
+        color: #fff;
+        font-family: 'Arial Black', sans-serif;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-style: italic;
+        letter-spacing: 3px;
+        padding: 15px 40px;
+        border: none;
+        width: 100%;
+        transition: 0.4s;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .send_btn::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 5px;
+        background: linear-gradient(90deg, #0066b1 33%, #00305b 33%, #00305b 66%, #e22718 66%);
+    }
+
+    .send_btn:hover {
+        background: #003d78;
+        color: #fff;
+        box-shadow: 0 10px 20px rgba(0,61,120,0.3);
+    }
+
+    /* Contenedor de Imagen con efecto de Escaneo */
+    .co_tru {
+        position: relative;
+        text-align: right;
+    }
+
+    .co_tru figure {
+        position: relative;
+        display: inline-block;
+    }
+
+    .co_tru figure::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 2px;
+        background: #e22718;
+        box-shadow: 0 0 15px #e22718;
+        animation: scan 3s infinite linear;
+    }
+
+    @keyframes scan {
+        0% { top: 0%; }
+        100% { top: 100%; }
+    }
+
+    .co_tru img {
+        max-width: 100%;
+        height: auto;
+        filter: drop-shadow(0 0 20px rgba(0,61,120,0.4));
+    }
+</style>
+
+<div id="contact" class="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage" style="text-align: left;">
+                    <span style="color: #0066b1; font-weight: 900; letter-spacing: 5px;">CONTACTANOS</span>
+                    <h2>SOLICITA <span style="color: #e22718;">ANÁLISIS TÉCNICO</span></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="con_bg">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 offset-md-1">
+                    <form id="request" class="main_form">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input class="contactus" placeholder="Responsable" type="text" name="Name"> 
+                            </div>
+                            <div class="col-md-12">
+                                <input class="contactus" placeholder="(Email)" type="text" name="Email"> 
+                            </div>
+                            <div class="col-md-12">
+                                <input class="contactus" placeholder="(Teléfono)" type="text" name="Phone Number"> 
+                            </div>
+                            <div class="col-md-12">
+                                <textarea class="contactusmess" placeholder="Especificaciones del proyecto o consulta de repuestos..."></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <button class="send_btn">Iniciar Conexión</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-md-7">
+                    <div class="co_tru">
+                        <figure>
+                            <img src="images/mal.jpg" alt="BMW M Performance Visualizer"/>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+     <style>
+    /* --- FOOTER REPARADO: M-PERFORMANCE --- */
+    footer {
+        background: #050505;
+        padding-top: 80px;
+        position: relative;
+        overflow: hidden; /* Evita desbordamientos */
+        color: #fff;
+    }
+
+    /* Línea superior tricolor BMW M */
+    .footer-top-line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        display: flex;
+        z-index: 10;
+    }
+    .line-blue { background: #0066b1; flex: 1; }
+    .line-dark-blue { background: #00305b; flex: 1; }
+    .line-red { background: #e22718; flex: 1; }
+
+    /* Iconos y Texto */
+    .location_icon {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .location_icon li {
+        margin-bottom: 25px;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .location_icon li a i {
+        width: 45px;
+        height: 45px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid #003d78;
+        color: #e22718;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 15px;
+        font-size: 18px;
+        /* Corte diagonal corregido */
+        clip-path: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+    }
+
+    .location_icon li span {
+        color: #aaaaaa;
+        font-size: 15px;
+        line-height: 1.4;
+    }
+
+    /* Newsletter Technical Panel */
+    .bottom_form {
+        margin-top: 40px;
+        background: rgba(255, 255, 255, 0.02);
+        padding: 25px;
+        border-left: 4px solid #0066b1;
+    }
+
+    .bottom_form h3 {
+        color: #fff;
+        font-family: 'Arial Black', sans-serif;
+        text-transform: uppercase;
+        font-size: 16px;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+    }
+
+    .enter {
+        background: #1a1a1a;
+        border: 1px solid #333;
+        color: #fff;
+        width: 100%;
+        height: 45px;
+        padding: 0 15px;
+        margin-bottom: 10px;
+        font-family: 'Courier New', monospace;
+    }
+
+    .sub_btn {
+        background: #e22718;
+        color: #fff;
+        width: 100%;
+        height: 45px;
+        text-transform: uppercase;
+        font-weight: 900;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+        clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+    }
+
+    .sub_btn:hover {
+        background: #0066b1;
+        transform: translateY(-2px);
+    }
+
+    /* Mapa con corrección de escala */
+    .map_container {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        filter: invert(90%) hue-rotate(180deg) brightness(0.7);
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    .map_container img {
+        width: 100%;
+        display: block;
+        height: auto;
+    }
+
+    /* Copyright Terminal */
+    .copyright {
+        background: #000;
+        padding: 25px 0;
+        margin-top: 60px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .copyright p {
+        color: #666;
+        font-family: 'Courier New', monospace;
+        font-size: 12px;
+        margin: 0;
+        letter-spacing: 1px;
+    }
+
+    .copyright a {
+        color: #0066b1;
+        text-decoration: none;
+    }
+</style>
+
+<footer>
+    <div class="footer-top-line">
+        <div class="line-blue"></div>
+        <div class="line-dark-blue"></div>
+        <div class="line-red"></div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <ul class="location_icon">
+                    <li>
+                        <a href="#"><i class="fa fa-map-marker"></i></a> 
+                        <span><strong>HQ PERFORMANCE:</strong><br> Trujillo, La Libertad, Perú</span>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-phone"></i></a>
+                        <span><strong>OPERACIONES:</strong><br> +51 987 654 321</span>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-envelope"></i></a>
+                        <span><strong>TELEMETRÍA:</strong><br> engineering@ecotrace.com</span>
+                    </li>
+                </ul>
+
+                <div class="bottom_form">
+                    <h3>Reporte de Datos M</h3>
+                    <input class="enter" placeholder="E-mail del sistema..." type="text">
+                    <button class="sub_btn">DALE</button>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="map_container">
+                    <img src="images/map.png" alt="Operational Map">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        [SYSTEM STATUS: <span style="color: #28a745;">ONLINE</span>] — 
+                        © 2026 DEVELOPED BY 
+                        <a href="#">EQUIPO DE TRABAJO XD</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/jquery-3.0.0.min.js"></script>
+      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="js/custom.js"></script>
+      <script>
+         function openNav() {
+           document.getElementById("mySidepanel").style.width = "250px";
+         }
+         
+         function closeNav() {
+           document.getElementById("mySidepanel").style.width = "0";
+         }
+      </script>
+   </body>
+</html>
+
+
+
+
+
+
