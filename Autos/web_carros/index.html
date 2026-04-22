@@ -118,105 +118,407 @@
             </div>
          </div>
       </header>
-     <section class="banner_main" style="position: relative; background: #000; overflow: hidden; min-height: 100vh; display: flex; align-items: center; padding: 0; font-family: 'Arial', sans-serif;">
-    
-    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: 
-        radial-gradient(circle at 50% 50%, rgba(28, 28, 28, 0.8) 0%, rgba(0, 0, 0, 1) 100%),
-        url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36z8gAFWNjY2MAAgwMgAQYGIBCAB9KAgpS+q1AAAAAElFTkSuQmCC') repeat; z-index: 1;">
-    </div>
+    <div id="bmw-m-portal-wrapper">
+    <style>
+        #bmw-m-portal-wrapper {
+            background: #000;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
 
-    <div id="banner1" class="carousel slide banner_slide" style="z-index: 3; width: 100%;">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="container-fluid" style="padding: 0 5%;">
-                    
-                    <div style="text-align: center; margin-bottom: 20px;">
-                        <img src="images/bmw_logo.png" alt="BMW Logo" style="width: 80px; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));">
-                        <h2 style="color: #fff; font-family: 'Arial Black', sans-serif; font-style: italic; font-size: 35px; letter-spacing: 5px; margin: 0; text-transform: uppercase;">
-                            BMW <span style="font-weight: 300;">MOTORSPORT</span>
-                        </h2>
-                        <div style="height: 4px; width: 120px; margin: 10px auto; display: flex; box-shadow: 0 0 15px rgba(226, 27, 34, 0.5);">
-                            <div style="flex: 1; background: #00a2ed;"></div>
-                            <div style="flex: 1; background: #102542;"></div>
-                            <div style="flex: 1; background: #e21b22;"></div>
-                        </div>
+        #bmw-m-portal-wrapper .banner_main {
+            position: relative;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4vh 5% 0 5%;
+            z-index: 1;
+        }
+
+        #bmw-m-portal-wrapper .bg-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(20, 20, 20, 0.7) 0%, rgba(0, 0, 0, 1) 100%);
+            z-index: 2;
+        }
+
+        #bmw-m-portal-wrapper .bg-watermark {
+            position: absolute;
+            top: 45%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: clamp(100px, 20vw, 350px);
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            letter-spacing: 20px;
+            z-index: 1;
+            text-transform: uppercase;
+        }
+
+        #bmw-m-portal-wrapper .content-grid {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            height: 100%;
+            position: relative;
+        }
+
+        #bmw-m-portal-wrapper .car-container {
+            position: absolute;
+            left: 55%;
+            top: 50%;
+            transform: translate(-40%, -50%);
+            width: 80%;
+            max-width: 1100px;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        #bmw-m-portal-wrapper .car-float {
+            width: 100%;
+            height: auto;
+            animation: bmwFloat 6s infinite ease-in-out;
+            filter: drop-shadow(0 30px 50px rgba(0,0,0,0.8));
+        }
+
+        @keyframes bmwFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.02); }
+        }
+
+        #bmw-m-portal-wrapper .info-side {
+            flex: 0 0 320px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 35px;
+            border-left: 8px solid #0056b3;
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        #bmw-m-portal-wrapper .form-side {
+            flex: 0 0 300px;
+            background: rgba(15, 15, 15, 0.85);
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        }
+
+        #bmw-m-portal-wrapper .m-title {
+            color: #0056b3;
+            font-size: 70px;
+            font-weight: 900;
+            margin: 0;
+            line-height: 0.9;
+            letter-spacing: -3px;
+        }
+
+        #bmw-m-portal-wrapper .m-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            box-sizing: border-box;
+        }
+
+        #bmw-m-portal-wrapper .m-btn {
+            width: 100%;
+            background: #e21b22;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #bmw-m-portal-wrapper .footer-accent {
+            background-color: #0066b1;
+            height: 8vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+        }
+
+        /* --- LÍNEA DE TRANSICIÓN MEJORADA --- */
+        #bmw-m-portal-wrapper .view-separator {
+            width: 100%;
+            height: 120px; /* Más alta para que se note el corte */
+            background: #0066b1;
+            /* Crea un corte diagonal marcado hacia abajo */
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 40%); 
+            position: relative;
+            z-index: 25;
+            margin-top: -2px; /* Evita cualquier línea blanca de separación */
+        }
+    </style>
+
+    <section class="banner_main">
+        <div class="bg-overlay"></div>
+        <div class="bg-watermark">M8</div>
+
+        <div style="z-index: 10; text-align: center; width: 100%;">
+            <h2 style="color: #fff; font-size: clamp(20px, 3vw, 35px); letter-spacing: 15px; margin: 0; font-weight: 800; text-transform: uppercase;">BMW MOTORSPORT</h2>
+            <div style="height: 4px; width: 140px; margin: 15px auto; display: flex;">
+                <div style="flex: 1; background: #00a2ed;"></div>
+                <div style="flex: 1; background: #102542;"></div>
+                <div style="flex: 1; background: #e21b22;"></div>
+            </div>
+        </div>
+
+        <div class="car-container">
+            <img src="images/m8.png" alt="BMW M8" class="car-float">
+        </div>
+
+        <div class="content-grid">
+            <div class="info-side">
+                <span style="color: #666; font-weight: 800; letter-spacing: 2px; font-size: 10px; text-transform: uppercase;">Edición Limitada</span>
+                <h1 class="m-title">M8</h1>
+                <h3 style="color: #111; font-size: 22px; font-weight: 900; margin: 5px 0 15px 0; text-transform: uppercase;">Competition</h3>
+                <p style="color: #444; font-size: 13px; line-height: 1.5; margin-bottom: 20px;">
+                    El pináculo del rendimiento M. Ingeniería alemana diseñada para la perfección absoluta en cada curva.
+                </p>
+                <div style="display: flex; border-top: 1px solid #ddd; padding-top: 20px; gap: 20px;">
+                    <div>
+                        <b style="font-size: 18px; color: #111;">625 CV</b><br>
+                        <small style="color:#888; font-weight: 700; font-size: 9px;">POTENCIA</small>
                     </div>
-
-                    <div class="row align-items-center">
-                        <div class="col-md-4 col-lg-3">
-                            <div style="background: rgba(255,255,255,0.95); padding: 45px 30px; border-radius: 25px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); text-align: left;">
-                                <h3 style="color: #ccc; font-size: 40px; font-weight: 900; margin: 0; line-height: 1;">THE</h3>
-                                <h1 style="color: #0056b3; font-size: 90px; font-weight: 900; margin: 0; line-height: 0.8; letter-spacing: -4px;">M8</h1>
-                                <h3 style="color: #ccc; font-size: 35px; font-weight: 900; margin-bottom: 25px; letter-spacing: 2px;">COUPE</h3>
-                                <p style="color: #333; font-size: 14px; line-height: 1.5; margin: 0;">
-                                    Dominio absoluto. El equilibrio perfecto entre la ingeniería de circuito y el lujo de vanguardia.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-lg-6" style="position: relative; text-align: center;">
-                            <div style="position: absolute; bottom: 10%; left: 50%; transform: translateX(-50%); width: 80%; height: 40px; background: rgba(0, 162, 237, 0.4); filter: blur(40px); border-radius: 50%; z-index: 2;"></div>
-                            
-                            <figure style="margin: 0; position: relative; z-index: 3; animation: floatAuto 4s infinite ease-in-out;">
-                                <img src="images/m8.png" alt="BMW M8" style="width: 110%; filter: drop-shadow(0 30px 40px rgba(0,0,0,0.9));">
-                            </figure>
-                            
-                            <p style="color: #aaa; font-style: italic; letter-spacing: 5px; font-size: 22px; margin-top: 20px; font-weight: 300;">
-                                The Ultimate Driving Machine
-                            </p>
-                        </div>
-
-                        <div class="col-md-4 col-lg-3">
-                            <form style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); padding: 35px 25px; border-radius: 10px; box-shadow: 0 25px 45px rgba(0,0,0,0.5);">
-                                <h4 style="color: #fff; font-size: 13px; text-transform: uppercase; letter-spacing: 3px; text-align: center; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
-                                    SOLICITAR INFO
-                                </h4>
-                                <input type="text" placeholder="Nombre completo" style="background: #fff; border: none; width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 5px; outline: none;">
-                                <input type="text" placeholder="WhatsApp / Teléfono" style="background: #fff; border: none; width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 5px; outline: none;">
-                                <button style="width: 100%; background: #0078d4; color: #fff; border: none; padding: 15px; font-weight: 700; text-transform: uppercase; border-radius: 5px; cursor: pointer; transition: 0.3s;">
-                                    ENVIAR SOLICITUD
-                                </button>
-                            </form>
-                        </div>
-
+                    <div>
+                        <b style="font-size: 18px; color: #111;">3.2s</b><br>
+                        <small style="color:#888; font-weight: 700; font-size: 9px;">0-100 KM/H</small>
                     </div>
                 </div>
             </div>
+
+            <div class="form-side">
+                <h4 style="color: #00a2ed; font-size: 10px; letter-spacing: 3px; text-align: center; margin-bottom: 25px; font-weight: 800; text-transform: uppercase;">Reserva tu Prueba</h4>
+                <input type="text" placeholder="Nombre completo" class="m-input">
+                <input type="text" placeholder="WhatsApp / Email" class="m-input">
+                <select class="m-input" style="appearance: none; cursor: pointer; color: #ccc;">
+                    <option>M8 Coupe</option>
+                    <option>M8 Gran Coupe</option>
+                </select>
+                <button class="m-btn">Enviar Solicitud</button>
+            </div>
+        </div>
+    </section>
+    <style>
+    /* --- CONFIGURACIÓN DE NAVEGACIÓN (HEADER) --- */
+    header, .nav-container, #navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    }
+
+    .nav-hidden {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    /* --- ESTILOS GLOBALES DE LA SECCIÓN --- */
+    #bmw-m-about-section {
+        background: #d6d6d6;
+        padding: 100px 0; /* Ajustado para dar más foco visual */
+        position: relative;
+        overflow: hidden;
+        font-family: 'Arial', sans-serif;
+    }
+
+    /* Líneas de escaneo industriales */
+    #bmw-m-about-section .tech-lines {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
+        background-size: 100% 4px;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    #bmw-m-about-section .container {
+        position: relative;
+        z-index: 10;
+        max-width: 1400px; /* Contenedor más ancho para alojar imagen grande */
+        margin: 0 auto;
+        padding: 0 40px;
+    }
+
+    /* --- ESTILOS DE TEXTO --- */
+    #bmw-m-about-section .tech-subtitle {
+        color: #0066b1;
+        text-transform: uppercase;
+        letter-spacing: 6px;
+        font-weight: 900;
+        font-size: 14px;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    #bmw-m-about-section .main-title {
+        color: #1a1a1a;
+        font-family: 'Arial Black', sans-serif;
+        font-size: clamp(35px, 4.5vw, 55px);
+        text-transform: uppercase;
+        font-style: italic;
+        line-height: 0.85;
+        margin: 0 0 30px 0;
+        letter-spacing: -2px;
+    }
+
+    #bmw-m-about-section .main-title span.stroke-text {
+        color: transparent;
+        -webkit-text-stroke: 1.5px #1a1a1a;
+    }
+
+    #bmw-m-about-section .info-box {
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        padding: 35px;
+        border-right: 8px solid #e22718;
+        box-shadow: 20px 20px 50px rgba(0,0,0,0.08);
+        margin-bottom: 30px;
+        position: relative;
+    }
+
+    #bmw-m-about-section .pilar-card h4 {
+        color: #000;
+        font-weight: 900;
+        font-size: 16px;
+        margin: 0 0 8px 0;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #bmw-m-about-section .pilar-card h4::before {
+        content: '';
+        width: 8px; height: 8px;
+        background: #0066b1;
+        border-radius: 50%;
+    }
+
+    /* --- EFECTOS DE LA IMAGEN --- */
+    .about_right:hover .shine-effect {
+        left: 150% !important;
+    }
+</style>
+
+<div style="width: 100%; height: 120px; background: #d6d6d6; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 25%); margin-top: -1px; border-top: 4px solid #e22718; position: relative; z-index: 5;"></div>
+
+<section id="bmw-m-about-section" class="about">
+    <div class="tech-lines"></div>
+
+    <div style="position: absolute; top: -10%; left: -10%; width: 600px; height: 600px; background: rgba(0, 102, 177, 0.08); filter: blur(120px); border-radius: 50%; z-index: 2; pointer-events: none;"></div>
+
+    <div class="container">
+        <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 40px;">
+            
+            <div style="flex: 1.6; min-width: 450px; perspective: 1500px;">
+                <div class="about_right" style="position: relative; padding: 20px;">
+                    
+                    <div style="position: absolute; top: -10px; left: 0; font-family: monospace; font-size: 11px; color: #0066b1; font-weight: bold; z-index: 3;">
+                        [ HIGH_RESOLUTION_RENDER ] // SCALE_1.2X <br> 
+                        ENGINE_SCAN: ACTIVE
+                    </div>
+
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 1px solid rgba(0, 102, 177, 0.25); z-index: 1;">
+                        <div style="position: absolute; top: -5px; left: -5px; width: 30px; height: 2px; background: #0066b1;"></div>
+                        <div style="position: absolute; top: -5px; left: -5px; width: 2px; height: 30px; background: #0066b1;"></div>
+                        <div style="position: absolute; bottom: -5px; right: -5px; width: 30px; height: 2px; background: #e22718;"></div>
+                        <div style="position: absolute; bottom: -5px; right: -5px; width: 2px; height: 30px; background: #e22718;"></div>
+                    </div>
+
+                    <figure style="margin: 0; position: relative; z-index: 2; overflow: hidden; 
+                            clip-path: polygon(8% 0, 100% 0, 100% 92%, 92% 100%, 0 100%, 0 8%);
+                            box-shadow: 0 60px 100px rgba(0,0,0,0.3); background: #000;
+                            transition: transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);"
+                            onmouseover="this.style.transform='rotateY(-8deg) rotateX(4deg) scale(1.05)';"
+                            onmouseout="this.style.transform='rotateY(0) rotateX(0) scale(1)';">
+                        
+                        <img src="images/bestia.jpg" alt="BMW Performance" style="width: 100%; height: auto; display: block; filter: contrast(1.1) brightness(1.05) saturate(1.1);" />
+
+                        <div class="shine-effect" style="position: absolute; top: 0; left: -150%; width: 100%; height: 100%; 
+                                    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+                                    transition: 0.9s ease-in-out; z-index: 4;">
+                        </div>
+
+                        <div style="position: absolute; bottom: 30px; right: 30px; background: #e22718; color: #fff; padding: 8px 20px; font-weight: 900; font-size: 14px; font-style: italic; letter-spacing: 2px; z-index: 5; box-shadow: 10px 10px 30px rgba(0,0,0,0.5);">
+                            M POWER
+                        </div>
+                    </figure>
+
+                    <div style="position: absolute; bottom: -10px; left: 10%; width: 80%; height: 30px; background: rgba(0,0,0,0.4); filter: blur(25px); border-radius: 50%; z-index: 0;"></div>
+                </div>
+            </div>
+
+            <div style="flex: 1; min-width: 320px;">
+                <div class="titlepage">
+                    
+                    <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                        <div style="width: 50px; height: 5px; background: #e22718;"></div>
+                        <div style="width: 25px; height: 5px; background: #e22718; opacity: 0.6;"></div>
+                    </div>
+
+                    <span class="tech-subtitle">Legado y Visión M</span>
+                    
+                    <h2 class="main-title">
+                        Ingeniería <span class="stroke-text">Sin Límites</span>
+                    </h2>
+                    
+                    <div class="info-box">
+                        <p style="color: #333; font-size: 17px; line-height: 1.7; margin: 0;">
+                            En <strong style="color: #000; font-weight: 800;">BMW Motorsport</strong>, la perfección no es una meta, es nuestra norma. Optimizamos cada milímetro integrando una logística de alta precisión.
+                        </p>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 20px; padding-left: 10px;">
+                        <div class="pilar-card">
+                            <h4>01. Rendimiento Bruto</h4>
+                            <p style="color: #666; font-size: 14px; margin: 0;">Motores diseñados para dominar el asfalto.</p>
+                        </div>
+                        <div class="pilar-card">
+                            <h4>02. Innovación Digital</h4>
+                            <p style="color: #666; font-size: 14px; margin: 0;">Sistemas inteligentes de anticipación técnica.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
 
-<style>
-    /* Animación de flotado para el coche */
-    @keyframes floatAuto {
-        0%, 100% { transform: translateY(0) scale(1); }
-        50% { transform: translateY(-15px) scale(1.02); }
-    }
+<script>
+    let lastScrollTop = 0;
+    const navbar = document.querySelector('header'); 
 
-    /* Efecto Hover para el botón */
-    button:hover {
-        background: #005da3 !important;
-        box-shadow: 0 0 20px rgba(0, 120, 212, 0.6);
-    }
-</style>
-      <div id="about" class="about ">
-         <div class="container">
-            <div class="row d_flex">
-               <div class="col-md-6">
-                  <div class="about_right">
-                     <figure><img src="images/about.png" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="titlepage">
-                     <h2>Sobre Nosotros</h2>
-                     <p>Somos una empresa dedicada a optimizar la cadena de suministro, brindando confianza y puntualidad en cada entrega.</p>
-                     <a class="read_more" href="#">Leer Más</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
+    window.addEventListener('scroll', function() {
+        if (!navbar) return;
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            navbar.classList.add('nav-hidden');
+        } else {
+            navbar.classList.remove('nav-hidden');
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }, false);
+</script>
+
+    
       <div id="service" class="service">
          <div class="container">
             <div class="row">
