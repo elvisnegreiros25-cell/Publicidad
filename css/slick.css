@@ -1,0 +1,440 @@
+<<<<<<< HEAD
+/*---------------------------------------------------------------------
+    Archivo: slick.css
+    Descripción: Estilos del carrusel Slick (Optimizado)
+    Versión: 1.8.1
+---------------------------------------------------------------------*/
+
+/* ===============================================================
+   ESTILOS BASE DEL SLIDER
+   =============================================================== */
+
+.slick-slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+
+    /* Evita seleccionar texto al arrastrar */
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+
+    /* Mejora la interacción táctil */
+    -webkit-touch-callout: none;
+    -ms-touch-action: pan-y;
+        touch-action: pan-y;
+
+    /* Quita el color al tocar en móvil */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Quita el borde cuando se selecciona */
+.slick-list:focus {
+    outline: none;
+}
+
+/* Cursor cuando se arrastra */
+.slick-list.dragging {
+    cursor: pointer;
+    cursor: grab;
+}
+
+/* Cursor mientras se mantiene presionado */
+.slick-list.dragging:active {
+    cursor: grabbing;
+}
+
+
+/* ===============================================================
+   CONTENEDOR DE SLIDES (TRACK)
+   =============================================================== */
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+    /* Mejora rendimiento con aceleración GPU */
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+
+    /* Optimización de animación */
+    will-change: transform;
+}
+
+.slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+}
+
+/* Limpia floats */
+.slick-track::before,
+.slick-track::after {
+    display: table;
+    content: '';
+}
+
+.slick-track::after {
+    clear: both;
+}
+
+/* Oculta mientras carga */
+.slick-loading .slick-track {
+    visibility: hidden;
+}
+
+
+/* ===============================================================
+   SLIDES
+   =============================================================== */
+
+.slick-slide {
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+
+    /* Quita borde de selección */
+    outline: none;
+}
+
+/* Soporte para idioma RTL */
+[dir='rtl'] .slick-slide {
+    float: right;
+}
+
+/* Imágenes dentro del slide */
+.slick-slide img {
+    display: block;
+    max-width: none;
+}
+
+/* Oculta imágenes mientras cargan */
+.slick-slide.slick-loading img {
+    display: none;
+}
+
+/* Evita interacción al arrastrar */
+.slick-slide.dragging img {
+    pointer-events: none;
+}
+
+/* Muestra slides cuando inicia */
+.slick-initialized .slick-slide {
+    display: block;
+}
+
+/* Oculta mientras carga */
+.slick-loading .slick-slide {
+    visibility: hidden;
+}
+
+/* Modo vertical */
+.slick-vertical .slick-slide {
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+}
+
+
+/* ===============================================================
+   FLECHAS Y CONTROLES
+   =============================================================== */
+
+.slick-arrow {
+    /* Estilos base de flechas */
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1;
+}
+
+/* Accesibilidad al enfocar */
+.slick-arrow:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* Oculta flechas */
+.slick-arrow.slick-hidden {
+    display: none;
+}
+
+/* Flechas deshabilitadas */
+.slick-arrow[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+
+/* ===============================================================
+   ESTADO DE CARGA
+   =============================================================== */
+
+.slick-loading .slick-slide,
+.slick-loading .slick-track {
+    visibility: hidden;
+}
+
+/* Fondo mientras carga */
+.slick-loading .slick-list {
+    background: #fff;
+}
+
+
+/* ===============================================================
+   ACCESIBILIDAD
+   =============================================================== */
+
+/* Reduce animaciones si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+    .slick-slider .slick-track,
+    .slick-slider .slick-list {
+        -webkit-transition: none !important;
+        transition: none !important;
+    }
+}
+
+/* Soporte para alto contraste */
+@media (prefers-contrast: high) {
+    .slick-arrow:focus {
+        outline: 3px solid currentColor;
+    }
+=======
+/*---------------------------------------------------------------------
+    Archivo: slick.css
+    Descripción: Estilos del carrusel Slick (Optimizado)
+    Versión: 1.8.1
+---------------------------------------------------------------------*/
+
+/* ===============================================================
+   ESTILOS BASE DEL SLIDER
+   =============================================================== */
+
+.slick-slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+
+    /* Evita seleccionar texto al arrastrar */
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+
+    /* Mejora la interacción táctil */
+    -webkit-touch-callout: none;
+    -ms-touch-action: pan-y;
+        touch-action: pan-y;
+
+    /* Quita el color al tocar en móvil */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Quita el borde cuando se selecciona */
+.slick-list:focus {
+    outline: none;
+}
+
+/* Cursor cuando se arrastra */
+.slick-list.dragging {
+    cursor: pointer;
+    cursor: grab;
+}
+
+/* Cursor mientras se mantiene presionado */
+.slick-list.dragging:active {
+    cursor: grabbing;
+}
+
+
+/* ===============================================================
+   CONTENEDOR DE SLIDES (TRACK)
+   =============================================================== */
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+    /* Mejora rendimiento con aceleración GPU */
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+
+    /* Optimización de animación */
+    will-change: transform;
+}
+
+.slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+}
+
+/* Limpia floats */
+.slick-track::before,
+.slick-track::after {
+    display: table;
+    content: '';
+}
+
+.slick-track::after {
+    clear: both;
+}
+
+/* Oculta mientras carga */
+.slick-loading .slick-track {
+    visibility: hidden;
+}
+
+
+/* ===============================================================
+   SLIDES
+   =============================================================== */
+
+.slick-slide {
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+
+    /* Quita borde de selección */
+    outline: none;
+}
+
+/* Soporte para idioma RTL */
+[dir='rtl'] .slick-slide {
+    float: right;
+}
+
+/* Imágenes dentro del slide */
+.slick-slide img {
+    display: block;
+    max-width: none;
+}
+
+/* Oculta imágenes mientras cargan */
+.slick-slide.slick-loading img {
+    display: none;
+}
+
+/* Evita interacción al arrastrar */
+.slick-slide.dragging img {
+    pointer-events: none;
+}
+
+/* Muestra slides cuando inicia */
+.slick-initialized .slick-slide {
+    display: block;
+}
+
+/* Oculta mientras carga */
+.slick-loading .slick-slide {
+    visibility: hidden;
+}
+
+/* Modo vertical */
+.slick-vertical .slick-slide {
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+}
+
+
+/* ===============================================================
+   FLECHAS Y CONTROLES
+   =============================================================== */
+
+.slick-arrow {
+    /* Estilos base de flechas */
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1;
+}
+
+/* Accesibilidad al enfocar */
+.slick-arrow:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* Oculta flechas */
+.slick-arrow.slick-hidden {
+    display: none;
+}
+
+/* Flechas deshabilitadas */
+.slick-arrow[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+
+/* ===============================================================
+   ESTADO DE CARGA
+   =============================================================== */
+
+.slick-loading .slick-slide,
+.slick-loading .slick-track {
+    visibility: hidden;
+}
+
+/* Fondo mientras carga */
+.slick-loading .slick-list {
+    background: #fff;
+}
+
+
+/* ===============================================================
+   ACCESIBILIDAD
+   =============================================================== */
+
+/* Reduce animaciones si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+    .slick-slider .slick-track,
+    .slick-slider .slick-list {
+        -webkit-transition: none !important;
+        transition: none !important;
+    }
+}
+
+/* Soporte para alto contraste */
+@media (prefers-contrast: high) {
+    .slick-arrow:focus {
+        outline: 3px solid currentColor;
+    }
+>>>>>>> origin/master
+}
