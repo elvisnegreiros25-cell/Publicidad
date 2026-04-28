@@ -1871,6 +1871,86 @@
     </div>
 </section>
 
+<!-- ESTADÍSTICAS ANIMADAS BMW - Agregado por Jordy Paz -->
+<style>
+    .bmw-stats-bar {
+        background: linear-gradient(90deg, #0066b1 0%, #001a33 50%, #e21b22 100%);
+        padding: 60px 0;
+        position: relative;
+    }
+    .stats-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+    .stat-item {
+        text-align: center;
+        min-width: 150px;
+    }
+    .stat-number {
+        font-family: 'Arial Black', sans-serif;
+        font-size: 48px;
+        font-style: italic;
+        color: #fff;
+        display: block;
+        text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    .stat-text {
+        color: rgba(255,255,255,0.8);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-top: 5px;
+    }
+</style>
+<div class="bmw-stats-bar">
+    <div class="container">
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-number" data-target="625">0</span>
+                <span class="stat-text">CV Máximos</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="12">0</span>
+                <span class="stat-text">Modelos M</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="3">0</span>
+                <span class="stat-text">Sucursales</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="100">0</span>
+                <span class="stat-text">% Satisfacción</span>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var statsObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                document.querySelectorAll('.stat-number[data-target]').forEach(function(el) {
+                    var target = parseInt(el.getAttribute('data-target'));
+                    var duration = 2000;
+                    var start = 0;
+                    var startTime = null;
+                    function animate(timestamp) {
+                        if (!startTime) startTime = timestamp;
+                        var progress = Math.min((timestamp - startTime) / duration, 1);
+                        el.textContent = Math.floor(progress * target);
+                        if (progress < 1) requestAnimationFrame(animate);
+                        else el.textContent = target;
+                    }
+                    requestAnimationFrame(animate);
+                });
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    statsObserver.observe(document.querySelector('.bmw-stats-bar'));
+</script>
+
 <!-- =============================================
      SECCIÓN SUV - Modelos X (por Jordy Paz)
 ============================================= -->
