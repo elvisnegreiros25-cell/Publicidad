@@ -1497,6 +1497,41 @@
     </div>
 </div>
 
+<!-- VALIDACIÓN DEL FORMULARIO - Agregado por Jordy Paz -->
+<script>
+    document.getElementById('request').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var name = this.querySelector('[name="Name"]').value.trim();
+        var email = this.querySelector('[name="Email"]').value.trim();
+        var phone = this.querySelector('[name="Phone Number"]').value.trim();
+
+        if (!name || !email || !phone) {
+            showFormMsg('⚠ Por favor completa todos los campos obligatorios', '#e21b22');
+            return;
+        }
+        if (!email.includes('@') || !email.includes('.')) {
+            showFormMsg('⚠ Ingresa un email válido', '#e21b22');
+            return;
+        }
+        showFormMsg('✅ Solicitud enviada correctamente. Te contactaremos pronto.', '#28a745');
+        this.reset();
+    });
+
+    function showFormMsg(msg, color) {
+        var existing = document.getElementById('formMsg');
+        if (existing) existing.remove();
+        var div = document.createElement('div');
+        div.id = 'formMsg';
+        div.style.cssText = 'margin-top:15px;padding:12px 20px;background:rgba(255,255,255,0.05);border-left:4px solid ' + color + ';color:' + color + ';font-size:13px;font-weight:bold;letter-spacing:1px;animation:fadeInMsg 0.4s ease;';
+        div.textContent = msg;
+        document.getElementById('request').appendChild(div);
+        setTimeout(function() { div.style.opacity = '0'; setTimeout(function() { div.remove(); }, 400); }, 4000);
+    }
+</script>
+<style>
+    @keyframes fadeInMsg { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+
 <!-- =============================================
      SECCIONES AGREGADAS POR JORDY PAZ
      Galería de Modelos M Motorsport + Sedanes
