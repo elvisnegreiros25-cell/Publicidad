@@ -1836,6 +1836,647 @@
     </div>
 </section>
 
+<!-- =============================================
+     SECCIÓN SUV - Modelos X (por Jordy Paz)
+============================================= -->
+<style>
+    #suv {
+        background: linear-gradient(180deg, #111 0%, #0a0a0a 100%);
+        padding: 100px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .suv-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .suv-card {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        padding: 30px;
+        transition: all 0.5s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .suv-card::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 0;
+        width: 100%; height: 4px;
+        background: linear-gradient(90deg, #0066b1, #e21b22);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+    }
+
+    .suv-card:hover::after { transform: scaleX(1); }
+    .suv-card:hover { transform: translateY(-10px); border-color: rgba(0,102,177,0.3); }
+
+    .suv-card img {
+        width: 100%;
+        filter: drop-shadow(0 15px 30px rgba(0,0,0,0.5));
+        transition: transform 0.5s ease;
+    }
+
+    .suv-card:hover img { transform: scale(1.08); }
+
+    .suv-card h4 {
+        color: #fff;
+        font-family: 'Arial Black', sans-serif;
+        font-size: 20px;
+        text-transform: uppercase;
+        font-style: italic;
+        margin: 20px 0 10px;
+        padding: 0;
+    }
+
+    .suv-card p { color: #999; font-size: 14px; line-height: 1.6; }
+
+    .suv-badge {
+        display: inline-block;
+        background: #0066b1;
+        color: #fff;
+        padding: 3px 10px;
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+    }
+</style>
+
+<section id="suv">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="text-align: center;">
+                <div class="titlepage">
+                    <span style="color: #0066b1; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; font-size: 13px;">DOMINIO TOTAL</span>
+                    <h2 style="color: #fff; font-family: 'Arial Black', sans-serif; text-transform: uppercase; font-style: italic; margin: 15px 0;">
+                        MODELOS X <span style="color: #e21b22;">(SUV)</span>
+                    </h2>
+                    <p style="color: #888; font-size: 16px; max-width: 550px; margin: 0 auto;">
+                        Versatilidad y potencia en cada terreno. Los Sports Activity Vehicles de BMW redefinen las reglas.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="suv-grid">
+            <div class="suv-card">
+                <span class="suv-badge">xDRIVE AWD</span>
+                <img src="images/m9.png" alt="BMW X5 M">
+                <h4>BMW X5 <span style="color: #e21b22;">M</span></h4>
+                <p>Rendimiento M sin comprometer la versatilidad. Motor V8 biturbo de 625 CV con tracción integral inteligente.</p>
+            </div>
+            <div class="suv-card">
+                <span class="suv-badge">M PERFORMANCE</span>
+                <img src="images/m8_2026.png" alt="BMW X6 M">
+                <h4>BMW X6 <span style="color: #0066b1;">M Competition</span></h4>
+                <p>El SAC más agresivo de BMW. Diseño coupé con alma de deportivo y capacidades todoterreno superiores.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =============================================
+     SECCIÓN ELÉCTRICOS BMW i (por Jordy Paz)
+============================================= -->
+<style>
+    #electric {
+        background: linear-gradient(135deg, #000 0%, #001a33 50%, #000 100%);
+        padding: 120px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #electric::before {
+        content: '';
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 800px; height: 800px;
+        background: radial-gradient(circle, rgba(0,102,177,0.08) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    .electric-models {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 35px;
+        margin-top: 60px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .electric-card {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(0,162,237,0.15);
+        padding: 35px 25px;
+        text-align: center;
+        transition: all 0.5s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .electric-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 3px;
+        background: linear-gradient(90deg, transparent, #00a2ed, transparent);
+        opacity: 0;
+        transition: opacity 0.4s;
+    }
+
+    .electric-card:hover::before { opacity: 1; }
+    .electric-card:hover {
+        transform: translateY(-12px);
+        border-color: rgba(0,162,237,0.4);
+        box-shadow: 0 25px 50px rgba(0,102,177,0.15);
+    }
+
+    .electric-card .ev-icon {
+        width: 60px; height: 60px;
+        background: rgba(0,162,237,0.1);
+        border: 1px solid rgba(0,162,237,0.3);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        font-size: 24px;
+        color: #00a2ed;
+        transition: 0.4s;
+    }
+
+    .electric-card:hover .ev-icon {
+        background: #00a2ed;
+        color: #fff;
+        transform: rotateY(180deg);
+    }
+
+    .electric-card h4 {
+        color: #fff;
+        font-family: 'Arial Black', sans-serif;
+        font-size: 18px;
+        text-transform: uppercase;
+        margin: 0 0 10px;
+        padding: 0;
+    }
+
+    .electric-card p { color: #888; font-size: 13px; line-height: 1.6; }
+
+    .electric-card .ev-range {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 6px 16px;
+        border: 1px solid rgba(0,162,237,0.3);
+        color: #00a2ed;
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 1px;
+    }
+</style>
+
+<section id="electric">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="text-align: center;">
+                <div class="titlepage">
+                    <span style="color: #00a2ed; font-weight: 900; letter-spacing: 6px; text-transform: uppercase; font-size: 13px;">ZERO EMISSIONS</span>
+                    <h2 style="color: #fff; font-family: 'Arial Black', sans-serif; text-transform: uppercase; font-style: italic; margin: 15px 0;">
+                        BMW <span style="color: #00a2ed;">i</span> — EL FUTURO ELÉCTRICO
+                    </h2>
+                    <p style="color: #888; font-size: 16px; max-width: 600px; margin: 0 auto;">
+                        Movilidad eléctrica sin comprometer el placer de conducir. Tecnología sostenible con ADN BMW.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="electric-models">
+            <div class="electric-card">
+                <div class="ev-icon">⚡</div>
+                <h4>BMW <span style="color: #00a2ed;">i4</span> M50</h4>
+                <p>El primer Gran Coupé 100% eléctrico de BMW. Rendimiento M con cero emisiones y aceleración fulminante.</p>
+                <span class="ev-range">AUTONOMÍA: 521 KM</span>
+            </div>
+            <div class="electric-card">
+                <div class="ev-icon">🔋</div>
+                <h4>BMW <span style="color: #00a2ed;">iX</span> xDrive50</h4>
+                <p>El SAV eléctrico insignia de BMW. Lujo, tecnología y sostenibilidad en perfecta simbiosis.</p>
+                <span class="ev-range">AUTONOMÍA: 630 KM</span>
+            </div>
+            <div class="electric-card">
+                <div class="ev-icon">🌐</div>
+                <h4>BMW <span style="color: #00a2ed;">i7</span> xDrive60</h4>
+                <p>La berlina de lujo eléctrica definitiva. Theatre Screen, conducción autónoma nivel 3 y máximo confort.</p>
+                <span class="ev-range">AUTONOMÍA: 625 KM</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =============================================
+     CONFIGURADOR INTERACTIVO (por Jordy Paz)
+============================================= -->
+<style>
+    #configurador {
+        background: #0a0a0a;
+        padding: 120px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .config-layout {
+        display: flex;
+        gap: 50px;
+        margin-top: 60px;
+        align-items: center;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 2;
+    }
+
+    .config-preview {
+        flex: 1.5;
+        min-width: 350px;
+        text-align: center;
+        position: relative;
+    }
+
+    .config-preview img {
+        width: 100%;
+        max-width: 600px;
+        filter: drop-shadow(0 30px 60px rgba(0,0,0,0.7));
+        transition: filter 0.5s ease;
+    }
+
+    .config-preview .config-model-name {
+        color: #fff;
+        font-family: 'Arial Black', sans-serif;
+        font-size: 28px;
+        text-transform: uppercase;
+        font-style: italic;
+        margin-top: 20px;
+    }
+
+    .config-panel {
+        flex: 1;
+        min-width: 300px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.1);
+        padding: 40px;
+    }
+
+    .config-panel h4 {
+        color: #fff;
+        font-family: 'Arial Black', sans-serif;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin: 0 0 20px;
+        padding: 0;
+    }
+
+    .config-option-group {
+        margin-bottom: 30px;
+    }
+
+    .config-option-group label {
+        color: #888;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .config-colors {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .config-color-btn {
+        width: 40px; height: 40px;
+        border: 2px solid rgba(255,255,255,0.1);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .config-color-btn:hover,
+    .config-color-btn.active-color {
+        border-color: #fff;
+        transform: scale(1.15);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    }
+
+    .config-select {
+        width: 100%;
+        padding: 12px;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.15);
+        color: #fff;
+        font-size: 13px;
+        cursor: pointer;
+        appearance: none;
+    }
+
+    .config-btn-submit {
+        width: 100%;
+        background: #e21b22;
+        color: #fff;
+        padding: 16px;
+        border: none;
+        font-weight: 900;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        cursor: pointer;
+        transition: all 0.3s;
+        clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%);
+    }
+
+    .config-btn-submit:hover {
+        background: #0066b1;
+        transform: translateY(-2px);
+    }
+
+    .config-price {
+        text-align: center;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .config-price span {
+        color: #666;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .config-price strong {
+        display: block;
+        color: #fff;
+        font-family: 'Arial Black', sans-serif;
+        font-size: 28px;
+        font-style: italic;
+        margin-top: 5px;
+    }
+</style>
+
+<section id="configurador">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="text-align: center;">
+                <div class="titlepage">
+                    <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 20px;">
+                        <div style="width: 40px; height: 4px; background: #00a2ed;"></div>
+                        <div style="width: 40px; height: 4px; background: #102542;"></div>
+                        <div style="width: 40px; height: 4px; background: #e21b22;"></div>
+                    </div>
+                    <span style="color: #e21b22; font-weight: 900; letter-spacing: 6px; text-transform: uppercase; font-size: 13px;">BUILD YOUR OWN</span>
+                    <h2 style="color: #fff; font-family: 'Arial Black', sans-serif; text-transform: uppercase; font-style: italic; margin: 15px 0;">
+                        CONFIGURA TU <span style="color: #0066b1;">BMW</span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="config-layout">
+            <div class="config-preview">
+                <img id="configCarImg" src="images/m8.png" alt="BMW Configurador">
+                <div class="config-model-name" id="configModelLabel">BMW M8 COMPETITION</div>
+            </div>
+
+            <div class="config-panel">
+                <h4>/// Personaliza tu M</h4>
+
+                <div class="config-option-group">
+                    <label>Selecciona Modelo</label>
+                    <select class="config-select" id="configModelSelect" onchange="updateConfigModel()">
+                        <option value="m8" data-img="images/m8.png" data-price="$185,000">M8 Competition</option>
+                        <option value="m4" data-img="images/m4.png" data-price="$95,500">M4 Competition</option>
+                        <option value="x5m" data-img="images/m9.png" data-price="$120,000">X5 M Competition</option>
+                        <option value="m8-2026" data-img="images/m8_2026.png" data-price="$210,000">M8 2026 Edition</option>
+                    </select>
+                </div>
+
+                <div class="config-option-group">
+                    <label>Color Exterior</label>
+                    <div class="config-colors">
+                        <div class="config-color-btn active-color" style="background: #1a1a1a;" onclick="selectColor(this, 'Negro Zafiro')" title="Negro Zafiro"></div>
+                        <div class="config-color-btn" style="background: #c0c0c0;" onclick="selectColor(this, 'Plata Glacier')" title="Plata Glacier"></div>
+                        <div class="config-color-btn" style="background: #003366;" onclick="selectColor(this, 'Azul Tanzanita')" title="Azul Tanzanita"></div>
+                        <div class="config-color-btn" style="background: #8b0000;" onclick="selectColor(this, 'Rojo Imola')" title="Rojo Imola"></div>
+                        <div class="config-color-btn" style="background: #f5f5f5;" onclick="selectColor(this, 'Blanco Alpino')" title="Blanco Alpino"></div>
+                        <div class="config-color-btn" style="background: #2d4a1e;" onclick="selectColor(this, 'Verde Isle of Man')" title="Verde Isle of Man"></div>
+                    </div>
+                    <p id="colorLabel" style="color: #e21b22; font-size: 12px; margin-top: 8px; font-weight: bold;">Negro Zafiro</p>
+                </div>
+
+                <div class="config-option-group">
+                    <label>Paquete de Equipamiento</label>
+                    <select class="config-select">
+                        <option>M Performance Package</option>
+                        <option>M Carbon Package</option>
+                        <option>M Driver's Package</option>
+                    </select>
+                </div>
+
+                <button class="config-btn-submit">SOLICITAR COTIZACIÓN</button>
+
+                <div class="config-price">
+                    <span>Precio Base Estimado</span>
+                    <strong id="configPriceLabel">$185,000</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function updateConfigModel() {
+        var sel = document.getElementById('configModelSelect');
+        var opt = sel.options[sel.selectedIndex];
+        document.getElementById('configCarImg').src = opt.getAttribute('data-img');
+        document.getElementById('configModelLabel').textContent = 'BMW ' + opt.textContent.toUpperCase();
+        document.getElementById('configPriceLabel').textContent = opt.getAttribute('data-price');
+    }
+    function selectColor(el, name) {
+        document.querySelectorAll('.config-color-btn').forEach(function(b) { b.classList.remove('active-color'); });
+        el.classList.add('active-color');
+        document.getElementById('colorLabel').textContent = name;
+    }
+</script>
+
+<!-- =============================================
+     SUCURSALES BMW (por Jordy Paz)
+============================================= -->
+<style>
+    #sucursales {
+        background: linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
+        padding: 100px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sucursales-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        margin-top: 60px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .sucursal-card {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+        padding: 35px 25px;
+        transition: all 0.5s ease;
+        position: relative;
+        clip-path: polygon(0 0, 100% 0, 100% 93%, 93% 100%, 0 100%);
+    }
+
+    .sucursal-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 4px;
+        background: linear-gradient(90deg, #0066b1, #e21b22);
+    }
+
+    .sucursal-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(0,102,177,0.3);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .sucursal-card .city-name {
+        color: #fff;
+        font-family: 'Arial Black', sans-serif;
+        font-size: 20px;
+        text-transform: uppercase;
+        font-style: italic;
+        margin: 0 0 15px;
+        padding: 0;
+    }
+
+    .sucursal-card .city-name i {
+        color: #e21b22;
+        margin-right: 8px;
+        font-style: normal;
+    }
+
+    .sucursal-card .sucursal-info {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sucursal-card .sucursal-info li {
+        color: #999;
+        font-size: 13px;
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .sucursal-card .sucursal-info li i {
+        color: #0066b1;
+        width: 20px;
+        text-align: center;
+        font-style: normal;
+    }
+
+    .sucursal-status {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 4px 12px;
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-family: 'Courier New', monospace;
+    }
+
+    .status-open {
+        background: rgba(40,167,69,0.15);
+        color: #28a745;
+        border: 1px solid rgba(40,167,69,0.3);
+    }
+
+    .status-soon {
+        background: rgba(255,193,7,0.15);
+        color: #ffc107;
+        border: 1px solid rgba(255,193,7,0.3);
+    }
+</style>
+
+<section id="sucursales">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="text-align: center;">
+                <div class="titlepage">
+                    <span style="color: #0066b1; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; font-size: 13px;">RED DE DISTRIBUCIÓN</span>
+                    <h2 style="color: #fff; font-family: 'Arial Black', sans-serif; text-transform: uppercase; font-style: italic; margin: 15px 0;">
+                        SUCURSALES <span style="color: #e21b22;">BMW PERÚ</span>
+                    </h2>
+                    <p style="color: #888; font-size: 16px; max-width: 550px; margin: 0 auto;">
+                        Encuéntranos en las principales ciudades. Servicio técnico certificado y atención personalizada.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sucursales-grid">
+            <div class="sucursal-card">
+                <h4 class="city-name"><i class="fa fa-map-marker"></i>Trujillo</h4>
+                <ul class="sucursal-info">
+                    <li><i class="fa fa-building"></i> BMW Premium Center Trujillo</li>
+                    <li><i class="fa fa-map"></i> Av. Larco 890, Víctor Larco</li>
+                    <li><i class="fa fa-phone"></i> +51 44 123 456</li>
+                    <li><i class="fa fa-clock-o"></i> Lun-Sáb: 9:00 - 19:00</li>
+                </ul>
+                <span class="sucursal-status status-open">● OPERATIVO</span>
+            </div>
+            <div class="sucursal-card">
+                <h4 class="city-name"><i class="fa fa-map-marker"></i>Lima</h4>
+                <ul class="sucursal-info">
+                    <li><i class="fa fa-building"></i> BMW Flagship Store Lima</li>
+                    <li><i class="fa fa-map"></i> Av. Javier Prado 4200, Surco</li>
+                    <li><i class="fa fa-phone"></i> +51 1 987 654</li>
+                    <li><i class="fa fa-clock-o"></i> Lun-Dom: 10:00 - 21:00</li>
+                </ul>
+                <span class="sucursal-status status-open">● OPERATIVO</span>
+            </div>
+            <div class="sucursal-card">
+                <h4 class="city-name"><i class="fa fa-map-marker"></i>Arequipa</h4>
+                <ul class="sucursal-info">
+                    <li><i class="fa fa-building"></i> BMW Service Point Arequipa</li>
+                    <li><i class="fa fa-map"></i> Av. Ejército 1200, Cayma</li>
+                    <li><i class="fa fa-phone"></i> +51 54 567 890</li>
+                    <li><i class="fa fa-clock-o"></i> Próxima apertura Q3 2026</li>
+                </ul>
+                <span class="sucursal-status status-soon">◐ PRÓXIMAMENTE</span>
+            </div>
+        </div>
+    </div>
+</section>
+
      <style>
     /* --- FOOTER REPARADO: M-PERFORMANCE --- */
     footer {
