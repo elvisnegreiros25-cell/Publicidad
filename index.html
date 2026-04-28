@@ -1496,6 +1496,346 @@
         </div>
     </div>
 </div>
+
+<!-- =============================================
+     SECCIONES AGREGADAS POR JORDY PAZ
+     Galería de Modelos M Motorsport + Sedanes
+============================================= -->
+
+<style>
+    /* --- SECCIÓN DEPORTIVOS: GALERÍA M MOTORSPORT --- */
+    #deportivos {
+        background: linear-gradient(180deg, #050505 0%, #0d0d0d 50%, #111 100%);
+        padding: 120px 0 100px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #deportivos::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: repeating-linear-gradient(90deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 80px);
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .deportivos-watermark {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 18vw;
+        font-weight: 900;
+        color: rgba(255,255,255,0.015);
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 0;
+        font-family: 'Arial Black', sans-serif;
+        font-style: italic;
+    }
+
+    .deportivos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        margin-top: 60px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .deportivos-card {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+        overflow: hidden;
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        position: relative;
+        clip-path: polygon(0 0, 100% 0, 100% 92%, 92% 100%, 0 100%);
+    }
+
+    .deportivos-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 4px; height: 100%;
+        background: #0066b1;
+        transition: 0.4s;
+        z-index: 3;
+    }
+
+    .deportivos-card:nth-child(even)::before {
+        background: #e21b22;
+    }
+
+    .deportivos-card:hover {
+        transform: translateY(-15px);
+        border-color: rgba(226, 39, 24, 0.4);
+        box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 30px rgba(226, 39, 24, 0.1);
+    }
+
+    .deportivos-card-img {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+        background: #000;
+    }
+
+    .deportivos-card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(60%) brightness(0.8);
+        transition: all 0.6s ease;
+    }
+
+    .deportivos-card:hover .deportivos-card-img img {
+        filter: grayscale(0%) brightness(1.1);
+        transform: scale(1.15);
+    }
+
+    .deportivos-card-img .model-tag {
+        position: absolute;
+        bottom: 10px; right: 10px;
+        background: rgba(0,0,0,0.8);
+        color: #e21b22;
+        padding: 4px 12px;
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-family: 'Courier New', monospace;
+        z-index: 2;
+    }
+
+    .deportivos-card-body {
+        padding: 25px 20px;
+    }
+
+    .deportivos-card-body h4 {
+        color: #fff;
+        font-family: 'Arial Black', sans-serif;
+        font-size: 18px;
+        text-transform: uppercase;
+        font-style: italic;
+        margin: 0 0 8px 0;
+        padding: 0;
+    }
+
+    .deportivos-card-body .specs-mini {
+        display: flex;
+        gap: 20px;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .deportivos-card-body .specs-mini div {
+        text-align: center;
+    }
+
+    .deportivos-card-body .specs-mini .val {
+        display: block;
+        color: #0066b1;
+        font-weight: 900;
+        font-size: 16px;
+        font-family: 'Arial Black', sans-serif;
+    }
+
+    .deportivos-card-body .specs-mini .lbl {
+        display: block;
+        color: #666;
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 3px;
+    }
+
+    .deportivos-card-body .desc-mini {
+        color: #888;
+        font-size: 13px;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    /* --- SECCIÓN SEDANES --- */
+    #sedanes {
+        background: #0a0a0a;
+        padding: 100px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sedanes-showcase {
+        display: flex;
+        gap: 40px;
+        margin-top: 60px;
+        align-items: center;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 2;
+    }
+
+    .sedanes-highlight {
+        flex: 1;
+        min-width: 350px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.1);
+        padding: 40px;
+        position: relative;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 90% 100%, 0 100%);
+    }
+
+    .sedanes-highlight:hover {
+        border-color: #0066b1;
+        box-shadow: 0 20px 50px rgba(0,102,177,0.15);
+    }
+
+    .sedanes-highlight img {
+        width: 100%;
+        filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+        transition: transform 0.5s ease;
+    }
+
+    .sedanes-highlight:hover img {
+        transform: scale(1.05) rotate(-1deg);
+    }
+
+    .sedanes-highlight h4 {
+        color: #fff;
+        font-family: 'Arial Black', sans-serif;
+        font-size: 22px;
+        text-transform: uppercase;
+        font-style: italic;
+        margin: 20px 0 10px;
+        padding: 0;
+    }
+
+    .sedanes-highlight p {
+        color: #999;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+</style>
+
+<section id="deportivos">
+    <div class="deportivos-watermark">M POWER</div>
+
+    <div class="container" style="position: relative; z-index: 2;">
+        <div class="row">
+            <div class="col-md-12" style="text-align: center;">
+                <div class="titlepage">
+                    <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 20px;">
+                        <div style="width: 40px; height: 4px; background: #00a2ed;"></div>
+                        <div style="width: 40px; height: 4px; background: #102542;"></div>
+                        <div style="width: 40px; height: 4px; background: #e21b22;"></div>
+                    </div>
+                    <span style="color: #0066b1; font-weight: 900; letter-spacing: 6px; text-transform: uppercase; font-size: 13px;">M MOTORSPORT LINEUP</span>
+                    <h2 style="color: #fff; font-family: 'Arial Black', sans-serif; text-transform: uppercase; font-style: italic; margin: 15px 0;">
+                        MODELOS <span style="color: #e21b22;">DEPORTIVOS</span>
+                    </h2>
+                    <p style="color: #888; font-size: 16px; max-width: 600px; margin: 0 auto;">
+                        La gama M representa el pináculo del rendimiento BMW. Cada modelo es una obra maestra de ingeniería alemana.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="deportivos-grid">
+            <div class="deportivos-card">
+                <div class="deportivos-card-img">
+                    <img src="images/m4.png" alt="BMW M4 Competition">
+                    <span class="model-tag">/// M4 GT3</span>
+                </div>
+                <div class="deportivos-card-body">
+                    <h4>BMW M4 <span style="color: #e21b22;">Competition</span></h4>
+                    <p class="desc-mini">Coupé deportivo con motor biturbo de 6 cilindros en línea. Dominio absoluto en pista y carretera.</p>
+                    <div class="specs-mini">
+                        <div><span class="val">510</span><span class="lbl">CV</span></div>
+                        <div><span class="val">3.9s</span><span class="lbl">0-100</span></div>
+                        <div><span class="val">290</span><span class="lbl">KM/H</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deportivos-card">
+                <div class="deportivos-card-img">
+                    <img src="images/m8.png" alt="BMW M8 Competition">
+                    <span class="model-tag">/// M8 COMP</span>
+                </div>
+                <div class="deportivos-card-body">
+                    <h4>BMW M8 <span style="color: #0066b1;">Gran Coupé</span></h4>
+                    <p class="desc-mini">El Gran Turismo definitivo. Potencia brutal combinada con elegancia y confort excepcional.</p>
+                    <div class="specs-mini">
+                        <div><span class="val">625</span><span class="lbl">CV</span></div>
+                        <div><span class="val">3.2s</span><span class="lbl">0-100</span></div>
+                        <div><span class="val">305</span><span class="lbl">KM/H</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deportivos-card">
+                <div class="deportivos-card-img">
+                    <img src="images/m9.png" alt="BMW X5 M Competition">
+                    <span class="model-tag">/// X5M</span>
+                </div>
+                <div class="deportivos-card-body">
+                    <h4>BMW X5 <span style="color: #e21b22;">M Competition</span></h4>
+                    <p class="desc-mini">SUV de alto rendimiento. La versatilidad de un SAV con el corazón de un deportivo puro.</p>
+                    <div class="specs-mini">
+                        <div><span class="val">625</span><span class="lbl">CV</span></div>
+                        <div><span class="val">3.8s</span><span class="lbl">0-100</span></div>
+                        <div><span class="val">290</span><span class="lbl">KM/H</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deportivos-card">
+                <div class="deportivos-card-img">
+                    <img src="images/m8_2026.png" alt="BMW M8 2026">
+                    <span class="model-tag">/// M8 2026</span>
+                </div>
+                <div class="deportivos-card-body">
+                    <h4>BMW M8 <span style="color: #0066b1;">2026 Edition</span></h4>
+                    <p class="desc-mini">La nueva generación del ícono M. Tecnología de vanguardia y diseño futurista sin precedentes.</p>
+                    <div class="specs-mini">
+                        <div><span class="val">650</span><span class="lbl">CV</span></div>
+                        <div><span class="val">3.0s</span><span class="lbl">0-100</span></div>
+                        <div><span class="val">310</span><span class="lbl">KM/H</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="sedanes">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="text-align: center;">
+                <div class="titlepage">
+                    <span style="color: #0066b1; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; font-size: 13px;">ELEGANCIA & RENDIMIENTO</span>
+                    <h2 style="color: #fff; font-family: 'Arial Black', sans-serif; text-transform: uppercase; font-style: italic; margin: 15px 0;">
+                        SEDANES <span style="color: #e21b22;">& TURISMOS</span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="sedanes-showcase">
+            <div class="sedanes-highlight">
+                <img src="images/m4.png" alt="BMW Serie 3">
+                <h4>Serie 3 <span style="color: #0066b1;">Sedán</span></h4>
+                <p>El sedán deportivo por excelencia. Equilibrio perfecto entre dinamismo y confort para el día a día.</p>
+            </div>
+            <div class="sedanes-highlight">
+                <img src="images/m8.png" alt="BMW Serie 5">
+                <h4>Serie 5 <span style="color: #e21b22;">Touring</span></h4>
+                <p>Versatilidad premium con un toque deportivo. Espacio y rendimiento en perfecta armonía.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
      <style>
     /* --- FOOTER REPARADO: M-PERFORMANCE --- */
     footer {
